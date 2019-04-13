@@ -102,7 +102,7 @@
                 "ctype": "ImageViewObjectData"
               },
               {
-                "CharWidth": 30,
+                "CharWidth": 29,
                 "CharHeight": 47,
                 "LabelText": "0123456789",
                 "StartChar": "0",
@@ -116,7 +116,7 @@
                   "ScaleY": 0.5
                 },
                 "Position": {
-                  "X": 40.0,
+                  "X": 42.0,
                   "Y": 40.0
                 },
                 "Scale": {
@@ -126,21 +126,21 @@
                 "CColor": {},
                 "IconVisible": false,
                 "PrePosition": {
-                  "X": 0.5,
+                  "X": 0.525,
                   "Y": 0.5
                 },
                 "PreSize": {
-                  "X": 0.0,
+                  "X": 3.625,
                   "Y": 0.5875
                 },
-                "LeftMargin": 40.0,
-                "RightMargin": 40.0,
+                "LeftMargin": -103.0,
+                "RightMargin": -107.0,
                 "TopMargin": 16.5,
                 "BottomMargin": 16.5,
                 "Tag": 9,
                 "ActionTag": 1634853757,
                 "Size": {
-                  "X": 0.0,
+                  "X": 290.0,
                   "Y": 47.0
                 },
                 "Name": "score_tv",
