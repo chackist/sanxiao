@@ -31,9 +31,10 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="mainLayer.csd" />
+          <FilePathData Path="matrixItemNode.csd" />
+          <FilePathData Path="gameLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="mainLayer.csd" />
+        <ActiveDocument Path="gameLayer.csd" />
       </Value>
     </Item>
   </Properties>
