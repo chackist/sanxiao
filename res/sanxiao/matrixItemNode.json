@@ -102,8 +102,8 @@
                 "ctype": "ImageViewObjectData"
               },
               {
-                "CharWidth": 25,
-                "CharHeight": 38,
+                "CharWidth": 30,
+                "CharHeight": 47,
                 "LabelText": "0123456789",
                 "StartChar": "0",
                 "LabelAtlasFileImage_CNB": {
@@ -130,18 +130,18 @@
                   "Y": 0.5
                 },
                 "PreSize": {
-                  "X": 3.125,
-                  "Y": 0.475
+                  "X": 0.0,
+                  "Y": 0.5875
                 },
-                "LeftMargin": -85.0,
-                "RightMargin": -85.0,
-                "TopMargin": 21.0,
-                "BottomMargin": 21.0,
+                "LeftMargin": 40.0,
+                "RightMargin": 40.0,
+                "TopMargin": 16.5,
+                "BottomMargin": 16.5,
                 "Tag": 9,
                 "ActionTag": 1634853757,
                 "Size": {
-                  "X": 250.0,
-                  "Y": 38.0
+                  "X": 0.0,
+                  "Y": 47.0
                 },
                 "Name": "score_tv",
                 "ctype": "TextAtlasObjectData"

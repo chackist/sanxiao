@@ -236,7 +236,6 @@ var MatrixLayer = cc.Layer.extend({
                 selectItems.push({row:sel.row,column:column,node:selNode});
                 this.marixLogic.data[sel.row][sel.column] = null;
                 this.matrixItems[sel.row][sel.column] = null;
-                selNode.removeFromParent();
             }
             
             for (var column = columnCount - 1; column >= 0; column--) {
@@ -295,6 +294,19 @@ var MatrixLayer = cc.Layer.extend({
                 var y =  this.height / columnCount * (columnCount - item.row - 0.5);
                 cc.log(item,x,y);
                 item.node.runAction(cc.moveTo(0.3, cc.p(x, y)));
+            }
+
+            //Boom
+            var itemEffect = new cc.ParticleSystem("res/sanxiao/itemEffect.plist");
+            var lastSelNode = selectItems[selectItems.length - 1].node;
+            itemEffect.setPosition(cc.p(lastSelNode.x, lastSelNode.y));
+            this.addChild(itemEffect, 3);
+            itemEffect.runAction(cc.sequence(cc.delayTime(0.3),cc.scaleTo(0.3, 0.3), cc.callFunc(function(){
+                itemEffect.removeFromParent();
+            })));
+            for (var i = 0; i < selectItems.length; i++) {
+                var selNode = selectItems[i];
+                selNode.node.removeFromParent();
             }
 
         }else{

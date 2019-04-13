@@ -20,7 +20,8 @@ var res = {
 	shuzi :  "res/sanxiao/shuzi.png",
 	white :  "res/sanxiao/white.png",
 	yuan :  "res/sanxiao/yuan.png",
-	mainBg : "res/sanxiao/mainBg.png"
+	mainBg : "res/sanxiao/mainBg.png",
+	itemEffect: "res/sanxiao/itemEffect.plist"
 };
 
 var g_resources = [];
