@@ -20,8 +20,8 @@
         "src/setting/SettingWindow.js",
         "src/shop/ShopWindow.js",
         "src/game/GameScene.js",
-        "src/Sound.js",
         "src/UserDefault.js",
+        "src/Sound.js",
         "src/SceneMgr.js"
     ]
 }
