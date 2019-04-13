@@ -13,13 +13,13 @@
         <Image Name="HEIDI2.png" />
         <Image Name="jinb.png" />
         <Image Name="L.png" />
-        <Project Name="mainLayer.csd" Type="Layer" />
         <Image Name="M.png" />
         <Image Name="m1.png" />
         <Image Name="m2.png" />
         <Image Name="m3.png" />
         <Image Name="m4.png" />
         <Image Name="mainBg.png" />
+        <Project Name="mainLayer.csd" Type="Layer" />
         <Project Name="matrixItemNode.csd" Type="Node" />
         <Image Name="N.png" />
         <Image Name="shanchu.png" />
