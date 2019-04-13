@@ -1,6 +1,8 @@
 var res = {
     HelloWorld_png : "res/HelloWorld.png",
     matrixItemNode : "res/sanxiao/matrixItemNode.json",
+    mainLayer : "res/sanxiao/mainLayer.json",
+
     bgframecommon : "res/sanxiao/bgframecommon.png",
 	caidang :  "res/sanxiao/caidang.png",
 	D1 :  "res/sanxiao/D1.png",
@@ -21,7 +23,15 @@ var res = {
 	white :  "res/sanxiao/white.png",
 	yuan :  "res/sanxiao/yuan.png",
 	mainBg : "res/sanxiao/mainBg.png",
-	itemEffect: "res/sanxiao/itemEffect.plist"
+	itemEffect: "res/sanxiao/itemEffect.plist",
+	CAILUN :	"res/sanxiao/CAILUN.png",
+	LOGO :	"res/sanxiao/LOGO.png",
+	XAI :	"res/sanxiao/XAI.png",
+	putong :	"res/sanxiao/putong.png",
+	shandg :	"res/sanxiao/shandg.png",
+	shj :	"res/sanxiao/shj.png",
+	wux :	"res/sanxiao/wux.png"
+
 };
 
 var g_resources = [];

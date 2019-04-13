@@ -7,10 +7,8 @@ main.MainScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
 
-        var bg = new cc.Sprite(res.mainBg);
-        bg.x = cc.winSize.width * 0.5;
-        bg.y = cc.winSize.height * 0.5;
-        this.addChild(bg);
+        this.mainLayer = ccs.load(res.mainLayer).node;
+        this.addChild(this.mainLayer);
 
         this._listener = new cc.EventListener.create({
 
@@ -25,5 +23,16 @@ main.MainScene = cc.Scene.extend({
                 }
             },this);
         cc.eventManager.addListener(this._listener, this);
+    },
+
+    _initUI : function () {
+    	this.btn_time = this.mainLayer.getChildByName("btn_time");
+    	this.btn_putong = this.mainLayer.getChildByName("btn_putong");
+    	this.btn_wuxian = this.mainLayer.getChildByName("btn_wuxian");
+    	this.btn_shop = this.mainLayer.getChildByName("btn_shop");
+    	this.btn_setting = this.mainLayer.getChildByName("btn_setting");
+    	
+    	this.img_yuan = this.mainLayer.getChildByName("img_yuan");
+    	this.img_xian = this.mainLayer.getChildByName("img_xian");
     }
 });
