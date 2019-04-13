@@ -17,7 +17,7 @@
           {
             "FileData": {
               "Type": "Normal",
-              "Path": "res/sanxiao/H.png",
+              "Path": "sanxiao/H.png",
               "Plist": ""
             },
             "Scale9Enable": true,
@@ -67,7 +67,7 @@
             "StartChar": "0",
             "LabelAtlasFileImage_CNB": {
               "Type": "Normal",
-              "Path": "res/sanxiao/shuzi.png",
+              "Path": "sanxiao/shuzi.png",
               "Plist": ""
             },
             "AnchorPoint": {
@@ -117,8 +117,8 @@
         "ctype": "SingleNodeObjectData"
       },
       "UsedResources": [
-        "../res/sanxiao/H.png",
-        "../res/sanxiao/shuzi.png"
+        "H.png",
+        "shuzi.png"
       ],
       "ctype": "GameFileData"
     }

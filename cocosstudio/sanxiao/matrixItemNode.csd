@@ -14,7 +14,7 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
-            <FileData Type="Normal" Path="res/sanxiao/H.png" Plist="" />
+            <FileData Type="Normal" Path="sanxiao/H.png" Plist="" />
           </AbstractNodeData>
           <AbstractNodeData Name="score_tv" ActionTag="1634853757" Tag="9" IconVisible="False" LeftMargin="-180.0000" RightMargin="-180.0000" TopMargin="-23.5000" BottomMargin="-23.5000" CharWidth="36" CharHeight="47" LabelText="0123456789" StartChar="0" ctype="TextAtlasObjectData">
             <Size X="360.0000" Y="47.0000" />
@@ -24,7 +24,7 @@
             <CColor A="255" R="0" G="0" B="255" />
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
-            <LabelAtlasFileImage_CNB Type="Normal" Path="res/sanxiao/shuzi.png" Plist="" />
+            <LabelAtlasFileImage_CNB Type="Normal" Path="sanxiao/shuzi.png" Plist="" />
           </AbstractNodeData>
         </Children>
       </ObjectData>
