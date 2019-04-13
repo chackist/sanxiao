@@ -17,7 +17,6 @@
           {
             "ClipAble": false,
             "BackColorAlpha": 102,
-            "ComboBoxIndex": 1,
             "SingleColor": {
               "R": 150,
               "G": 200
@@ -30,6 +29,8 @@
             "ColorVector": {
               "ScaleY": 1.0
             },
+            "Scale9Width": 1,
+            "Scale9Height": 1,
             "AnchorPoint": {
               "ScaleX": 0.5,
               "ScaleY": 0.5
@@ -69,10 +70,13 @@
                 "Scale9OriginY": 6,
                 "Scale9Width": 87,
                 "Scale9Height": 89,
-                "AnchorPoint": {},
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
                 "Position": {
-                  "X": 0.0,
-                  "Y": 0.0
+                  "X": 40.0,
+                  "Y": 40.0
                 },
                 "Scale": {
                   "ScaleX": 1.0,
@@ -81,8 +85,8 @@
                 "CColor": {},
                 "IconVisible": false,
                 "PrePosition": {
-                  "X": 0.0,
-                  "Y": 0.0
+                  "X": 0.5,
+                  "Y": 0.5
                 },
                 "PreSize": {
                   "X": 1.0,
@@ -98,8 +102,8 @@
                 "ctype": "ImageViewObjectData"
               },
               {
-                "CharWidth": 36,
-                "CharHeight": 47,
+                "CharWidth": 25,
+                "CharHeight": 38,
                 "LabelText": "0123456789",
                 "StartChar": "0",
                 "LabelAtlasFileImage_CNB": {
@@ -126,18 +130,18 @@
                   "Y": 0.5
                 },
                 "PreSize": {
-                  "X": 4.5,
-                  "Y": 0.5875
+                  "X": 3.125,
+                  "Y": 0.475
                 },
-                "LeftMargin": -140.0,
-                "RightMargin": -140.0,
-                "TopMargin": 16.5,
-                "BottomMargin": 16.5,
+                "LeftMargin": -85.0,
+                "RightMargin": -85.0,
+                "TopMargin": 21.0,
+                "BottomMargin": 21.0,
                 "Tag": 9,
                 "ActionTag": 1634853757,
                 "Size": {
-                  "X": 360.0,
-                  "Y": 47.0
+                  "X": 250.0,
+                  "Y": 38.0
                 },
                 "Name": "score_tv",
                 "ctype": "TextAtlasObjectData"

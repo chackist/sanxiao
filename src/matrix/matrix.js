@@ -1,5 +1,26 @@
 var MatrixLogic = function(){
+   
 };
+MatrixLogic.Config = {
+    Items: [{
+        Bg: "res/sanxiao/M.png",
+        Frame: "res/sanxiao/m1.png",
+        LineColor: cc.color(229, 0, 79)
+    }, {
+        Bg: "res/sanxiao/L.png",
+        Frame: "res/sanxiao/m2.png",
+        LineColor: cc.color(0, 160, 233)
+    }, {
+        Bg: "res/sanxiao/H.png",
+        Frame: "res/sanxiao/m3.png",
+        LineColor: cc.color(254, 152, 0)
+    }, {
+        Bg: "res/sanxiao/N.png",
+        Frame: "res/sanxiao/m4.png",
+        LineColor: cc.color(0, 179, 65)
+    }]
+};
+
 MatrixLogic.prototype.init = function(rowCount, columnCount, typeCount){
     this.rowCount = rowCount;
     this.columnCount = columnCount;
@@ -40,6 +61,43 @@ MatrixLogic.prototype.addSelect = function(selectItem){
     }
 }
 
+MatrixLogic.prototype.getSelectDataByIdx = function(idx){
+    if (idx < 0) {
+        idx = this.select.length + idx;
+    }
+    if (idx >= 0 && idx < this.select.length) {
+        var sel = this.select[idx];
+        var data = this.data[sel.row][sel.column];
+        return {score:data.score,type:data.type,row:sel.row,column:sel.column};
+    }
+}
+
+MatrixLogic.prototype.getSelectScore = function(){
+    if (this.select.length >= 3) {
+        var score = 0;
+        for (var i = 0; i < this.select.length; i++) {
+            var selectI = this.select[i];
+            var scoreI = this.data[selectI.row][selectI.column].score;
+            var j = i + 1;
+            for (; j < this.select.length; j++) {
+                var selectJ = this.select[j];
+                if (scoreI != this.data[selectJ.row][selectJ.column].score) {
+                    break;
+                }
+            }
+
+            if (j - i >= 3) {
+                score += 10 * scoreI  * (j - i);
+                i = j - 1;
+            }else{
+                score += scoreI;
+            }
+        }
+        return score;
+    }
+    return 0;
+}
+
 MatrixLogic.prototype.canAddSelect = function(selectItem){
     //选中
     if (this.select.length == 0) {
@@ -76,12 +134,7 @@ MatrixLogic.prototype.canAddSelect = function(selectItem){
     return false;
 }
 
-MatrixLogic.Config = {
-    Items:[{Bg:"res/sanxiao/M.png",Frame:"res/sanxiao/m1.png"},
-            {Bg:"res/sanxiao/L.png",Frame:"res/sanxiao/m2.png"},
-            {Bg:"res/sanxiao/H.png",Frame:"res/sanxiao/m3.png"},
-            {Bg:"res/sanxiao/N.png",Frame:"res/sanxiao/m4.png"}],
-}
+
 
 var MatrixLayer = cc.Layer.extend({
     ctor:function (rowCount, columnCount, typeCount, size) {
@@ -115,10 +168,7 @@ var MatrixLayer = cc.Layer.extend({
             }else if (eventType == ccui.Widget.TOUCH_MOVED) {
                 self.doTouchMove(touchLayer.getTouchMovePosition());
             }else if (eventType == ccui.Widget.TOUCH_ENDED || eventType == ccui.Widget.TOUCH_CANCELED) {
-                self.doTouchMove(touchLayer.getTouchEndPosition());
-                //todo 算分 动画 
-                self.marixLogic.select = [];
-                self.resetLine();
+                self.doTouchEnd(touchLayer.getTouchEndPosition());
             }
         });
 
@@ -142,6 +192,19 @@ var MatrixLayer = cc.Layer.extend({
             if (this.marixLogic.canAddSelect(touchItem)) {
                 this.resetSlectItemScore(true);
                 this.marixLogic.addSelect(touchItem);
+
+                //最后一个选中的有效果
+                var lastSel = this.marixLogic.getSelectDataByIdx(-1);
+                if (lastSel) {
+                    var copy = this.matrixItems[lastSel.row][lastSel.column].clone();
+                    //copy.removeFromParent();
+                    copy.getChildByName("score_tv").setString("");
+                    this.addChild(copy, 1);
+                    copy.getChildByName("bg_iv").runAction(cc.sequence(cc.spawn(cc.scaleTo(0.2, 2), cc.fadeTo(0.2, 0)), cc.callFunc(function(){
+                        copy.removeFromParent();
+                    })));
+                }
+
                 this.resetSlectItemScore();
                 this.resetLine(touchPos);
             }else{
@@ -152,14 +215,103 @@ var MatrixLayer = cc.Layer.extend({
         }
     },
 
+    doTouchEnd:function(touchPos){
+        this.doTouchMove(touchPos);
+        //todo 算分 动画 
+        var score = this.marixLogic.getSelectScore();
+        if (score > 0) {
+            //选出选中的
+            //生成新的补进
+            var rowCount = this.marixLogic.rowCount;
+            var columnCount = this.marixLogic.columnCount;
+
+            var selectItems = [];
+            var newItems = [];
+            var moveItems = [];
+
+            //选中的节点
+            for (var i = 0; i < this.marixLogic.select.length; i++) {
+                var sel = this.marixLogic.select[i];
+                var selNode = this.matrixItems[sel.row][sel.column];
+                selectItems.push({row:sel.row,column:column,node:selNode});
+                this.marixLogic.data[sel.row][sel.column] = null;
+                this.matrixItems[sel.row][sel.column] = null;
+                selNode.removeFromParent();
+            }
+            
+            for (var column = columnCount - 1; column >= 0; column--) {
+                var nullCount = 0;
+                for (var row = rowCount - 1; row >= 0; row--) {
+                    var moveNode = this.matrixItems[row][column];
+                    if (moveNode == null) {
+                        nullCount++;
+                    }else{
+                        //下降的节点
+                        if (nullCount > 0) {
+                            cc.log(nullCount, row, column);
+                            this.marixLogic.data[row + nullCount][column] = this.marixLogic.data[row][column];
+                            this.matrixItems[row + nullCount][column] = moveNode;
+                            this.marixLogic.data[row][column] = null;
+                            this.matrixItems[row][column] = null;
+                            moveItems.push({row:row + nullCount,column:column,node:moveNode});
+                        }
+                    }
+                }
+
+                while (nullCount > 0) {
+                    //补充的节点
+                    this.marixLogic.data[nullCount - 1][column] = this.marixLogic.newItem();
+                    var item = this.marixLogic.data[nullCount - 1][column];
+                    var itemNode = this.cloneItemNode.clone();
+                    itemNode.visible = true;
+                    itemNode.getChildByName("bg_iv").loadTexture(MatrixLogic.Config.Items[item.type].Bg);
+                    itemNode.getChildByName("score_tv").setString(item.score + "");
+                    this.addChild(itemNode, 2);
+                    itemNode.x = this.width / rowCount * (column + 0.5);
+                    itemNode.y = this.height / columnCount * (columnCount - nullCount - 1 - 0.5) + 1000;
+
+                    this.matrixItems[nullCount - 1][column] = itemNode;
+                    newItems.push({row:nullCount - 1,column:column,node:itemNode});
+                    nullCount--;
+                }
+            }
+            
+            this.resetSlectItemScore(true);
+            this.marixLogic.select = [];
+            this.resetLine();
+
+            //动画
+            for (var i = 0; i < newItems.length; i++) {
+                var item = newItems[i];
+                var x =  this.width / rowCount * (item.column + 0.5);
+                var y =  this.height / columnCount * (columnCount - item.row - 0.5);
+                item.node.runAction(cc.moveTo(0.3, cc.p(x, y)));
+            }
+
+            //动画
+            for (var i = 0; i < moveItems.length; i++) {
+                var item = moveItems[i];
+                var x =  this.width / rowCount * (item.column + 0.5);
+                var y =  this.height / columnCount * (columnCount - item.row - 0.5);
+                cc.log(item,x,y);
+                item.node.runAction(cc.moveTo(0.3, cc.p(x, y)));
+            }
+
+        }else{
+            this.resetSlectItemScore(true);
+            this.marixLogic.select = [];
+            this.resetLine();
+        }
+    },
+
     getTouchItem:function(touchPos){
         var columnIdx = Math.floor((touchPos.x / this.width) * this.marixLogic.rowCount);
         var rowIdx = Math.floor((this.height - touchPos.y) / this.height * this.marixLogic.columnCount);
        
         if (rowIdx >= 0 && columnIdx >= 0 && rowIdx < this.marixLogic.rowCount && columnIdx < this.marixLogic.columnCount) {
             var idx = rowIdx * this.marixLogic.columnCount + columnIdx;
-            if (idx < this.matrixItems.length) {
-                var touchNode = this.matrixItems[idx];
+            var touchNode = this.matrixItems[rowIdx][columnIdx];
+            if (touchNode) {
                 if (cc.rectContainsPoint(cc.rect(touchNode.x - touchNode.width * 0.5,touchNode.y - touchNode.height * 0.5,touchNode.width,touchNode.height),touchPos)) {
                     return {idx:idx,column:columnIdx,row:rowIdx};
                 }
@@ -170,39 +322,35 @@ var MatrixLayer = cc.Layer.extend({
 
     resetSlectItemScore:function(isSetInitScore){
         var data = this.marixLogic.data;
-        var sameScoreIdxBegin = 0;
-        var sameScoreIdxEnd = 0;
-        var sameScore = 0;
         for (var i = 0; i < this.marixLogic.select.length; i++) {
-            var select = this.marixLogic.select[i];
+            var selectI = this.marixLogic.select[i];
+            var scoreI = data[selectI.row][selectI.column].score;
             if (isSetInitScore) {
-                cc.log(data, select)
-                this.matrixItem[select.idx].getChildByName("score_tv").setString(data[select.row][select.column]["score"] + "");
+                var node = this.matrixItems[selectI.row][selectI.column];
+                node.getChildByName("score_tv").setString(scoreI + "");
+                node.scale = 1;
             }else{
-                if (i == 0) {
-                    sameScoreIdxBegin = i;
-                    sameScoreIdxEnd = i;
-                }else{
-                    if (data[select.row][select.column].score != sameScore) {
-                        sameScoreIdxEnd = i - 1;
-                    }else if (i == this.marixLogic.select.length - 1) {
-                        sameScoreIdxEnd = i;
-                    }else{
-                        sameScoreIdxBegin = i;
-                        sameScoreIdxEnd = i;
-                    }
-
-                    cc.log(sameScoreIdxEnd, sameScoreIdxBegin);
-
-                    if (sameScoreIdxEnd - sameScoreIdxBegin > 2) {
-                        for (var j = sameScoreIdxBegin; j <= sameScoreIdxEnd; j++) {
-                            var select = this.marixLogic.select[j];
-                            this.matrixItem[select.idx].getChildByName("score_tv").setString(sameScore * 10 + "");
-                        }
-                        sameScoreIdxBegin = i;
+                var j = i + 1;
+                for (; j < this.marixLogic.select.length; j++) {
+                    var selectJ = this.marixLogic.select[j];
+                    if (scoreI != data[selectJ.row][selectJ.column].score) {
+                        break;
                     }
                 }
-                sameScore = data[select.row][select.column]["score"];
+
+                if (j - i >= 3) {
+                    for (var k = i; k < j; k++) {
+                        var selectK = this.marixLogic.select[k];
+                        var node = this.matrixItems[selectK.row][selectK.column];
+                        node.getChildByName("score_tv").setString(scoreI * 10 + "");
+                        node.scale = 1.1;
+                    }
+                    i = j - 1;
+                }else{
+                    var node = this.matrixItems[selectI.row][selectI.column];
+                    node.getChildByName("score_tv").setString(scoreI + "");
+                    node.scale = 1;
+                }
             }
         }
     },
@@ -213,11 +361,13 @@ var MatrixLayer = cc.Layer.extend({
         }
 
         for (var i = 0; i < this.marixLogic.select.length; i++) {
-            var posB = this.matrixItems[this.marixLogic.select[i].idx];
+            var beginNode = this.marixLogic.select[i];
+            var posB = this.matrixItems[beginNode.row][beginNode.column];
             if (i == this.marixLogic.select.length - 1) {
                 var posE = touchPos;
             }else{
-                var posE = this.matrixItems[this.marixLogic.select[i + 1].idx];
+                var endNode = this.marixLogic.select[i + 1];
+                var posE = this.matrixItems[endNode.row][endNode.column];
             }
             this.drawOneLine(posB, posE);
         }
@@ -226,7 +376,8 @@ var MatrixLayer = cc.Layer.extend({
     moveLastLine:function(touchPos){
         if (this.lines.length > 0 && this.marixLogic.select.length > 0) {
             var line = this.lines[this.lines.length - 1];
-            var posB = this.matrixItems[this.marixLogic.select[this.marixLogic.select.length - 1].idx];
+            var lastNode = this.marixLogic.select[this.marixLogic.select.length - 1];
+            var posB = this.matrixItems[lastNode.row][lastNode.column];
             var posE = touchPos;
             var width = Math.sqrt(Math.pow(posE.x - posB.x, 2) + Math.pow(posE.y - posB.y, 2));
             line.width = width;
@@ -238,6 +389,13 @@ var MatrixLayer = cc.Layer.extend({
         var width = Math.sqrt(Math.pow(posE.x - posB.x, 2) + Math.pow(posE.y - posB.y, 2));
         var line = this.cloneLineNode.clone();
         line.visible = true;
+        var color = cc.color(255,255,255);
+
+        var firstSel = this.marixLogic.getSelectDataByIdx(0);
+        if (firstSel) {
+            color = MatrixLogic.Config.Items[this.marixLogic.data[firstSel.row][firstSel.column].type].LineColor;
+        } 
+        line.setColor(color)
         this.addChild(line);
         line.width = width;
         line.setRotation(Math.atan2((posB.y-posE.y), (posE.x-posB.x)) * (180/Math.PI));
@@ -248,25 +406,28 @@ var MatrixLayer = cc.Layer.extend({
 
     resetMatix:function(){
         for (var i = 0; i < this.matrixItems.length; i++) {
-            this.matrixItems[i].removeFromParent();
+            for (var j = 0; j < this.matrixItems[i].length; j++) {
+                this.matrixItems[i][j].removeFromParent();
+            }
         }
+
         this.matrixItems = [];
         
         for (var i = 0; i < this.marixLogic.data.length; i++) {
             var row = this.marixLogic.data[i];
+            var rowNodes = [];
             for (var j = 0; j < row.length; j++) {
                 var item = row[j];
                 var itemNode = this.cloneItemNode.clone();
                 itemNode.visible = true;
                 itemNode.getChildByName("bg_iv").loadTexture(MatrixLogic.Config.Items[item.type].Bg);
                 itemNode.getChildByName("score_tv").setString(item.score + "");
-                this.addChild(itemNode);
+                this.addChild(itemNode, 2);
                 itemNode.x = this.width / this.marixLogic.rowCount * (j + 0.5);
                 itemNode.y = this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - i - 0.5);
-                this.matrixItems.push(itemNode);
+                rowNodes.push(itemNode);
             }
+            this.matrixItems.push(rowNodes);
         }
     },
-
-
 });
