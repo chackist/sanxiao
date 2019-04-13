@@ -1,0 +1,127 @@
+{
+  "ID": "1ae81b7e-a9ab-4cf1-a550-baf1fe13ae77",
+  "Version": "2.3.4",
+  "Name": "matrixItemNode",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 6,
+        "Children": [
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "res/sanxiao/H.png",
+              "Plist": ""
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 6,
+            "Scale9OriginY": 6,
+            "Scale9Width": 87,
+            "Scale9Height": 89,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -49.5,
+            "RightMargin": -49.5,
+            "TopMargin": -50.5,
+            "BottomMargin": -50.5,
+            "Tag": 8,
+            "ActionTag": -710750388,
+            "Size": {
+              "X": 99.0,
+              "Y": 101.0
+            },
+            "Name": "bg_iv",
+            "ctype": "ImageViewObjectData"
+          },
+          {
+            "CharWidth": 36,
+            "CharHeight": 47,
+            "LabelText": "0123456789",
+            "StartChar": "0",
+            "LabelAtlasFileImage_CNB": {
+              "Type": "Normal",
+              "Path": "res/sanxiao/shuzi.png",
+              "Plist": ""
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {
+              "R": 0,
+              "G": 0
+            },
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -180.0,
+            "RightMargin": -180.0,
+            "TopMargin": -23.5,
+            "BottomMargin": -23.5,
+            "Tag": 9,
+            "ActionTag": 1634853757,
+            "Size": {
+              "X": 360.0,
+              "Y": 47.0
+            },
+            "Name": "score_tv",
+            "ctype": "TextAtlasObjectData"
+          }
+        ],
+        "Size": {
+          "X": 0.0,
+          "Y": 0.0
+        },
+        "Name": "Node",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "../res/sanxiao/H.png",
+        "../res/sanxiao/shuzi.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Node"
+}
