@@ -15,6 +15,13 @@
         "src/resource.js",
         "src/app.js",
 
-        "src/matrix/matrix.js"
+        "src/matrix/matrix.js",
+        "src/main/MainScene.js",
+        "src/setting/SettingWindow.js",
+        "src/shop/ShopWindow.js",
+        "src/game/GameScene.js",
+        "src/Sound.js",
+        "src/UserDefault.js",
+        "src/SceneMgr.js"
     ]
 }

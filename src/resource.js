@@ -1,6 +1,26 @@
 var res = {
     HelloWorld_png : "res/HelloWorld.png",
-    matrixItemNode : "res/sanxiao/matrixItemNode.json"
+    matrixItemNode : "res/sanxiao/matrixItemNode.json",
+    bgframecommon : "res/sanxiao/bgframecommon.png",
+	caidang :  "res/sanxiao/caidang.png",
+	D1 :  "res/sanxiao/D1.png",
+	dengpao :  "res/sanxiao/dengpao.png",
+	H :  "res/sanxiao/H.png",
+	HEIDI :  "res/sanxiao/HEIDI.png",
+	HEIDI2 :  "res/sanxiao/HEIDI2.png",
+	jinb :  "res/sanxiao/jinb.png",
+	L :  "res/sanxiao/L.png",
+	M :  "res/sanxiao/M.png",
+	m1 :  "res/sanxiao/m1.png",
+	m2 :  "res/sanxiao/m2.png",
+	m3 :  "res/sanxiao/m3.png",
+	m4 :  "res/sanxiao/m4.png",
+	N :  "res/sanxiao/N.png",
+	shanchu :  "res/sanxiao/shanchu.png",
+	shuzi :  "res/sanxiao/shuzi.png",
+	white :  "res/sanxiao/white.png",
+	yuan :  "res/sanxiao/yuan.png",
+	mainBg : "res/sanxiao/mainBg.png"
 };
 
 var g_resources = [];
