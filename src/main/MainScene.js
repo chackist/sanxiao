@@ -8,7 +8,7 @@ main.MainScene = cc.Scene.extend({
         this._super();
 
         this.mainLayer = ccs.load(res.mainLayer).node;
-        this.addChild(mainLayer);
+        this.addChild(this.mainLayer);
 
         this._listener = new cc.EventListener.create({
 
