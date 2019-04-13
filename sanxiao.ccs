@@ -3,7 +3,6 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Folder Name="sanxiao" />
         <Image Name="bgframecommon.png" />
         <Image Name="caidang.png" />
         <Image Name="D1.png" />
@@ -13,11 +12,13 @@
         <Image Name="HEIDI2.png" />
         <Image Name="jinb.png" />
         <Image Name="L.png" />
+        <Project Name="gameLayer.csd" Type="Layer" />
         <Image Name="M.png" />
         <Image Name="m1.png" />
         <Image Name="m2.png" />
         <Image Name="m3.png" />
         <Image Name="m4.png" />
+        <Image Name="mainBg.png" />
         <Project Name="matrixItemNode.csd" Type="Node" />
         <Image Name="N.png" />
         <Image Name="shanchu.png" />
