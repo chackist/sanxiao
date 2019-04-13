@@ -1,5 +1,6 @@
 var res = {
     HelloWorld_png : "res/HelloWorld.png",
+    matrixItemNode : "res/sanxiao/matrixItemNode.json"
 };
 
 var g_resources = [];
