@@ -193,6 +193,7 @@ var MatrixLayer = cc.Layer.extend({
         this._super();
         this.matrixItems = [];
         this.lines = [];
+        this.helpLines = [];
         this.gameLogic = gameLogic;
         this.marixLogic = new MatrixLogic();
         this.marixLogic.init(rowCount, columnCount, typeCount, gameLogic.matrix);
@@ -262,7 +263,8 @@ var MatrixLayer = cc.Layer.extend({
         var touchItem = this.getTouchItem(touchPos);
 
         if (this.isDeleteSelecting) {
-            if (touchItem) {
+            if (touchItem && (this.deleteSelectItem == null || !(this.deleteSelectItem.row == touchItem.row && this.deleteSelectItem.column == touchItem.column))) {
+                this.deleteSelectItem = touchItem;
                 var copy = this.matrixItems[touchItem.row][touchItem.column].clone();
                 copy.getChildByName("score_tv").setString("");
                 this.addChild(copy, 1);
@@ -302,12 +304,13 @@ var MatrixLayer = cc.Layer.extend({
     },
 
     doTouchEnd:function(touchPos){
+        this.clearHelpLine();
         this.doTouchMove(touchPos, true);
         if (this.isDeleteSelecting) {
-            var touchItem = this.getTouchItem(touchPos);
-            if (touchItem) {
+            if (this.deleteSelectItem) {
                 this.isDeleteSelecting = false;
-                this.deleteItems([touchItem]);
+                this.deleteItems([this.deleteSelectItem]);
+                this.deleteSelectItem = null;
                 this.checkCanSelect();
             }
             return;
@@ -416,7 +419,7 @@ var MatrixLayer = cc.Layer.extend({
                 var posE = cc.p(this.width / this.marixLogic.rowCount * (endNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - endNode.row - 0.5));
             }
 
-            this.drawOneLine(posB, posE, color);
+            this.lines.push(this.drawOneLine(posB, posE, color));
         }
     },
 
@@ -442,14 +445,11 @@ var MatrixLayer = cc.Layer.extend({
         line.setRotation(Math.atan2((posB.y-posE.y), (posE.x-posB.x)) * (180/Math.PI));
         line.x = posB.x;
         line.y = posB.y;
-        this.lines.push(line);
+        return line;
     },
 
     drawHelpLine:function(){
-        for (var i = 0; i < this.lines.length; i++) {
-            this.lines[i].removeFromParent();
-        }
-
+        this.clearHelpLine();
         var help = this.marixLogic.getHelp();
         var color = cc.color(255,255,255);
         for (var i = 0; i < help.length - 1; i++) {
@@ -457,8 +457,22 @@ var MatrixLayer = cc.Layer.extend({
             var posB = cc.p(this.width / this.marixLogic.rowCount * (beginNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - beginNode.row - 0.5));
             var endNode = help[i + 1];
             var posE = cc.p(this.width / this.marixLogic.rowCount * (endNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - endNode.row - 0.5));
-            this.drawOneLine(posB, posE, color);
+            var line = this.drawOneLine(posB, posE, color);
+            line.visible = false;
+            (function(line){
+                line.runAction(cc.sequence(cc.delayTime(0.1 * i), cc.callFunc(function(){
+                    line.visible = true;
+                })));
+            })(line);
+            this.helpLines.push(line);
         }
+    },
+
+    clearHelpLine:function(touchPos){
+        for (var i = 0; i < this.helpLines.length; i++) {
+            this.helpLines[i].removeFromParent();
+        }
+        this.helpLines = [];
     },
 
     //长时间未操作的提示
