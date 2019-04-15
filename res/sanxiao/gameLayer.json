@@ -246,6 +246,10 @@
                       "Src": 1,
                       "Dst": 771
                     },
+                    "Scale9OriginX": 31,
+                    "Scale9OriginY": 30,
+                    "Scale9Width": 33,
+                    "Scale9Height": 33,
                     "AnchorPoint": {
                       "ScaleX": 0.5,
                       "ScaleY": 0.5
@@ -261,8 +265,8 @@
                     "CColor": {},
                     "IconVisible": false,
                     "PrePosition": {
-                      "X": 0.1043,
-                      "Y": 0.5077
+                      "X": 0.1097,
+                      "Y": 0.505
                     },
                     "PreSize": {
                       "X": 0.1267,
@@ -279,7 +283,7 @@
                       "Y": 93.0
                     },
                     "Name": "caidang_btn",
-                    "ctype": "SpriteObjectData"
+                    "ctype": "ImageViewObjectData"
                   }
                 ],
                 "ActionTag": 926424790,

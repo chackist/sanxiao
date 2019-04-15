@@ -45,21 +45,21 @@ var config = {
 	},
 
     Items: [{
-        Bg: "res/sanxiao/M.png",
-        Frame: "res/sanxiao/m1.png",
-        LineColor: cc.color(229, 0, 79)
-    }, {
+        Bg: "res/sanxiao/N.png",
+        Frame: "res/sanxiao/m4.png",
+        LineColor: cc.color(0, 179, 65)
+    },  {
+        Bg: "res/sanxiao/H.png",
+        Frame: "res/sanxiao/m3.png",
+        LineColor: cc.color(254, 152, 0)
+    },{
         Bg: "res/sanxiao/L.png",
         Frame: "res/sanxiao/m2.png",
         LineColor: cc.color(0, 160, 233)
     }, {
-        Bg: "res/sanxiao/H.png",
-        Frame: "res/sanxiao/m3.png",
-        LineColor: cc.color(254, 152, 0)
-    }, {
-        Bg: "res/sanxiao/N.png",
-        Frame: "res/sanxiao/m4.png",
-        LineColor: cc.color(0, 179, 65)
+        Bg: "res/sanxiao/M.png",
+        Frame: "res/sanxiao/m1.png",
+        LineColor: cc.color(229, 0, 79)
     }],
 
 }
