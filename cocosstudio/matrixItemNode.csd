@@ -19,14 +19,14 @@
                 <PreSize X="1.0000" Y="1.0000" />
                 <FileData Type="Normal" Path="H.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="score_tv" ActionTag="1634853757" Tag="9" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-95.0000" RightMargin="-95.0000" TopMargin="26.5000" BottomMargin="26.5000" CharWidth="29" CharHeight="47" LabelText="0123456789" StartChar="0" ctype="TextAtlasObjectData">
-                <Size X="290.0000" Y="47.0000" />
+              <AbstractNodeData Name="score_tv" ActionTag="1634853757" Tag="9" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-85.0000" RightMargin="-85.0000" TopMargin="26.5000" BottomMargin="26.5000" CharWidth="30" CharHeight="47" LabelText="0123456789" StartChar="0" ctype="TextAtlasObjectData">
+                <Size X="270.0000" Y="47.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="50.0000" Y="50.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="0.5000" />
-                <PreSize X="2.9000" Y="0.4700" />
+                <PreSize X="2.7000" Y="0.4700" />
                 <LabelAtlasFileImage_CNB Type="Normal" Path="shuzi.png" Plist="" />
               </AbstractNodeData>
             </Children>

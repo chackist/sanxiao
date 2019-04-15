@@ -22,10 +22,7 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 	var ui = this.ui = {};
 
 	var oneStepScoreLayer =  ui.oneStepScoreLayer = layer.getChildByName("top_menu_layer").getChildByName("one_step_score_info");
-	ui.oneStepLianJi = oneStepScoreLayer.getChildByName("lianji_tv");
 	ui.oneStepTv = oneStepScoreLayer.getChildByName("tv");
-
-	ui.oneStepLianJi.visible = false;
 	ui.oneStepTv.visible = false;
 
 	ui.scoreTv = this.modelLayer.getChildByName("score_info").getChildByName("tv");
@@ -33,6 +30,7 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 
 	if (this.type == 0) {
 		ui.guanQiaScoreTv = this.modelLayer.getChildByName("guanqia_score").getChildByName("tv");
+		ui.guanQiaScorePro = this.modelLayer.getChildByName("guanqia_score").getChildByName("pro");
 		ui.guanQiaTimeTv = this.modelLayer.getChildByName("guanqia_time").getChildByName("tv");
 		ui.guanQiaTimePro = this.modelLayer.getChildByName("guanqia_time").getChildByName("pro");
 	}else if (this.type == 1) {
@@ -55,6 +53,7 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 		ui.stepTv = this.modelLayer.getChildByName("step_info").getChildByName("tv");
 	}else if (this.type == 2) {
 		ui.guanQiaScoreTv = this.modelLayer.getChildByName("guanqia_score").getChildByName("tv");
+		ui.guanQiaScorePro = this.modelLayer.getChildByName("guanqia_score").getChildByName("pro");
 	}
 
 	this.fullData();
@@ -66,7 +65,11 @@ GameLogic.prototype.updateUI = function () {
 	ui.scoreTv.setString(this.allWinScore + "");
 	ui.guanQiaTv.setString(this.guanQia + "");
 	if (this.type == 0) {
-		ui.guanQiaScoreTv.setString(this.guanQiaWinScore + "");
+		var need = this.guanQiaNeedScore - this.guanQiaWinScore;
+		need = need < 0 ? 0 : need;
+		ui.guanQiaScoreTv.setString(need + "");
+		ui.guanQiaScorePro.setPercent(need / this.guanQiaNeedScore * 100);
+
 		ui.guanQiaTimeTv.setString((this.allTime - this.useTime) + "");
 		ui.guanQiaTimePro.setPercent((this.allTime - this.useTime) / this.allTime * 100);
 	}else if (this.type == 1) {
@@ -120,6 +123,11 @@ GameLogic.prototype.onAddScore = function (score) {
 		cc.log(score, cur, max, this.guanQiaNeedScore, this.guanQiaWinScoreArr);
 		ui.scoreInfoArr[score.type].pro.setPercentage(cur / max * 100);
 		ui.scoreInfoArr[score.type].tv.setString(cur + "");
+	}else{
+		var need = this.guanQiaNeedScore - this.guanQiaWinScore;
+		need = need < 0 ? 0 : need;
+		ui.guanQiaScoreTv.setString(need + "");
+		ui.guanQiaScorePro.setPercent(need / this.guanQiaNeedScore * 100);
 	}
 	
 	if (this.judgeWin()) {
@@ -146,23 +154,16 @@ GameLogic.prototype.onMatrixChange = function (matrix) {
 GameLogic.prototype.onSelectScore = function (score) {
 	var ui = this.ui;
 	ui.oneStepTv.stopAllActions();
-	ui.oneStepLianJi.stopAllActions();
 	if (score) {
-		ui.oneStepTv.setTextColor(config.Items[score.type].LineColor);
-		ui.oneStepLianJi.setTextColor(config.Items[score.type].LineColor);
+		var color = config.Items[score.type].LineColor;
+		ui.oneStepTv.setTextColor(color);
 		ui.oneStepTv.opacity = 255;
-		ui.oneStepLianJi.opacity = 255;
-		ui.oneStepLianJi.visible = score.isLianJi;
 		ui.oneStepTv.visible = true;
-		ui.oneStepTv.setString(score.score);
-		ui.oneStepScoreLayer.scale = score.isLianJi ? 1.2 : 1;
+		ui.oneStepTv.setString((score.isLianJi ? "连击  " : "") +  score.score);
+		ui.oneStepTv.scale = score.isLianJi ? 1.2 : 1;
 	}else{
 		ui.oneStepTv.runAction(cc.sequence(cc.delayTime(0.8),cc.spawn(cc.fadeTo(0.5, 0)), cc.callFunc(function(){
             ui.oneStepTv.visible = false;
-        })));
-
-        ui.oneStepLianJi.runAction(cc.sequence(cc.delayTime(0.8),cc.spawn(cc.fadeTo(0.5, 0)), cc.callFunc(function(){
-            ui.oneStepLianJi.visible = false;
         })));
 	}
 };

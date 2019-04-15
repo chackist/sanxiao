@@ -37,6 +37,7 @@ game.GameScene = cc.Scene.extend({
     },
 
     _handClick : function(btn, et) {
+    	cc.log("asdfasfasfafssf")
         if(et == ccui.Widget.TOUCH_ENDED){
             switch (btn) {
                 case this.caidang_btn :
