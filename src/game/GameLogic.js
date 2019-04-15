@@ -58,6 +58,9 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 
 	this.fullData();
 	this.updateUI();
+	if (this.type == 0) {
+		this.startCountdown();
+	}
 };
 
 GameLogic.prototype.updateUI = function () {
@@ -70,8 +73,10 @@ GameLogic.prototype.updateUI = function () {
 		ui.guanQiaScoreTv.setString(need + "");
 		ui.guanQiaScorePro.setPercent(need / this.guanQiaNeedScore * 100);
 
-		ui.guanQiaTimeTv.setString((this.allTime - this.useTime) + "");
-		ui.guanQiaTimePro.setPercent((this.allTime - this.useTime) / this.allTime * 100);
+		var time = this.allTime - this.useTime;
+		time = time < 0 ? 0 : time;
+		ui.guanQiaTimeTv.setString(time + "");
+		ui.guanQiaTimePro.setPercent(time / this.allTime * 100);
 	}else if (this.type == 1) {
 		ui.stepTv.setString((this.allStep - this.useStep) + "");
 		for (var i = 0; i < ui.scoreInfoArr.length; i++) {
@@ -132,13 +137,14 @@ GameLogic.prototype.onAddScore = function (score) {
 	
 	if (this.judgeWin()) {
 		var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
-		//事件处理
+		//赢事件处理
 		this.nextGuanQia();
 	}else{
 		if (this.type == 1) {
 			if (this.useStep >= this.allStep) {
 				var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
 				userDefault.setStringForKey(config.Key.GamePlay, "");
+				//失败事件处理
 				return;
 			}
 		}
@@ -193,15 +199,43 @@ GameLogic.prototype.nextGuanQia = function () {
 		this.useTime = 0;
 	}else if (this.type == 1) {
 		this.guanQiaWinScoreArr = [0,0,0,0];
+		this.useStep = 0;
 	}
 	this.fullData();
 	this.updateUI();
+
+	if (this.type == 0) {
+		this.stopCountdown();
+		this.scene.runAction(cc.sequence(cc.delayTime(1), cc.callFunc(function(){
+            this.startCountdown();
+        }.bind(this))));
+	}
 };
 
-GameLogic.prototype.timeOut = function () {
-	var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
-	//事件处理
-	this.scene.setGamePlayData(this.getData());
+GameLogic.prototype.startCountdown = function () {
+	this.stopCountdown();
+	this.countdownCb = this.countdownCb || function(){
+		this.useTime++;
+
+		var time = this.allTime - this.useTime;
+		time = time < 0 ? 0 : time;
+		this.ui.guanQiaTimeTv.setString(time + "");
+		this.ui.guanQiaTimePro.setPercent(time / this.allTime * 100);
+
+		if (time <= 0) {
+			this.stopCountdown();
+			var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
+			this.scene.setGamePlayData(this.getData());
+			//失败事件处理
+		}
+	}.bind(this);
+	this.scene.schedule(this.countdownCb, 1);
+};
+
+GameLogic.prototype.stopCountdown = function () {
+	if (this.countdownCb) {
+		this.scene.unschedule(this.countdownCb);
+	}
 };
 
 GameLogic.prototype.getData = function () {

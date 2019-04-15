@@ -14,7 +14,7 @@ var config = {
 
 	Logic:{
 		Type0:{
-			BaseGuanQiaNeedScore:1000,
+			BaseGuanQiaNeedScore:100,
 			PreGuanQiaAddScore:100,
 			GuanQiaTime:60,
 			WinCoinBase:1000,
@@ -31,7 +31,7 @@ var config = {
 
 		Type2:{
 			BaseGuanQiaNeedScore:1000,
-			PreGuanQiaAddScore:100,
+			PreGuanQiaAddScore:1000,
 			GuanQiaTime:-1,
 			WinCoinBase:1000,
 			WinScoreExchangeCoin:20 / 1,//赢的分兑换金币
