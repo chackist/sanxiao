@@ -586,6 +586,7 @@
             "NormalFileData": {
               "Type": "Normal",
               "Path": "end/caid.png",
+              "Path": "setting/guanbi.png",
               "Plist": ""
             },
             "Scale9Enable": true,
@@ -593,6 +594,8 @@
             "Scale9OriginY": 11,
             "Scale9Width": 81,
             "Scale9Height": 132,
+            "Scale9Width": 82,
+            "Scale9Height": 146,
             "OutlineColor": {
               "G": 0,
               "B": 0
@@ -771,6 +774,24 @@
               "Y": 154.0
             },
             "Name": "btn_share",
+              "X": 0.5,
+              "Y": 0.1919
+            },
+            "PreSize": {
+              "X": 0.1493,
+              "Y": 0.1259
+            },
+            "LeftMargin": 319.0,
+            "RightMargin": 319.0,
+            "TopMargin": 994.0294,
+            "BottomMargin": 171.9706,
+            "Tag": 5,
+            "ActionTag": 1651388501,
+            "Size": {
+              "X": 112.0,
+              "Y": 168.0
+            },
+            "Name": "btn_close",
             "ctype": "ButtonObjectData"
           }
         ],
@@ -788,6 +809,8 @@
         "end/di2.png",
         "end/fenc.png",
         "end/zuijia.png"
+        "end/di2.png",
+        "setting/guanbi.png"
       ],
       "ctype": "GameFileData"
     }

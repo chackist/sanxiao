@@ -260,10 +260,10 @@ var MatrixLayer = cc.Layer.extend({
     doTouchMove:function(touchPos){
         this.lastTouchTime = new Date().getTime();
         var touchItem = this.getTouchItem(touchPos);
-        
+
         if (this.isDeleteSelecting) {
             if (touchItem) {
-                var copy =touchItem.clone();
+                var copy = this.matrixItems[touchItem.row][touchItem.column].clone();
                 copy.getChildByName("score_tv").setString("");
                 this.addChild(copy, 1);
                 copy.getChildByName("bg_iv").runAction(cc.sequence(cc.spawn(cc.scaleTo(0.2, 2), cc.fadeTo(0.2, 0)), cc.callFunc(function(){
@@ -307,7 +307,7 @@ var MatrixLayer = cc.Layer.extend({
             var touchItem = this.getTouchItem(touchPos);
             if (touchItem) {
                 this.isDeleteSelecting = false;
-                this.deleteItems({touchItem});
+                this.deleteItems([touchItem]);
                 this.checkCanSelect();
             }
             return;
@@ -335,7 +335,6 @@ var MatrixLayer = cc.Layer.extend({
             })));
 
             this.gameLogic.onAddScore(score);
-            this.drawHelpLine();
         }else{
             this.resetSlectItemScore(true);
             this.marixLogic.setSelect([]);
@@ -512,6 +511,7 @@ var MatrixLayer = cc.Layer.extend({
 
     //删除
     deleteItems:function(dels){
+        cc.log("deleteItems", dels);
         //选出删除的
         //生成新的补进
         var rowCount = this.marixLogic.rowCount;

@@ -17,6 +17,7 @@ game.GameScene = cc.Scene.extend({
         var layer = ccs.load("res/sanxiao/gameLayer.json").node;
         this.addChild(layer);
         layer = layer.getChildByName("bg");
+        this.layer = layer;
 
         this.topMenuLayer = layer.getChildByName("top_menu_layer");
         this.bottomMenuLayer = layer.getChildByName("bottom_menu_layer");
@@ -25,8 +26,8 @@ game.GameScene = cc.Scene.extend({
         this.logic = new GameLogic();
         this.logic.init(this, layer, game.currentType, data);
 
-        var layer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height) , this.logic);
-        this.marixBgLayer.addChild(layer);
+        this.marixLayer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height) , this.logic);
+        this.marixBgLayer.addChild(this.marixLayer);
 
         this._initUI();
     },
@@ -34,16 +35,33 @@ game.GameScene = cc.Scene.extend({
     _initUI : function() {
     	this.caidang_btn = this.topMenuLayer.getChildByName("caidang_btn");
     	this.caidang_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
+    	this.del_btn = this.bottomMenuLayer.getChildByName("del_btn");
+    	this.del_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
+    	this.help_btn = this.bottomMenuLayer.getChildByName("help_btn");
+    	this.help_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
+    	this.add_step_btn = this.layer.getChildByName("model_1_layer").getChildByName("add_step_btn");
+    	this.add_step_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
     },
 
     _handClick : function(btn, et) {
-    	cc.log("asdfasfasfafssf")
         if(et == ccui.Widget.TOUCH_ENDED){
             switch (btn) {
                 case this.caidang_btn :
                     var win = new ui.SettingWindow();
                     cc.director.getRunningScene().addChild(win);
-                break;
+                	break;
+                case this.del_btn :
+                	//扣除金币
+                	this.marixLayer.setDeleteSelecting(true);
+                	break;
+                case this.help_btn :
+                	//扣除金币
+                	this.marixLayer.drawHelpLine();
+                	break;
+                case this.add_step_btn :
+                	//扣除金币
+                	this.logic.addStep(2);
+                	break;
             }
         }
     	
