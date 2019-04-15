@@ -12,9 +12,8 @@ game.TYPE = {
 //当前游戏模式
 game.currentType = -1;
 game.GameScene = cc.Scene.extend({
-    ctor:function () {
+    ctor:function (data) {
         this._super();
-
         var layer = ccs.load("res/sanxiao/gameLayer.json").node;
         this.addChild(layer);
         layer = layer.getChildByName("bg");
@@ -23,9 +22,8 @@ game.GameScene = cc.Scene.extend({
         this.bottomMenuLayer = layer.getChildByName("bottom_menu_layer");
         this.marixBgLayer = layer.getChildByName("marix_bg_layer");
 
-        this.modelLayer = layer.getChildByName("model_" + game.currentType + "_layer");
-        this.modelLayer.visible = true;
-
+        this.logic = new GameLogic();
+        this.logic.init(this, layer, game.currentType, data);
 
         var layer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height));
         this.marixBgLayer.addChild(layer);
@@ -48,7 +46,13 @@ game.GameScene = cc.Scene.extend({
             }
         }
     	
-    }
+    },
+
+    setGamePlayData(data){
+    	userDefault.setStringForKey(config.Key.GamePlay, data);
+    },
+
 });
+
 
 
