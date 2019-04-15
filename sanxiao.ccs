@@ -50,6 +50,7 @@
         <Project Name="mainLayer.csd" Type="Layer" />
         <Project Name="matrixItemNode.csd" Type="Node" />
         <Image Name="N.png" />
+        <Project Name="passLayer.csd" Type="Layer" />
         <Image Name="putong.png" />
         <Project Name="settingLayer.csd" Type="Layer" />
         <Image Name="shanchu.png" />
