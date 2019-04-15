@@ -2,6 +2,14 @@
  * Created by liuzq on 2019/4/13.
  */
 var game = game || {};
+//游戏模式
+game.TYPE = {
+	TIME : 0,	//时间
+	NORMAL : 1, //普通
+	INFINITE : 2 //无限
+}
+//当前游戏模式
+game.currentType = 0;
 game.GameScene = cc.Scene.extend({
     onEnter:function () {
         this._super();

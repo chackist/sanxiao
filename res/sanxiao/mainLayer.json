@@ -72,8 +72,8 @@
               "ScaleY": 0.5
             },
             "Position": {
-              "X": 415.0576,
-              "Y": 342.2365
+              "X": 415.0575,
+              "Y": 323.2355
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -83,16 +83,16 @@
             "IconVisible": false,
             "PrePosition": {
               "X": 0.5534,
-              "Y": 0.2565
+              "Y": 0.2423
             },
             "PreSize": {
               "X": 1.8427,
               "Y": 0.5142
             },
-            "LeftMargin": -275.9424,
-            "RightMargin": -356.0576,
-            "TopMargin": 648.7635,
-            "BottomMargin": -0.7635,
+            "LeftMargin": -275.9425,
+            "RightMargin": -356.0575,
+            "TopMargin": 667.7645,
+            "BottomMargin": -19.7645,
             "Tag": 4,
             "ActionTag": -1319110493,
             "Size": {
@@ -135,7 +135,7 @@
               "Y": 0.6642
             },
             "LeftMargin": 327.0092,
-            "RightMargin": -463.0092,
+            "RightMargin": -463.0093,
             "TopMargin": -447.4056,
             "BottomMargin": 895.4056,
             "Tag": 6,
@@ -516,7 +516,7 @@
               "X": 180.0,
               "Y": 225.0
             },
-            "Name": "btn_putong_0",
+            "Name": "btn_wuxian",
             "ctype": "ButtonObjectData"
           },
           {

@@ -20,7 +20,8 @@ var sceneMgr = {
     /**
      * 切换到游戏场景
      */
-    switchToGame: function () {
+    switchToGame: function (type) {
+        game.currentType = type;
         cc.director.runScene(new game.GameScene());
         this.currentType = sceneType.GAME;
     }

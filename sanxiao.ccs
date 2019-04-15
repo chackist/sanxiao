@@ -3,27 +3,49 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
+        <Folder Name="setting">
+          <Image Name="caid.png" />
+          <Image Name="cwan.png" />
+          <Image Name="guanbi.png" />
+          <Image Name="jixi.png" />
+          <Image Name="shengy.png" />
+          <Image Name="shezd.png" />
+          <Image Name="xian.png" />
+          <Image Name="xian2.png" />
+          <Image Name="yinyue.png" />
+          <Image Name="yuandian.png" />
+        </Folder>
         <Image Name="bgframecommon.png" />
         <Image Name="caidang.png" />
+        <Image Name="CAILUN.png" />
         <Image Name="D1.png" />
         <Image Name="dengpao.png" />
+        <Project Name="gameLayer.csd" Type="Layer" />
         <Image Name="H.png" />
         <Image Name="HEIDI.png" />
         <Image Name="HEIDI2.png" />
         <Image Name="jinb.png" />
         <Image Name="L.png" />
-        <Project Name="gameLayer.csd" Type="Layer" />
+        <Image Name="LOGO.png" />
         <Image Name="M.png" />
         <Image Name="m1.png" />
         <Image Name="m2.png" />
         <Image Name="m3.png" />
         <Image Name="m4.png" />
         <Image Name="mainBg.png" />
+        <Project Name="mainLayer.csd" Type="Layer" />
         <Project Name="matrixItemNode.csd" Type="Node" />
         <Image Name="N.png" />
+        <Image Name="putong.png" />
+        <Project Name="settingLayer.csd" Type="Layer" />
         <Image Name="shanchu.png" />
+        <Image Name="shandg.png" />
+        <Image Name="shez.png" />
+        <Image Name="shj.png" />
         <Image Name="shuzi.png" />
         <Image Name="white.png" />
+        <Image Name="wux.png" />
+        <Image Name="XAI.png" />
         <Image Name="yuan.png" />
       </RootFolder>
     </Group>
