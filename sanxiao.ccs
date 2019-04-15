@@ -3,6 +3,14 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
+        <Folder Name="end">
+          <Image Name="caid.png" />
+          <Image Name="chonwa.png" />
+          <Image Name="di1.png" />
+          <Image Name="di2.png" />
+          <Image Name="fenc.png" />
+          <Image Name="zuijia.png" />
+        </Folder>
         <Folder Name="setting">
           <Image Name="caid.png" />
           <Image Name="cwan.png" />
@@ -23,6 +31,7 @@
         <Image Name="CAILUN.png" />
         <Image Name="D1.png" />
         <Image Name="dengpao.png" />
+        <Project Name="endLayer.csd" Type="Layer" />
         <Project Name="gameLayer.csd" Type="Layer" />
         <Image Name="H.png" />
         <Image Name="HEIDI.png" />
