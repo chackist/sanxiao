@@ -237,42 +237,22 @@
                     "ctype": "PanelObjectData"
                   },
                   {
-                    "FontSize": 14,
-                    "ButtonText": "",
-                    "TextColor": {
-                      "R": 65,
-                      "G": 65,
-                      "B": 70
-                    },
-                    "NormalFileData": {
+                    "FileData": {
                       "Type": "Normal",
                       "Path": "caidang.png",
                       "Plist": ""
                     },
-                    "Scale9Enable": true,
-                    "Scale9OriginX": 15,
-                    "Scale9OriginY": 11,
-                    "Scale9Width": 65,
-                    "Scale9Height": 71,
-                    "OutlineColor": {
-                      "G": 0,
-                      "B": 0
-                    },
-                    "ShadowColor": {
-                      "R": 110,
-                      "G": 110,
-                      "B": 110
-                    },
-                    "ShadowOffsetX": 2.0,
-                    "ShadowOffsetY": -2.0,
-                    "TouchEnable": true,
+                    "Scale9OriginX": 31,
+                    "Scale9OriginY": 30,
+                    "Scale9Width": 33,
+                    "Scale9Height": 33,
                     "AnchorPoint": {
                       "ScaleX": 0.5,
                       "ScaleY": 0.5
                     },
                     "Position": {
-                      "X": 78.1918,
-                      "Y": 78.1882
+                      "X": 82.2563,
+                      "Y": 77.7693
                     },
                     "Scale": {
                       "ScaleX": 1.0,
@@ -281,25 +261,25 @@
                     "CColor": {},
                     "IconVisible": false,
                     "PrePosition": {
-                      "X": 0.1043,
-                      "Y": 0.5077
+                      "X": 0.1097,
+                      "Y": 0.505
                     },
                     "PreSize": {
                       "X": 0.1267,
                       "Y": 0.6039
                     },
-                    "LeftMargin": 30.6918,
-                    "RightMargin": 624.3082,
-                    "TopMargin": 29.3118,
-                    "BottomMargin": 31.6882,
-                    "Tag": 78,
-                    "ActionTag": 1864452575,
+                    "LeftMargin": 34.7563,
+                    "RightMargin": 620.2437,
+                    "TopMargin": 29.7307,
+                    "BottomMargin": 31.2693,
+                    "Tag": 81,
+                    "ActionTag": 75588661,
                     "Size": {
                       "X": 95.0,
                       "Y": 93.0
                     },
                     "Name": "caidang_btn",
-                    "ctype": "ButtonObjectData"
+                    "ctype": "ImageViewObjectData"
                   }
                 ],
                 "ActionTag": 926424790,
@@ -2275,6 +2255,8 @@
                           {
                             "FontSize": 30,
                             "LabelText": "300",
+                            "HorizontalAlignmentType": "HT_Center",
+                            "VerticalAlignmentType": "VT_Center",
                             "OutlineColor": {
                               "G": 0,
                               "B": 0
@@ -2371,6 +2353,8 @@
                           {
                             "FontSize": 30,
                             "LabelText": "300",
+                            "HorizontalAlignmentType": "HT_Center",
+                            "VerticalAlignmentType": "VT_Center",
                             "OutlineColor": {
                               "G": 0,
                               "B": 0
@@ -2467,6 +2451,8 @@
                           {
                             "FontSize": 30,
                             "LabelText": "300",
+                            "HorizontalAlignmentType": "HT_Center",
+                            "VerticalAlignmentType": "VT_Center",
                             "OutlineColor": {
                               "G": 0,
                               "B": 0
@@ -2563,6 +2549,8 @@
                           {
                             "FontSize": 30,
                             "LabelText": "300",
+                            "HorizontalAlignmentType": "HT_Center",
+                            "VerticalAlignmentType": "VT_Center",
                             "OutlineColor": {
                               "G": 0,
                               "B": 0
