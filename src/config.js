@@ -7,6 +7,11 @@ var config = {
 		GameBestRecord2:"Key_GameBestRecord2",
 	},
 
+	Event:{
+		OneStep:"OneStep",
+		ChangeSelect:"ChangeSelect",
+	},
+
 	Logic:{
 		Type0:{
 			BaseGuanQiaNeedScore:1000,
