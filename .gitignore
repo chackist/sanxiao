@@ -6,4 +6,4 @@ frameworks/cocos2d-x
 frameworks/runtime-src/proj.ios_mac/sanxiao.xcodeproj/project.pbxproj
 frameworks/runtime-src/proj.ios_mac/sanxiao.xcodeproj/project.xcworkspace/
 frameworks/runtime-src/proj.ios_mac/sanxiao.xcodeproj/xcuserdata/
-*.udf
+
