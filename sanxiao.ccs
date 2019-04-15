@@ -7,12 +7,12 @@
         <Image Name="caidang.png" />
         <Image Name="D1.png" />
         <Image Name="dengpao.png" />
+        <Project Name="gameLayer.csd" Type="Layer" />
         <Image Name="H.png" />
         <Image Name="HEIDI.png" />
         <Image Name="HEIDI2.png" />
         <Image Name="jinb.png" />
         <Image Name="L.png" />
-        <Project Name="gameLayer.csd" Type="Layer" />
         <Image Name="M.png" />
         <Image Name="m1.png" />
         <Image Name="m2.png" />
