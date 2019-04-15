@@ -15,6 +15,7 @@
         "src/resource.js",
         "src/app.js",
 
+        "src/Event.js",
         "src/matrix/matrix.js",
         "src/main/MainScene.js",
         "src/setting/SettingWindow.js",
