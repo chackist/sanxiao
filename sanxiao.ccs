@@ -15,6 +15,9 @@
           <Image Name="yinyue.png" />
           <Image Name="yuandian.png" />
         </Folder>
+        <Folder Name="shop">
+          <Image Name="itemBg.png" />
+        </Folder>
         <Image Name="bgframecommon.png" />
         <Image Name="caidang.png" />
         <Image Name="CAILUN.png" />

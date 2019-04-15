@@ -242,6 +242,10 @@
                       "Path": "caidang.png",
                       "Plist": ""
                     },
+                    "BlendFunc": {
+                      "Src": 1,
+                      "Dst": 771
+                    },
                     "Scale9OriginX": 31,
                     "Scale9OriginY": 30,
                     "Scale9Width": 33,
@@ -251,8 +255,8 @@
                       "ScaleY": 0.5
                     },
                     "Position": {
-                      "X": 82.2563,
-                      "Y": 77.7693
+                      "X": 78.1917,
+                      "Y": 78.1882
                     },
                     "Scale": {
                       "ScaleX": 1.0,
@@ -268,12 +272,12 @@
                       "X": 0.1267,
                       "Y": 0.6039
                     },
-                    "LeftMargin": 34.7563,
-                    "RightMargin": 620.2437,
-                    "TopMargin": 29.7307,
-                    "BottomMargin": 31.2693,
-                    "Tag": 81,
-                    "ActionTag": 75588661,
+                    "LeftMargin": 30.6917,
+                    "RightMargin": 624.3083,
+                    "TopMargin": 29.3118,
+                    "BottomMargin": 31.6882,
+                    "Tag": 14,
+                    "ActionTag": -1659254172,
                     "Size": {
                       "X": 95.0,
                       "Y": 93.0
@@ -971,7 +975,7 @@
                       "ScaleY": 0.5
                     },
                     "Position": {
-                      "X": 371.325,
+                      "X": 371.3078,
                       "Y": 1258.0959
                     },
                     "Scale": {
@@ -989,8 +993,8 @@
                       "X": 0.4,
                       "Y": 0.015
                     },
-                    "LeftMargin": 221.325,
-                    "RightMargin": 228.675,
+                    "LeftMargin": 221.3078,
+                    "RightMargin": 228.6921,
                     "TopMargin": 65.9041,
                     "BottomMargin": 1248.0959,
                     "Tag": 74,
@@ -2309,7 +2313,7 @@
                           "X": 126.0,
                           "Y": 128.0
                         },
-                        "Name": "c1",
+                        "Name": "c4",
                         "ctype": "SpriteObjectData"
                       },
                       {
@@ -2407,7 +2411,7 @@
                           "X": 126.0,
                           "Y": 128.0
                         },
-                        "Name": "c2",
+                        "Name": "c3",
                         "ctype": "SpriteObjectData"
                       },
                       {
@@ -2505,7 +2509,7 @@
                           "X": 126.0,
                           "Y": 128.0
                         },
-                        "Name": "c3",
+                        "Name": "c2",
                         "ctype": "SpriteObjectData"
                       },
                       {
@@ -2603,7 +2607,7 @@
                           "X": 126.0,
                           "Y": 128.0
                         },
-                        "Name": "c4",
+                        "Name": "c1",
                         "ctype": "SpriteObjectData"
                       }
                     ],
@@ -2827,7 +2831,7 @@
                       "ScaleY": 0.5
                     },
                     "Position": {
-                      "X": 371.325,
+                      "X": 371.3078,
                       "Y": 1258.0959
                     },
                     "Scale": {
@@ -2845,8 +2849,8 @@
                       "X": 0.4,
                       "Y": 0.015
                     },
-                    "LeftMargin": 221.325,
-                    "RightMargin": 228.675,
+                    "LeftMargin": 221.3078,
+                    "RightMargin": 228.6921,
                     "TopMargin": 65.9041,
                     "BottomMargin": 1248.0959,
                     "Tag": 115,
