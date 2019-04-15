@@ -67,10 +67,6 @@
                 case this.btn_continue :
                     this.removeFromParent(true);
                 break;
-                case this.btn_setting :
-                    var win = new ui.SettingWindow();
-                    cc.director.getRunningScene().addChild(win);
-                break;
             }
         }
     }

@@ -253,7 +253,7 @@
             },
             "NormalFileData": {
               "Type": "Normal",
-              "Path": "shop/6.png",
+              "Path": "shop/12.png",
               "Plist": ""
             },
             "Scale9Enable": true,
@@ -318,14 +318,14 @@
             },
             "NormalFileData": {
               "Type": "Normal",
-              "Path": "shop/6.png",
+              "Path": "shop/18.png",
               "Plist": ""
             },
             "Scale9Enable": true,
             "Scale9OriginX": 15,
             "Scale9OriginY": 11,
             "Scale9Width": 146,
-            "Scale9Height": 201,
+            "Scale9Height": 204,
             "OutlineColor": {
               "G": 0,
               "B": 0
@@ -358,17 +358,17 @@
             },
             "PreSize": {
               "X": 0.2347,
-              "Y": 0.1672
+              "Y": 0.1694
             },
             "LeftMargin": 118.2203,
             "RightMargin": 455.7797,
-            "TopMargin": 589.209,
-            "BottomMargin": 521.791,
+            "TopMargin": 587.709,
+            "BottomMargin": 520.291,
             "Tag": 100,
             "ActionTag": -1530976530,
             "Size": {
               "X": 176.0,
-              "Y": 223.0
+              "Y": 226.0
             },
             "Name": "item_2",
             "ctype": "ButtonObjectData"
@@ -383,14 +383,14 @@
             },
             "NormalFileData": {
               "Type": "Normal",
-              "Path": "shop/6.png",
+              "Path": "shop/30.png",
               "Plist": ""
             },
             "Scale9Enable": true,
             "Scale9OriginX": 15,
             "Scale9OriginY": 11,
             "Scale9Width": 146,
-            "Scale9Height": 201,
+            "Scale9Height": 204,
             "OutlineColor": {
               "G": 0,
               "B": 0
@@ -423,17 +423,17 @@
             },
             "PreSize": {
               "X": 0.2347,
-              "Y": 0.1672
+              "Y": 0.1694
             },
             "LeftMargin": 448.7302,
             "RightMargin": 125.2698,
-            "TopMargin": 589.209,
-            "BottomMargin": 521.791,
+            "TopMargin": 587.709,
+            "BottomMargin": 520.291,
             "Tag": 8,
             "ActionTag": -1328273772,
             "Size": {
               "X": 176.0,
-              "Y": 223.0
+              "Y": 226.0
             },
             "Name": "item_3",
             "ctype": "ButtonObjectData"
@@ -449,6 +449,9 @@
       "UsedResources": [
         "mainBg.png",
         "setting/guanbi.png",
+        "shop/12.png",
+        "shop/18.png",
+        "shop/30.png",
         "shop/6.png"
       ],
       "ctype": "GameFileData"

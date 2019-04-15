@@ -13,6 +13,7 @@ var sceneMgr = {
      * 切换到主场景
      */
     switchToMain: function () {
+        game.currentType = -1;
         cc.director.runScene(new main.MainScene());
         this.currentType = sceneType.MAIN;
     },

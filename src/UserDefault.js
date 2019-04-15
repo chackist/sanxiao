@@ -72,6 +72,13 @@ userDefault.getFloatForKey = function (key, defaultValue) {
     }
 };
 
+userDefault.removeItem = function (key) {
+    if (cc.isUndefined(key)){
+        key = "undefined";
+        cc.log("WARNING: !!!!!!!! util.localStorageEncrypt.removeItem("+key+") !!!!!!!!");
+    }
+    cc.sys.localStorage.removeItem(key);
+}
 /**
  * 清空所有配置
  */
