@@ -24,6 +24,7 @@
             "Scale9OriginY": 440,
             "Scale9Width": 256,
             "Scale9Height": 454,
+            "TouchEnable": true,
             "AnchorPoint": {
               "ScaleX": 0.5,
               "ScaleY": 0.5
@@ -288,7 +289,7 @@
             },
             "LeftMargin": 300.7589,
             "RightMargin": 286.2411,
-            "TopMargin": 290.6879,
+            "TopMargin": 290.688,
             "BottomMargin": 838.3121,
             "Tag": 9,
             "ActionTag": 1854937697,
@@ -353,7 +354,7 @@
             },
             "LeftMargin": 538.1998,
             "RightMargin": 48.8002,
-            "TopMargin": 290.6879,
+            "TopMargin": 290.688,
             "BottomMargin": 838.3121,
             "Tag": 10,
             "ActionTag": 1525697056,
@@ -367,20 +368,74 @@
           {
             "FileData": {
               "Type": "Normal",
-              "Path": "setting/xian2.png",
+              "Path": "setting/shengy.png",
               "Plist": ""
             },
-            "Scale9OriginX": 118,
-            "Scale9OriginY": 6,
-            "Scale9Width": 124,
-            "Scale9Height": 9,
+            "Scale9OriginX": 68,
+            "Scale9OriginY": 24,
+            "Scale9Width": 73,
+            "Scale9Height": 26,
             "AnchorPoint": {
               "ScaleX": 0.5,
               "ScaleY": 0.5
             },
             "Position": {
-              "X": 478.3618,
-              "Y": 746.0752
+              "X": 187.7823,
+              "Y": 740.2366
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PositionPercentYEnabled": true,
+            "PrePosition": {
+              "X": 0.2504,
+              "Y": 0.5549
+            },
+            "PreSize": {
+              "X": 0.2787,
+              "Y": 0.0555
+            },
+            "LeftMargin": 83.2823,
+            "RightMargin": 457.7177,
+            "TopMargin": 556.7634,
+            "BottomMargin": 703.2366,
+            "Tag": 33,
+            "ActionTag": 830202689,
+            "Size": {
+              "X": 209.0,
+              "Y": 74.0
+            },
+            "Name": "img",
+            "ctype": "ImageViewObjectData"
+          },
+          {
+            "BackGroundData": {
+              "Type": "Normal",
+              "Path": "setting/xian2.png",
+              "Plist": ""
+            },
+            "ProgressBarData": {
+              "Type": "Normal",
+              "Path": "setting/xian.png",
+              "Plist": ""
+            },
+            "BallNormalData": {
+              "Type": "Normal",
+              "Path": "setting/yuandian.png",
+              "Plist": ""
+            },
+            "PercentInfo": 50,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 476.6465,
+              "Y": 736.1376
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -389,131 +444,97 @@
             "CColor": {},
             "IconVisible": false,
             "PrePosition": {
-              "X": 0.6378,
-              "Y": 0.5593
+              "X": 0.6355,
+              "Y": 0.5518
             },
             "PreSize": {
               "X": 0.48,
               "Y": 0.0157
             },
-            "LeftMargin": 298.3618,
-            "RightMargin": 91.6382,
-            "TopMargin": 577.4248,
-            "BottomMargin": 735.5752,
-            "Tag": 29,
-            "Children": [
-              {
-                "FileData": {
-                  "Type": "Normal",
-                  "Path": "setting/shengy.png",
-                  "Plist": ""
-                },
-                "Scale9OriginX": 68,
-                "Scale9OriginY": 24,
-                "Scale9Width": 73,
-                "Scale9Height": 26,
-                "AnchorPoint": {
-                  "ScaleX": 0.5,
-                  "ScaleY": 0.5
-                },
-                "Position": {
-                  "X": -116.1725,
-                  "Y": 10.5
-                },
-                "Scale": {
-                  "ScaleX": 1.0,
-                  "ScaleY": 1.0
-                },
-                "CColor": {},
-                "IconVisible": false,
-                "PositionPercentYEnabled": true,
-                "PrePosition": {
-                  "X": -0.3227,
-                  "Y": 0.5
-                },
-                "PreSize": {
-                  "X": 0.5806,
-                  "Y": 3.5238
-                },
-                "LeftMargin": -220.6725,
-                "RightMargin": 371.6725,
-                "TopMargin": -26.5,
-                "BottomMargin": -26.5,
-                "Tag": 33,
-                "ActionTag": 830202689,
-                "Size": {
-                  "X": 209.0,
-                  "Y": 74.0
-                },
-                "Name": "img",
-                "ctype": "ImageViewObjectData"
-              },
-              {
-                "ProgressInfo": 100,
-                "ImageFileData": {
-                  "Type": "Normal",
-                  "Path": "setting/xian.png",
-                  "Plist": ""
-                },
-                "AnchorPoint": {
-                  "ScaleX": 0.5,
-                  "ScaleY": 0.5
-                },
-                "Position": {
-                  "X": 180.0,
-                  "Y": 10.5
-                },
-                "Scale": {
-                  "ScaleX": 1.0,
-                  "ScaleY": 1.0
-                },
-                "CColor": {},
-                "IconVisible": false,
-                "PositionPercentXEnabled": true,
-                "PositionPercentYEnabled": true,
-                "PrePosition": {
-                  "X": 0.5,
-                  "Y": 0.5
-                },
-                "PreSize": {
-                  "X": 1.0,
-                  "Y": 1.0
-                },
-                "Tag": 28,
-                "ActionTag": -824789051,
-                "Size": {
-                  "X": 360.0,
-                  "Y": 21.0
-                },
-                "Name": "bar",
-                "ctype": "LoadingBarObjectData"
-              }
-            ],
-            "ActionTag": 497585331,
+            "LeftMargin": 296.6465,
+            "RightMargin": 93.3535,
+            "TopMargin": 587.3624,
+            "BottomMargin": 725.6376,
+            "Tag": 84,
+            "ActionTag": -1176637455,
             "Size": {
               "X": 360.0,
               "Y": 21.0
             },
-            "Name": "img_yx",
-            "ctype": "ImageViewObjectData"
+            "Name": "bar_yx",
+            "ctype": "SliderObjectData"
           },
           {
             "FileData": {
               "Type": "Normal",
-              "Path": "setting/xian2.png",
+              "Path": "setting/yinyue.png",
               "Plist": ""
             },
-            "Scale9OriginX": 118,
-            "Scale9OriginY": 6,
-            "Scale9Width": 124,
-            "Scale9Height": 9,
+            "Scale9OriginX": 68,
+            "Scale9OriginY": 24,
+            "Scale9Width": 71,
+            "Scale9Height": 27,
             "AnchorPoint": {
               "ScaleX": 0.5,
               "ScaleY": 0.5
             },
             "Position": {
-              "X": 474.9546,
-              "Y": 646.6144
+              "X": 188.7822,
+              "Y": 640.0532
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PositionPercentYEnabled": true,
+            "PrePosition": {
+              "X": 0.2517,
+              "Y": 0.4798
+            },
+            "PreSize": {
+              "X": 0.276,
+              "Y": 0.0562
+            },
+            "LeftMargin": 85.2822,
+            "RightMargin": 457.7178,
+            "TopMargin": 656.4468,
+            "BottomMargin": 602.5532,
+            "Tag": 34,
+            "ActionTag": 1484745586,
+            "Size": {
+              "X": 207.0,
+              "Y": 75.0
+            },
+            "Name": "img",
+            "ctype": "ImageViewObjectData"
+          },
+          {
+            "BackGroundData": {
+              "Type": "Normal",
+              "Path": "setting/xian2.png",
+              "Plist": ""
+            },
+            "ProgressBarData": {
+              "Type": "Normal",
+              "Path": "setting/xian.png",
+              "Plist": ""
+            },
+            "BallNormalData": {
+              "Type": "Normal",
+              "Path": "setting/yuandian.png",
+              "Plist": ""
+            },
+            "PercentInfo": 50,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 474.9544,
+              "Y": 639.9992
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -523,114 +544,24 @@
             "IconVisible": false,
             "PrePosition": {
               "X": 0.6333,
-              "Y": 0.4847
+              "Y": 0.4798
             },
             "PreSize": {
               "X": 0.48,
               "Y": 0.0157
             },
-            "LeftMargin": 294.9546,
-            "RightMargin": 95.0454,
-            "TopMargin": 676.8856,
-            "BottomMargin": 636.1144,
-            "Tag": 30,
-            "Children": [
-              {
-                "FileData": {
-                  "Type": "Normal",
-                  "Path": "setting/yinyue.png",
-                  "Plist": ""
-                },
-                "Scale9OriginX": 68,
-                "Scale9OriginY": 24,
-                "Scale9Width": 71,
-                "Scale9Height": 27,
-                "AnchorPoint": {
-                  "ScaleX": 0.5,
-                  "ScaleY": 0.5
-                },
-                "Position": {
-                  "X": -106.1724,
-                  "Y": 10.5
-                },
-                "Scale": {
-                  "ScaleX": 1.0,
-                  "ScaleY": 1.0
-                },
-                "CColor": {},
-                "IconVisible": false,
-                "PositionPercentYEnabled": true,
-                "PrePosition": {
-                  "X": -0.2949,
-                  "Y": 0.5
-                },
-                "PreSize": {
-                  "X": 0.575,
-                  "Y": 3.5714
-                },
-                "LeftMargin": -209.6724,
-                "RightMargin": 362.6724,
-                "TopMargin": -27.0,
-                "BottomMargin": -27.0,
-                "Tag": 34,
-                "ActionTag": 1484745586,
-                "Size": {
-                  "X": 207.0,
-                  "Y": 75.0
-                },
-                "Name": "img",
-                "ctype": "ImageViewObjectData"
-              },
-              {
-                "ProgressInfo": 100,
-                "ImageFileData": {
-                  "Type": "Normal",
-                  "Path": "setting/xian.png",
-                  "Plist": ""
-                },
-                "AnchorPoint": {
-                  "ScaleX": 0.5,
-                  "ScaleY": 0.5
-                },
-                "Position": {
-                  "X": 181.7038,
-                  "Y": 10.5
-                },
-                "Scale": {
-                  "ScaleX": 1.0,
-                  "ScaleY": 1.0
-                },
-                "CColor": {},
-                "IconVisible": false,
-                "PositionPercentXEnabled": true,
-                "PositionPercentYEnabled": true,
-                "PrePosition": {
-                  "X": 0.5047,
-                  "Y": 0.5
-                },
-                "PreSize": {
-                  "X": 1.0,
-                  "Y": 1.0
-                },
-                "LeftMargin": 1.7038,
-                "RightMargin": -1.7038,
-                "Tag": 31,
-                "ActionTag": -1796296269,
-                "Size": {
-                  "X": 360.0,
-                  "Y": 21.0
-                },
-                "Name": "bar",
-                "ctype": "LoadingBarObjectData"
-              }
-            ],
-            "ActionTag": 1005460457,
+            "LeftMargin": 294.9544,
+            "RightMargin": 95.0456,
+            "TopMargin": 683.5008,
+            "BottomMargin": 629.4992,
+            "Tag": 85,
+            "ActionTag": 641531755,
             "Size": {
               "X": 360.0,
               "Y": 21.0
             },
-            "Name": "img_yy",
-            "ctype": "ImageViewObjectData"
+            "Name": "bar_yy",
+            "ctype": "SliderObjectData"
           }
         ],
         "Size": {
@@ -650,7 +581,8 @@
         "setting/shezd.png",
         "setting/xian.png",
         "setting/xian2.png",
-        "setting/yinyue.png"
+        "setting/yinyue.png",
+        "setting/yuandian.png"
       ],
       "ctype": "GameFileData"
     }
