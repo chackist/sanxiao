@@ -29,7 +29,7 @@ var config = {
 			WinScoreExchangeCoin:20 / 1,//赢的分兑换金币
 		},
 
-		Type3:{
+		Type2:{
 			BaseGuanQiaNeedScore:1000,
 			PreGuanQiaAddScore:100,
 			GuanQiaTime:-1,

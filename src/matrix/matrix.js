@@ -180,6 +180,7 @@ var MatrixLayer = cc.Layer.extend({
         this.initTouchLayer();
         this.resetMatix();
         this.lastTouchTime = new Date().getTime();
+        this.isDeleteSelecting = false; //删除选择中
         return true;
     },
 
@@ -230,16 +231,15 @@ var MatrixLayer = cc.Layer.extend({
             }
 
             var selectItems = this.deleteItems(alldel);
-            for (var i = 0; i < selectItems.length; i++) {
-                var selNode = selectItems[i];
-                selNode.node.removeFromParent();
-            }
-            this.checkCanSelect();
         }
     },
 
     doTouchMove:function(touchPos){
         this.lastTouchTime = new Date().getTime();
+        if (this.isDeleteSelecting) {
+            return;
+        }
+
         var touchItem = this.getTouchItem(touchPos);
         if (touchItem) {
             if (this.marixLogic.canAddSelect(touchItem)) {
@@ -269,7 +269,17 @@ var MatrixLayer = cc.Layer.extend({
     },
 
     doTouchEnd:function(touchPos){
-        this.doTouchMove(touchPos);
+        this.doTouchMove(touchPos, true);
+        if (this.isDeleteSelecting) {
+            var touchItem = this.getTouchItem(touchPos);
+            if (touchItem) {
+                this.isDeleteSelecting = false;
+                this.deleteItems({touchItem});
+                this.checkCanSelect();
+            }
+            return;
+        }
+
         //todo 算分 动画 
         var score = this.marixLogic.getSelectScore();
         if (score && this.marixLogic.select.length > 2) {
@@ -290,11 +300,6 @@ var MatrixLayer = cc.Layer.extend({
             itemEffect.runAction(cc.sequence(cc.delayTime(0.3),cc.scaleTo(0.3, 0.3), cc.callFunc(function(){
                 itemEffect.removeFromParent();
             })));
-            for (var i = 0; i < selectItems.length; i++) {
-                var selNode = selectItems[i];
-                selNode.node.removeFromParent();
-            }
-            this.checkCanSelect();
             this.drawHelpLine();
         }else{
             this.resetSlectItemScore(true);
@@ -541,6 +546,16 @@ var MatrixLayer = cc.Layer.extend({
             item.node.runAction(cc.moveTo(0.3, cc.p(x, y)));
         }
 
+    
+        for (var i = 0; i < delItems.length; i++) {
+            var selNode = delItems[i];
+            selNode.node.removeFromParent();
+        }
+        this.checkCanSelect();
         return delItems;
     },
+
+    setDeleteSelecting:function(deleteSelecting){
+        this.isDeleteSelecting = deleteSelecting;
+    }
 });

@@ -30,3 +30,5 @@ game.GameScene = cc.Scene.extend({
         this.marixBgLayer.addChild(layer);
     }
 });
+
+
