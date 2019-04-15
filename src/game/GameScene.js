@@ -25,7 +25,7 @@ game.GameScene = cc.Scene.extend({
         this.logic = new GameLogic();
         this.logic.init(this, layer, game.currentType, data);
 
-        var layer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height));
+        var layer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height) , this.logic);
         this.marixBgLayer.addChild(layer);
 
         this._initUI();

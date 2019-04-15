@@ -25,6 +25,25 @@ MatrixLogic.prototype.resetMatrix = function(){
     }
 }
 
+MatrixLogic.prototype.getData = function(){
+    return this.data;
+};
+
+
+MatrixLogic.prototype.getSelect = function(){
+    return this.select;
+};
+
+MatrixLogic.prototype.setData = function(data){
+    this.data = data;
+};
+
+
+MatrixLogic.prototype.setSelect = function(select){
+    this.select = select;
+};
+
+
 MatrixLogic.prototype.newItem = function(){
     var value = this.itemValueRange[0] +Math.floor( Math.random()*(this.itemValueRange[1] - this.itemValueRange[0] + 1));
     var type = Math.floor(Math.random() * this.typeCount);
@@ -62,9 +81,11 @@ MatrixLogic.prototype.getSelectDataByIdx = function(idx){
 MatrixLogic.prototype.getSelectScore = function(){
     var isLianJi = false;
     var score = 0;
+    var type = 0;
     for (var i = 0; i < this.select.length; i++) {
         var selectI = this.select[i];
         var scoreI = this.data[selectI.row][selectI.column].score;
+        type = this.data[selectI.row][selectI.column].type;
         var j = i + 1; 
         for (; j < this.select.length; j++) {
             var selectJ = this.select[j];
@@ -81,7 +102,7 @@ MatrixLogic.prototype.getSelectScore = function(){
             score += scoreI;
         }
     }
-    return {score:score,isLianJi:isLianJi};
+    return {score:score,isLianJi:isLianJi, type:type};
 }
 
 MatrixLogic.prototype.canAddSelect = function(selectItem){
@@ -168,12 +189,14 @@ MatrixLogic.prototype.getHelp = function(){
 }
 
 var MatrixLayer = cc.Layer.extend({
-    ctor:function (rowCount, columnCount, typeCount, size, data) {
+    ctor:function (rowCount, columnCount, typeCount, size, gameLogic) {
         this._super();
         this.matrixItems = [];
         this.lines = [];
+        this.gameLogic = gameLogic;
         this.marixLogic = new MatrixLogic();
-        this.marixLogic.init(rowCount, columnCount, typeCount, data);
+        this.marixLogic.init(rowCount, columnCount, typeCount, gameLogic.matrix);
+        this.gameLogic.onMatrixChange(this.marixLogic.getData());
 
         this.setContentSize(size.width, size.height);
         this.itemSize = cc.size(size.width / columnCount, size.height / rowCount); 
@@ -256,6 +279,7 @@ var MatrixLayer = cc.Layer.extend({
                     copy.getChildByName("bg_iv").runAction(cc.sequence(cc.spawn(cc.scaleTo(0.2, 2), cc.fadeTo(0.2, 0)), cc.callFunc(function(){
                         copy.removeFromParent();
                     })));
+                    this.gameLogic.onSelectScore(this.marixLogic.getSelectScore());
                 }
 
                 this.resetSlectItemScore();
@@ -282,14 +306,14 @@ var MatrixLayer = cc.Layer.extend({
 
         //todo 算分 动画 
         var score = this.marixLogic.getSelectScore();
-        if (score && this.marixLogic.select.length > 2) {
+        if (score && this.marixLogic.getSelect().length > 2) {
             //选出选中的
             //生成新的补进
 
-            var selectItems = this.deleteItems(this.marixLogic.select);
+            var selectItems = this.deleteItems(this.marixLogic.getSelect());
 
             this.resetSlectItemScore(true);
-            this.marixLogic.select = [];
+            this.marixLogic.setSelect([]);
             this.resetLine();
 
             //Boom
@@ -300,12 +324,15 @@ var MatrixLayer = cc.Layer.extend({
             itemEffect.runAction(cc.sequence(cc.delayTime(0.3),cc.scaleTo(0.3, 0.3), cc.callFunc(function(){
                 itemEffect.removeFromParent();
             })));
+
+            this.gameLogic.onAddScore(score);
             this.drawHelpLine();
         }else{
             this.resetSlectItemScore(true);
-            this.marixLogic.select = [];
+            this.marixLogic.setSelect([]);
             this.resetLine();
         }
+        this.gameLogic.onSelectScore(null);
     },
 
     getTouchItem:function(touchPos){
@@ -325,9 +352,9 @@ var MatrixLayer = cc.Layer.extend({
     },
 
     resetSlectItemScore:function(isSetInitScore){
-        var data = this.marixLogic.data;
-        for (var i = 0; i < this.marixLogic.select.length; i++) {
-            var selectI = this.marixLogic.select[i];
+        var data = this.marixLogic.getData();
+        for (var i = 0; i < this.marixLogic.getSelect().length; i++) {
+            var selectI = this.marixLogic.getSelect()[i];
             var scoreI = data[selectI.row][selectI.column].score;
             if (isSetInitScore) {
                 var node = this.matrixItems[selectI.row][selectI.column];
@@ -335,8 +362,8 @@ var MatrixLayer = cc.Layer.extend({
                 node.scale = 1;
             }else{
                 var j = i + 1;
-                for (; j < this.marixLogic.select.length; j++) {
-                    var selectJ = this.marixLogic.select[j];
+                for (; j < this.marixLogic.getSelect().length; j++) {
+                    var selectJ = this.marixLogic.getSelect()[j];
                     if (scoreI != data[selectJ.row][selectJ.column].score) {
                         break;
                     }
@@ -344,7 +371,7 @@ var MatrixLayer = cc.Layer.extend({
 
                 if (j - i >= 3) {
                     for (var k = i; k < j; k++) {
-                        var selectK = this.marixLogic.select[k];
+                        var selectK = this.marixLogic.getSelect()[k];
                         var node = this.matrixItems[selectK.row][selectK.column];
                         node.getChildByName("score_tv").setString(scoreI * 10 + "");
                         node.scale = 1.1;
@@ -368,16 +395,16 @@ var MatrixLayer = cc.Layer.extend({
 
         var firstSel = this.marixLogic.getSelectDataByIdx(0);
         if (firstSel) {
-            color = config.Items[this.marixLogic.data[firstSel.row][firstSel.column].type].LineColor;
+            color = config.Items[this.marixLogic.getData()[firstSel.row][firstSel.column].type].LineColor;
         } 
 
-        for (var i = 0; i < this.marixLogic.select.length; i++) {
-            var beginNode = this.marixLogic.select[i];
+        for (var i = 0; i < this.marixLogic.getSelect().length; i++) {
+            var beginNode = this.marixLogic.getSelect()[i];
             var posB = cc.p(this.width / this.marixLogic.rowCount * (beginNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - beginNode.row - 0.5));
-            if (i == this.marixLogic.select.length - 1) {
+            if (i == this.marixLogic.getSelect().length - 1) {
                 var posE = touchPos;
             }else{
-                var endNode = this.marixLogic.select[i + 1];
+                var endNode = this.marixLogic.getSelect()[i + 1];
                 var posE = cc.p(this.width / this.marixLogic.rowCount * (endNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - endNode.row - 0.5));
             }
 
@@ -386,9 +413,9 @@ var MatrixLayer = cc.Layer.extend({
     },
 
     moveLastLine:function(touchPos){
-        if (this.lines.length > 0 && this.marixLogic.select.length > 0) {
+        if (this.lines.length > 0 && this.marixLogic.getSelect().length > 0) {
             var line = this.lines[this.lines.length - 1];
-            var lastNode = this.marixLogic.select[this.marixLogic.select.length - 1];
+            var lastNode = this.marixLogic.getSelect()[this.marixLogic.getSelect().length - 1];
             var posB = this.matrixItems[lastNode.row][lastNode.column];
             var posE = touchPos;
             var width = Math.sqrt(Math.pow(posE.x - posB.x, 2) + Math.pow(posE.y - posB.y, 2));
@@ -455,8 +482,8 @@ var MatrixLayer = cc.Layer.extend({
 
         this.matrixItems = [];
         
-        for (var i = 0; i < this.marixLogic.data.length; i++) {
-            var row = this.marixLogic.data[i];
+        for (var i = 0; i < this.marixLogic.getData().length; i++) {
+            var row = this.marixLogic.getData()[i];
             var rowNodes = [];
             for (var j = 0; j < row.length; j++) {
                 var item = row[j];
@@ -490,7 +517,7 @@ var MatrixLayer = cc.Layer.extend({
             var del = dels[i];
             var delNode = this.matrixItems[del.row][del.column];
             delItems.push({row:del.row,column:del.column,node:delNode});
-            this.marixLogic.data[del.row][del.column] = null;
+            this.marixLogic.getData()[del.row][del.column] = null;
             this.matrixItems[del.row][del.column] = null;
         }
         
@@ -503,9 +530,9 @@ var MatrixLayer = cc.Layer.extend({
                 }else{
                     //下降的节点
                     if (nullCount > 0) {
-                        this.marixLogic.data[row + nullCount][column] = this.marixLogic.data[row][column];
+                        this.marixLogic.getData()[row + nullCount][column] = this.marixLogic.getData()[row][column];
                         this.matrixItems[row + nullCount][column] = moveNode;
-                        this.marixLogic.data[row][column] = null;
+                        this.marixLogic.getData()[row][column] = null;
                         this.matrixItems[row][column] = null;
                         moveItems.push({row:row + nullCount,column:column,node:moveNode});
                     }
@@ -514,8 +541,8 @@ var MatrixLayer = cc.Layer.extend({
 
             while (nullCount > 0) {
                 //补充的节点
-                this.marixLogic.data[nullCount - 1][column] = this.marixLogic.newItem();
-                var item = this.marixLogic.data[nullCount - 1][column];
+                this.marixLogic.getData()[nullCount - 1][column] = this.marixLogic.newItem();
+                var item = this.marixLogic.getData()[nullCount - 1][column];
                 var itemNode = this.cloneItemNode.clone();
                 itemNode.visible = true;
                 itemNode.getChildByName("bg_iv").loadTexture(config.Items[item.type].Bg);
@@ -546,11 +573,12 @@ var MatrixLayer = cc.Layer.extend({
             item.node.runAction(cc.moveTo(0.3, cc.p(x, y)));
         }
 
-    
+
         for (var i = 0; i < delItems.length; i++) {
             var selNode = delItems[i];
             selNode.node.removeFromParent();
         }
+        this.gameLogic.onMatrixChange(this.marixLogic.getData());
         this.checkCanSelect();
         return delItems;
     },
