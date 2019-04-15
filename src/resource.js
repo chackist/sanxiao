@@ -2,6 +2,7 @@ var res = {
     HelloWorld_png : "res/HelloWorld.png",
     matrixItemNode : "res/sanxiao/matrixItemNode.json",
     mainLayer : "res/sanxiao/mainLayer.json",
+    gameLayer : "res/sanxiao/gameLayer.json",
     settingLayer : "res/sanxiao/settingLayer.json",
     shopLayer : "res/sanxiao/shopLayer.json",
 

@@ -33,8 +33,9 @@
         <OpenedDocuments>
           <FilePathData Path="shopLayer.csd" />
           <FilePathData Path="settingLayer.csd" />
+          <FilePathData Path="gameLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="shopLayer.csd" />
+        <ActiveDocument Path="gameLayer.csd" />
       </Value>
     </Item>
   </Properties>

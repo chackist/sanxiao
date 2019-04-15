@@ -22,6 +22,7 @@
         "src/game/GameScene.js",
         "src/UserDefault.js",
         "src/Sound.js",
-        "src/SceneMgr.js"
+        "src/SceneMgr.js",
+        "src/config.js"
     ]
 }
