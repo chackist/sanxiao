@@ -26,6 +26,8 @@
         <Folder Name="shop">
           <Image Name="itemBg.png" />
         </Folder>
+        <Image Name="bar.png" />
+        <Image Name="barBg.png" />
         <Image Name="bgframecommon.png" />
         <Image Name="caidang.png" />
         <Image Name="CAILUN.png" />

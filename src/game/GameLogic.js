@@ -6,6 +6,7 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 	this.guanQia = data.guanQia || 1;
 	this.useTime = data.useTime || 0;
 	this.useStep = data.useStep || 0;
+	this.allStep = data.allStep;
 	this.matrix = data.matrix;
 	this.guanQiaWinScore = data.guanQiaWinScore || 0;
 	this.guanQiaWinScoreArr = data.guanQiaWinScoreArr || [0,0,0,0];
@@ -21,8 +22,9 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 
 	var ui = this.ui = {};
 
-	var oneStepScoreLayer =  ui.oneStepScoreLayer = layer.getChildByName("top_menu_layer").getChildByName("one_step_score_info");
-	ui.oneStepTv = oneStepScoreLayer.getChildByName("tv");
+	ui.coinTv = layer.getChildByName("bottom_menu_layer").getChildByName("coin_info").getChildByName("tv");
+	ui.oneStepScoreLayer = layer.getChildByName("top_menu_layer").getChildByName("one_step_score_info");
+	ui.oneStepTv = ui.oneStepScoreLayer.getChildByName("tv");
 	ui.oneStepTv.visible = false;
 
 	ui.scoreTv = this.modelLayer.getChildByName("score_info").getChildByName("tv");
@@ -96,7 +98,7 @@ GameLogic.prototype.fullData = function () {
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore + (this.guanQia - 1) * this.cfg.PreGuanQiaAddScore;
 		this.allTime = this.cfg.GuanQiaTime;
 	}else if (this.type == 1) {
-		this.allStep = 20;
+		this.allStep = this.allStep || 20;
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore.slice();
 		var guanQia = this.guanQia - 1;
 		var addIdx = 0;
@@ -247,3 +249,12 @@ GameLogic.prototype.getData = function () {
 	data.type = 0;
 	return data;
 };
+
+
+GameLogic.prototype.addStep = function (step) {
+	var ui = this.ui;
+	if (this.type == 1) {
+		this.allStep += step;
+		ui.stepTv.setString((this.allStep - this.useStep) + "");
+	}
+}
