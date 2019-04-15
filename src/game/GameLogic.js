@@ -81,7 +81,7 @@ GameLogic.prototype.fullData = function () {
 	}else if (this.type == 1) {
 		this.allStep = 20;
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore.slice();
-		var guanQia = this.guanQia;
+		var guanQia = this.guanQia - 1;
 		var addIdx = 0;
 		while(guanQia > 0){
 			this.guanQiaNeedScore[addIdx % 3] += this.cfg.PreGuanQiaAddScore;

@@ -15,12 +15,6 @@
           <Image Name="yinyue.png" />
           <Image Name="yuandian.png" />
         </Folder>
-        <Folder Name="shop">
-          <Image Name="12.png" />
-          <Image Name="18.png" />
-          <Image Name="30.png" />
-          <Image Name="6.png" />
-        </Folder>
         <Image Name="bgframecommon.png" />
         <Image Name="caidang.png" />
         <Image Name="CAILUN.png" />
@@ -48,7 +42,6 @@
         <Image Name="shandg.png" />
         <Image Name="shez.png" />
         <Image Name="shj.png" />
-        <Project Name="shopLayer.csd" Type="Layer" />
         <Image Name="shuzi.png" />
         <Image Name="white.png" />
         <Image Name="wux.png" />
