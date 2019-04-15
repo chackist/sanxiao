@@ -19,6 +19,8 @@
         "src/main/MainScene.js",
         "src/setting/SettingWindow.js",
         "src/shop/ShopWindow.js",
+        "src/game/EndWindow.js",
+        "src/game/PassWindow.js",
         "src/game/GameScene.js",
         "src/game/GameLogic.js",
         "src/UserDefault.js",
