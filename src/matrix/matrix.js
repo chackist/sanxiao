@@ -259,11 +259,20 @@ var MatrixLayer = cc.Layer.extend({
 
     doTouchMove:function(touchPos){
         this.lastTouchTime = new Date().getTime();
+        var touchItem = this.getTouchItem(touchPos);
+        
         if (this.isDeleteSelecting) {
+            if (touchItem) {
+                var copy =touchItem.clone();
+                copy.getChildByName("score_tv").setString("");
+                this.addChild(copy, 1);
+                copy.getChildByName("bg_iv").runAction(cc.sequence(cc.spawn(cc.scaleTo(0.2, 2), cc.fadeTo(0.2, 0)), cc.callFunc(function(){
+                    copy.removeFromParent();
+                })));
+            }
             return;
         }
 
-        var touchItem = this.getTouchItem(touchPos);
         if (touchItem) {
             if (this.marixLogic.canAddSelect(touchItem)) {
                 this.resetSlectItemScore(true);
@@ -321,7 +330,7 @@ var MatrixLayer = cc.Layer.extend({
             var lastSelNode = selectItems[selectItems.length - 1].node;
             itemEffect.setPosition(cc.p(lastSelNode.x, lastSelNode.y));
             this.addChild(itemEffect, 3);
-            itemEffect.runAction(cc.sequence(cc.delayTime(0.3),cc.scaleTo(0.3, 0.3), cc.callFunc(function(){
+            itemEffect.runAction(cc.sequence(cc.delayTime(0.5), cc.callFunc(function(){
                 itemEffect.removeFromParent();
             })));
 
@@ -443,7 +452,7 @@ var MatrixLayer = cc.Layer.extend({
         }
 
         var help = this.marixLogic.getHelp();
-        var color = cc.color(255,0,0);
+        var color = cc.color(255,255,255);
         for (var i = 0; i < help.length - 1; i++) {
             var beginNode = help[i];
             var posB = cc.p(this.width / this.marixLogic.rowCount * (beginNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - beginNode.row - 0.5));
