@@ -4,6 +4,7 @@ var res = {
     mainLayer : "res/sanxiao/mainLayer.json",
     gameLayer : "res/sanxiao/gameLayer.json",
     settingLayer : "res/sanxiao/settingLayer.json",
+    shopLayer : "res/sanxiao/shopLayer.json",
 
     bgframecommon : "res/sanxiao/bgframecommon.png",
 	caidang :  "res/sanxiao/caidang.png",

@@ -22,10 +22,6 @@ var Sound = {
         }
 
         userDefault.setBoolForKey("music.switch", this._musicSwitch);
-        if(shared.setUserDefaultBoolForKey){
-            //同步给c++
-            shared.setUserDefaultBoolForKey("music.switch", this._musicSwitch);
-        }
     },
     stopGameMusic : function(){
         // 如果关闭音乐
@@ -52,10 +48,6 @@ var Sound = {
         this._effectSwitch = (enabled != undefined) ? enabled : !this._effectSwitch;
 
         userDefault.setBoolForKey("effect.switch", this._effectSwitch);
-        if(shared.setUserDefaultBoolForKey){
-            //同步给c++
-            shared.setUserDefaultBoolForKey("effect.switch", this._effectSwitch);
-        }
     },
 
     // 设置音效音量

@@ -49,16 +49,18 @@
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="caidang_btn" ActionTag="-1659254172" Tag="14" IconVisible="False" LeftMargin="30.6917" RightMargin="624.3083" TopMargin="29.3118" BottomMargin="31.6882" ctype="SpriteObjectData">
+                  <AbstractNodeData Name="caidang_btn" ActionTag="1864452575" Tag="78" IconVisible="False" LeftMargin="30.6918" RightMargin="624.3082" TopMargin="29.3118" BottomMargin="31.6882" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="65" Scale9Height="71" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="95.0000" Y="93.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="78.1917" Y="78.1882" />
+                    <Position X="78.1918" Y="78.1882" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.1043" Y="0.5077" />
                     <PreSize X="0.1267" Y="0.6039" />
-                    <FileData Type="Normal" Path="caidang.png" Plist="" />
-                    <BlendFunc Src="1" Dst="771" />
+                    <TextColor A="255" R="65" G="65" B="70" />
+                    <NormalFileData Type="Normal" Path="caidang.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -230,7 +232,7 @@
               <AbstractNodeData Name="model_0_layer" ActionTag="1059072950" VisibleForFrame="False" Tag="53" IconVisible="False" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                 <Size X="750.0000" Y="1334.0000" />
                 <Children>
-                  <AbstractNodeData Name="guanqia_score" ActionTag="37932715" Tag="74" IconVisible="False" PositionPercentXEnabled="True" LeftMargin="221.3078" RightMargin="228.6921" TopMargin="65.9041" BottomMargin="1248.0959" Scale9Enable="True" LeftEage="32" RightEage="32" TopEage="33" BottomEage="33" Scale9OriginX="32" Scale9OriginY="33" Scale9Width="35" Scale9Height="35" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="guanqia_score" ActionTag="37932715" Tag="74" IconVisible="False" PositionPercentXEnabled="True" LeftMargin="221.3250" RightMargin="228.6750" TopMargin="65.9041" BottomMargin="1248.0959" Scale9Enable="True" LeftEage="32" RightEage="32" TopEage="33" BottomEage="33" Scale9OriginX="32" Scale9OriginY="33" Scale9Width="35" Scale9Height="35" ctype="ImageViewObjectData">
                     <Size X="300.0000" Y="20.0000" />
                     <Children>
                       <AbstractNodeData Name="pro" ActionTag="-1787595065" Tag="72" IconVisible="False" ProgressInfo="75" ctype="LoadingBarObjectData">
@@ -267,7 +269,7 @@
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="371.3078" Y="1258.0959" />
+                    <Position X="371.3250" Y="1258.0959" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.4951" Y="0.9431" />
@@ -694,7 +696,7 @@
               <AbstractNodeData Name="model_2_layer" ActionTag="1668106985" VisibleForFrame="False" Tag="114" IconVisible="False" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                 <Size X="750.0000" Y="1334.0000" />
                 <Children>
-                  <AbstractNodeData Name="guanqia_score" ActionTag="-576291626" Tag="115" IconVisible="False" PositionPercentXEnabled="True" LeftMargin="221.3078" RightMargin="228.6921" TopMargin="65.9041" BottomMargin="1248.0959" Scale9Enable="True" LeftEage="32" RightEage="32" TopEage="33" BottomEage="33" Scale9OriginX="32" Scale9OriginY="33" Scale9Width="35" Scale9Height="35" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="guanqia_score" ActionTag="-576291626" Tag="115" IconVisible="False" PositionPercentXEnabled="True" LeftMargin="221.3250" RightMargin="228.6750" TopMargin="65.9041" BottomMargin="1248.0959" Scale9Enable="True" LeftEage="32" RightEage="32" TopEage="33" BottomEage="33" Scale9OriginX="32" Scale9OriginY="33" Scale9Width="35" Scale9Height="35" ctype="ImageViewObjectData">
                     <Size X="300.0000" Y="20.0000" />
                     <Children>
                       <AbstractNodeData Name="pro" ActionTag="-547106106" Tag="116" IconVisible="False" ProgressInfo="75" ctype="LoadingBarObjectData">
@@ -731,7 +733,7 @@
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="371.3078" Y="1258.0959" />
+                    <Position X="371.3250" Y="1258.0959" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.4951" Y="0.9431" />
