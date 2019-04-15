@@ -4,7 +4,7 @@ var config = {
 		GameBestRecord0:"Key_GameBestRecord0",
 		GameBestRecord1:"Key_GameBestRecord1",
 		GameBestRecord2:"Key_GameBestRecord2",
-	}
+	},
 
 	Logic:{
 		Type0:{
@@ -30,11 +30,12 @@ var config = {
 			WinCoinBase:1000,
 			WinScoreExchangeCoin:20 / 1,//赢的分兑换金币
 		}
-	}
+	},
 
 	PropPrice:{
 		Del:300,
 		AddStep:300,
 		Help:1000,
 	}
+	
 }
