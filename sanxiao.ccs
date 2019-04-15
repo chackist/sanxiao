@@ -16,10 +16,7 @@
           <Image Name="yuandian.png" />
         </Folder>
         <Folder Name="shop">
-          <Image Name="12.png" />
-          <Image Name="18.png" />
-          <Image Name="30.png" />
-          <Image Name="6.png" />
+          <Image Name="itemBg.png" />
         </Folder>
         <Image Name="bgframecommon.png" />
         <Image Name="caidang.png" />
