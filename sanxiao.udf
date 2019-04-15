@@ -35,6 +35,12 @@
           <FilePathData Path="endLayer.csd" />
         </OpenedDocuments>
         <ActiveDocument Path="endLayer.csd" />
+          <FilePathData Path="settingLayer.csd" />
+          <FilePathData Path="gameLayer.csd" />
+          <FilePathData Path="mainLayer.csd" />
+          <FilePathData Path="matrixItemNode.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="matrixItemNode.csd" />
       </Value>
     </Item>
   </Properties>

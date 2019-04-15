@@ -25,7 +25,7 @@ game.GameScene = cc.Scene.extend({
         this.logic = new GameLogic();
         this.logic.init(this, layer, game.currentType, data);
 
-        var layer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height));
+        var layer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height) , this.logic);
         this.marixBgLayer.addChild(layer);
 
         this._initUI();
@@ -37,6 +37,7 @@ game.GameScene = cc.Scene.extend({
     },
 
     _handClick : function(btn, et) {
+    	cc.log("asdfasfasfafssf")
         if(et == ccui.Widget.TOUCH_ENDED){
             switch (btn) {
                 case this.caidang_btn :

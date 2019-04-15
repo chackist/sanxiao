@@ -104,7 +104,7 @@
                 "ctype": "ImageViewObjectData"
               },
               {
-                "CharWidth": 29,
+                "CharWidth": 30,
                 "CharHeight": 47,
                 "LabelText": "0123456789",
                 "StartChar": "0",
@@ -134,17 +134,17 @@
                   "Y": 0.5
                 },
                 "PreSize": {
-                  "X": 2.9,
+                  "X": 2.7,
                   "Y": 0.47
                 },
-                "LeftMargin": -95.0,
-                "RightMargin": -95.0,
+                "LeftMargin": -85.0,
+                "RightMargin": -85.0,
                 "TopMargin": 26.5,
                 "BottomMargin": 26.5,
                 "Tag": 9,
                 "ActionTag": 1634853757,
                 "Size": {
-                  "X": 290.0,
+                  "X": 270.0,
                   "Y": 47.0
                 },
                 "Name": "score_tv",
