@@ -14,7 +14,19 @@ game.GameScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
 
-        var layer = new MatrixLayer(6, 6, 4, cc.size(600, 600));
+        var layer = ccs.load("res/sanxiao/gameLayer.json").node;
         this.addChild(layer);
+        layer = layer.getChildByName("bg");
+
+        this.topMenuLayer = layer.getChildByName("top_menu_layer");
+        this.bottomMenuLayer = layer.getChildByName("bottom_menu_layer");
+        this.marixBgLayer = layer.getChildByName("marix_bg_layer");
+
+        this.modelLayer = layer.getChildByName("model_" + game.currentType + "_layer");
+        this.modelLayer.visible = true;
+
+
+        var layer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height));
+        this.marixBgLayer.addChild(layer);
     }
 });

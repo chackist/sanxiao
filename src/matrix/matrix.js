@@ -164,17 +164,15 @@ var MatrixLayer = cc.Layer.extend({
         var self =this;
         this.touchLayer.addTouchEventListener(function(touchLayer, eventType) {
             if (eventType == ccui.Widget.TOUCH_BEGAN) {
-                self.doTouchMove(touchLayer.getTouchBeganPosition());
+                self.doTouchMove(touchLayer.convertToNodeSpace(touchLayer.getTouchBeganPosition()));
             }else if (eventType == ccui.Widget.TOUCH_MOVED) {
-                self.doTouchMove(touchLayer.getTouchMovePosition());
+                self.doTouchMove(touchLayer.convertToNodeSpace(touchLayer.getTouchMovePosition()));
             }else if (eventType == ccui.Widget.TOUCH_ENDED || eventType == ccui.Widget.TOUCH_CANCELED) {
-                self.doTouchEnd(touchLayer.getTouchEndPosition());
+                self.doTouchEnd(touchLayer.convertToNodeSpace(touchLayer.getTouchEndPosition()));
             }
         });
 
         var csdNode = ccs.load("res/sanxiao/matrixItemNode.json").node;
-        cc.log(csdNode);
-
         this.cloneItemNode = csdNode.getChildByName("item");
         this.cloneItemNode.visible = false;
         this.cloneItemNode.removeFromParent();
@@ -263,7 +261,7 @@ var MatrixLayer = cc.Layer.extend({
                     var item = this.marixLogic.data[nullCount - 1][column];
                     var itemNode = this.cloneItemNode.clone();
                     itemNode.visible = true;
-                    itemNode.getChildByName("bg_iv").loadTexture(MatrixLogic.Config.Items[item.type].Bg);
+                    itemNode.getChildByName("bg_iv").loadTexture(config.Items[item.type].Bg);
                     itemNode.getChildByName("score_tv").setString(item.score + "");
                     this.addChild(itemNode, 2);
                     itemNode.x = this.width / rowCount * (column + 0.5);
@@ -405,7 +403,7 @@ var MatrixLayer = cc.Layer.extend({
 
         var firstSel = this.marixLogic.getSelectDataByIdx(0);
         if (firstSel) {
-            color = MatrixLogic.Config.Items[this.marixLogic.data[firstSel.row][firstSel.column].type].LineColor;
+            color = config.Items[this.marixLogic.data[firstSel.row][firstSel.column].type].LineColor;
         } 
         line.setColor(color)
         this.addChild(line);
@@ -432,7 +430,7 @@ var MatrixLayer = cc.Layer.extend({
                 var item = row[j];
                 var itemNode = this.cloneItemNode.clone();
                 itemNode.visible = true;
-                itemNode.getChildByName("bg_iv").loadTexture(MatrixLogic.Config.Items[item.type].Bg);
+                itemNode.getChildByName("bg_iv").loadTexture(config.Items[item.type].Bg);
                 itemNode.getChildByName("score_tv").setString(item.score + "");
                 this.addChild(itemNode, 2);
                 itemNode.x = this.width / this.marixLogic.rowCount * (j + 0.5);

@@ -105,8 +105,8 @@
                       "ScaleY": 0.5
                     },
                     "Position": {
-                      "X": 377.7158,
-                      "Y": -41.9059
+                      "X": 377.7,
+                      "Y": -41.9034
                     },
                     "Scale": {
                       "ScaleX": 1.0,
@@ -124,10 +124,10 @@
                       "X": 0.16,
                       "Y": 0.8442
                     },
-                    "LeftMargin": 317.7158,
-                    "RightMargin": 312.2842,
-                    "TopMargin": 130.9059,
-                    "BottomMargin": -106.9059,
+                    "LeftMargin": 317.7,
+                    "RightMargin": 312.3,
+                    "TopMargin": 130.9034,
+                    "BottomMargin": -106.9034,
                     "Tag": 96,
                     "Children": [
                       {
@@ -983,7 +983,7 @@
                       "Y": 0.015
                     },
                     "LeftMargin": 212.9754,
-                    "RightMargin": 237.0245,
+                    "RightMargin": 237.0246,
                     "TopMargin": 45.9135,
                     "BottomMargin": 1268.0865,
                     "Tag": 74,
@@ -1623,6 +1623,7 @@
                   "X": 750.0,
                   "Y": 1334.0
                 },
+                "VisibleForFrame": false,
                 "Name": "model_0_layer",
                 "ctype": "PanelObjectData"
               },
@@ -2791,6 +2792,7 @@
                   "X": 750.0,
                   "Y": 1334.0
                 },
+                "VisibleForFrame": false,
                 "Name": "model_1_layer",
                 "ctype": "PanelObjectData"
               },
@@ -2813,8 +2815,8 @@
                 "Scale9Height": 1,
                 "AnchorPoint": {},
                 "Position": {
-                  "X": 20.0,
-                  "Y": -20.0
+                  "X": 0.0,
+                  "Y": 0.0
                 },
                 "Scale": {
                   "ScaleX": 1.0,
@@ -2823,17 +2825,13 @@
                 "CColor": {},
                 "IconVisible": false,
                 "PrePosition": {
-                  "X": 0.0267,
-                  "Y": -0.015
+                  "X": 0.0,
+                  "Y": 0.0
                 },
                 "PreSize": {
                   "X": 1.0,
                   "Y": 1.0
                 },
-                "LeftMargin": 20.0,
-                "RightMargin": -20.0,
-                "TopMargin": 20.0,
-                "BottomMargin": -20.0,
                 "Tag": 99,
                 "Children": [
                   {
@@ -3321,6 +3319,7 @@
                   "X": 750.0,
                   "Y": 1334.0
                 },
+                "VisibleForFrame": false,
                 "Name": "model_2_layer",
                 "ctype": "PanelObjectData"
               }
