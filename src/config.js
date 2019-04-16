@@ -17,7 +17,7 @@ var config = {
 			BaseGuanQiaNeedScore:100,
 			PreGuanQiaAddScore:100,
 			GuanQiaTime:60,
-			WinCoinBase:1000,
+			WinScoreGuanQia:500,//每关通过获得的额外加分
 			WinScoreExchangeCoin:20 / 1,//赢的分兑换金币
 		},
 
@@ -25,7 +25,7 @@ var config = {
 			BaseGuanQiaNeedScore:[50,60,80,100],
 			PreGuanQiaAddScore:5,
 			AllStep:20,
-			WinCoinBase:1000,
+			WinScoreGuanQia:500,//每关通过获得的额外加分
 			WinScoreExchangeCoin:20 / 1,//赢的分兑换金币
 		},
 
@@ -33,7 +33,7 @@ var config = {
 			BaseGuanQiaNeedScore:1000,
 			PreGuanQiaAddScore:1000,
 			GuanQiaTime:-1,
-			WinCoinBase:1000,
+			WinScoreGuanQia:1000,//每关通过获得的额外加分
 			WinScoreExchangeCoin:20 / 1,//赢的分兑换金币
 		}
 	},

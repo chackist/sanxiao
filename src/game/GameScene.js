@@ -24,6 +24,12 @@ game.GameScene = cc.Scene.extend({
         this.marixBgLayer = layer.getChildByName("marix_bg_layer");
 
         this.logic = new GameLogic();
+        var data = userDefault.getStringForKey(config.Key.GamePlay + game.currentType, "");
+        if (data.length > 0) {
+        	data = JSON.parse(data);
+        }else{
+        	data = {};
+        }
         this.logic.init(this, layer, game.currentType, data);
 
         this.marixLayer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height) , this.logic);
@@ -67,8 +73,8 @@ game.GameScene = cc.Scene.extend({
     	
     },
 
-    setGamePlayData(data){
-    	userDefault.setStringForKey(config.Key.GamePlay, data);
+    setGamePlayData(type, data){
+    	userDefault.setStringForKey(config.Key.GamePlay + type, JSON.stringify(data));
     },
 
 });

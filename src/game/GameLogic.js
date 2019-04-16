@@ -151,12 +151,12 @@ GameLogic.prototype.onAddScore = function (score) {
 			}
 		}
 	}
-	this.scene.setGamePlayData(this.getData());
+	this.scene.setGamePlayData(this.type, this.getData());
 };
 
 GameLogic.prototype.onMatrixChange = function (matrix) {
 	this.matrix = matrix;
-	this.scene.setGamePlayData(this.getData());
+	this.scene.setGamePlayData(this.type, this.getData());
 };
 
 GameLogic.prototype.onSelectScore = function (score) {
@@ -227,7 +227,7 @@ GameLogic.prototype.startCountdown = function () {
 		if (time <= 0) {
 			this.stopCountdown();
 			var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
-			this.scene.setGamePlayData(this.getData());
+			this.scene.setGamePlayData(this.type, this.getData());
 			//失败事件处理
 		}
 	}.bind(this);
