@@ -271,6 +271,7 @@ var MatrixLayer = cc.Layer.extend({
                 copy.getChildByName("bg_iv").runAction(cc.sequence(cc.spawn(cc.scaleTo(0.2, 2), cc.fadeTo(0.2, 0)), cc.callFunc(function(){
                     copy.removeFromParent();
                 })));
+                Sound.playEffect("dianji");
             }
             return;
         }
@@ -290,6 +291,7 @@ var MatrixLayer = cc.Layer.extend({
                     copy.getChildByName("bg_iv").runAction(cc.sequence(cc.spawn(cc.scaleTo(0.2, 2), cc.fadeTo(0.2, 0)), cc.callFunc(function(){
                         copy.removeFromParent();
                     })));
+                    Sound.playEffect("dianji"); // or lianji
                     this.gameLogic.onSelectScore(this.marixLogic.getSelectScore());
                 }
 
@@ -338,6 +340,7 @@ var MatrixLayer = cc.Layer.extend({
             })));
 
             this.gameLogic.onAddScore(score);
+            Sound.playEffect("bomb");
         }else{
             this.resetSlectItemScore(true);
             this.marixLogic.setSelect([]);
