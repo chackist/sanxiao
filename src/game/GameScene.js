@@ -69,6 +69,7 @@ game.GameScene = cc.Scene.extend({
     //{guanQiaWinScore:this.guanQiaWinScore, guanQia:this.guanQia, type:this.type}
     win:function(data){
     	//显示弹窗
+        this.addChild(new game.PassWindow(data));
     },
 
     //{winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia, type:this.type}
@@ -76,7 +77,10 @@ game.GameScene = cc.Scene.extend({
     	var bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + data.type, 0);
     	var isNewBest = data.allWinScore > bestScore;
     	userDefault.setIntegerForKey(config.Key.GameBestRecord + data.type, data.allWinScore);
+        data.bastScore = bestScore;
+        data.isNewBest = isNewBest;
     	//显示弹窗
+        this.addChild(new game.EndWindow(data));
     },
 });
 

@@ -43,6 +43,7 @@
  	},
 
  	_handSlider : function(slider) {
+        Sound.playEffect("dianji");
  		if(slider == this.bar_yx) {
  			var val = slider.getPercent();
  			Sound.setGameEffectVolume(Math.round(val));
@@ -54,6 +55,7 @@
 
  	_handClick : function(btn, et) {
         if(et == ccui.Widget.TOUCH_ENDED) {
+            Sound.playEffect("dianji");
             switch (btn) {
                 case this.btn_close :
                     this.removeFromParent(true);

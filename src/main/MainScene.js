@@ -1,8 +1,8 @@
 /**
  * Created by liuzq on 2019/4/13.
  */
-
 var main = main || {};
+main.isFirst = true; //重启第一次进
 main.MainScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
@@ -11,8 +11,23 @@ main.MainScene = cc.Scene.extend({
         this.addChild(this.mainLayer);
 
         this._initUI();
+        if(main.isFirst){
+           this._checkData(); 
+           main.isFirst = false;
+        }
+        
 
         Sound.playMusic("main");
+    },
+
+    _checkData : function() {
+        var str = userDefault.getStringForKey(config.Key.GamePlay);
+        if(str && str.length > 0) {
+            var data = JSON.parse(str);
+            cc.log(data);
+            sceneMgr.switchToGame(data.type, data); 
+        }
+        
     },
 
     _initUI : function () {
@@ -38,11 +53,11 @@ main.MainScene = cc.Scene.extend({
         var ac = cc.moveBy(2, 0, 15);
         var ac2 = cc.moveBy(2, 0, -15);
         this.img_xian.runAction(cc.repeatForever(cc.sequence(ac, ac2)));
-
     },
 
     _handClick : function(btn, et) {
         if(et == ccui.Widget.TOUCH_ENDED) {
+            Sound.playEffect("dianji");
             switch (btn) {
                 case this.btn_time :
                     sceneMgr.switchToGame(game.TYPE.TIME); 
