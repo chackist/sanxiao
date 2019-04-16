@@ -4,15 +4,12 @@ MatrixLogic.prototype.init = function(rowCount, columnCount, typeCount, data){
     this.rowCount = rowCount;
     this.columnCount = columnCount;
     this.typeCount= typeCount;
-    this.data = [];
     this.select = [];
     this.itemValueRange = [1, 3];
-
     this.data = data;
     if (!this.data) {
         this.resetMatrix();
     }
-    cc.log(this.data);
 };
 
 MatrixLogic.prototype.resetMatrix = function(){
@@ -202,7 +199,7 @@ var MatrixLayer = cc.Layer.extend({
         this.setContentSize(size.width, size.height);
         this.itemSize = cc.size(size.width / columnCount, size.height / rowCount); 
         this.initTouchLayer();
-        this.resetMatix();
+        this.initMatix();
         this.lastTouchTime = new Date().getTime();
         this.isDeleteSelecting = false; //删除选择中
         return true;
@@ -244,17 +241,9 @@ var MatrixLayer = cc.Layer.extend({
     checkCanSelect:function(){
         var help = this.marixLogic.getHelp();
         if (help.length > 2) {
-        
         }else{
             //没有可以操作的  需要重置矩阵
-            var alldel = [];
-            for (var i = 0; i < this.marixLogic.rowCount; i++) {
-                for (var j = 0; j < this.marixLogic.columnCount; j++) {
-                    alldel.push({row:i,column:j});
-                }
-            }
-
-            var selectItems = this.deleteItems(alldel);
+            this.resetMatrix();
         }
     },
 
@@ -514,7 +503,7 @@ var MatrixLayer = cc.Layer.extend({
         this.schedule(this.showHelpCb, 0.6);
     },
 
-    resetMatix:function(){
+    initMatix:function(){
         for (var i = 0; i < this.matrixItems.length; i++) {
             for (var j = 0; j < this.matrixItems[i].length; j++) {
                 this.matrixItems[i][j].removeFromParent();
@@ -534,7 +523,8 @@ var MatrixLayer = cc.Layer.extend({
                 itemNode.getChildByName("score_tv").setString(item.score + "");
                 this.addChild(itemNode, 2);
                 itemNode.x = this.width / this.marixLogic.rowCount * (j + 0.5);
-                itemNode.y = this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - i - 0.5);
+                itemNode.y = this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - i - 0.5) + 1000;
+                itemNode.runAction(cc.moveTo(0.3, cc.p(itemNode.x, itemNode.y - 1000)));
                 rowNodes.push(itemNode);
             }
             this.matrixItems.push(rowNodes);
@@ -542,9 +532,18 @@ var MatrixLayer = cc.Layer.extend({
         this.checkCanSelect();
     },
 
+    resetMatrix:function(){
+        var alldel = [];
+        for (var i = 0; i < this.marixLogic.rowCount; i++) {
+            for (var j = 0; j < this.marixLogic.columnCount; j++) {
+                alldel.push({row:i,column:j});
+            }
+        }
+        var selectItems = this.deleteItems(alldel);
+    },
+
     //删除
     deleteItems:function(dels){
-        cc.log("deleteItems", dels);
         //选出删除的
         //生成新的补进
         var rowCount = this.marixLogic.rowCount;

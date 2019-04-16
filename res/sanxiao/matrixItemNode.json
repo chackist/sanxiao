@@ -122,8 +122,8 @@
                   "Y": 50.0
                 },
                 "Scale": {
-                  "ScaleX": 1.0,
-                  "ScaleY": 1.0
+                  "ScaleX": 1.5,
+                  "ScaleY": 1.5
                 },
                 "CColor": {},
                 "IconVisible": false,
@@ -134,17 +134,17 @@
                   "Y": 0.5
                 },
                 "PreSize": {
-                  "X": 2.7,
+                  "X": 3.0,
                   "Y": 0.47
                 },
-                "LeftMargin": -85.0,
-                "RightMargin": -85.0,
+                "LeftMargin": -100.0,
+                "RightMargin": -100.0,
                 "TopMargin": 26.5,
                 "BottomMargin": 26.5,
                 "Tag": 9,
                 "ActionTag": 1634853757,
                 "Size": {
-                  "X": 270.0,
+                  "X": 300.0,
                   "Y": 47.0
                 },
                 "Name": "score_tv",

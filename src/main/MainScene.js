@@ -21,6 +21,7 @@ main.MainScene = cc.Scene.extend({
     },
 
     _checkData : function() {
+        //userDefault.setIntegerForKey(config.Key.Coin, 200000);
         var str = userDefault.getStringForKey(config.Key.GamePlay);
         if(str && str.length > 0) {
             var data = JSON.parse(str);

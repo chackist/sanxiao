@@ -48,51 +48,6 @@
               {
                 "FileData": {
                   "Type": "Normal",
-                  "Path": "HEIDI2.png",
-                  "Plist": ""
-                },
-                "BlendFunc": {
-                  "Src": 1,
-                  "Dst": 771
-                },
-                "AnchorPoint": {
-                  "ScaleX": 0.5,
-                  "ScaleY": 0.5
-                },
-                "Position": {
-                  "X": 374.9998,
-                  "Y": 591.9993
-                },
-                "Scale": {
-                  "ScaleX": 1.0,
-                  "ScaleY": 1.0
-                },
-                "CColor": {},
-                "IconVisible": false,
-                "PrePosition": {
-                  "X": 0.5,
-                  "Y": 0.4438
-                },
-                "PreSize": {
-                  "X": 0.9747,
-                  "Y": 0.5907
-                },
-                "LeftMargin": 9.4998,
-                "RightMargin": 9.5002,
-                "TopMargin": 348.0007,
-                "BottomMargin": 197.9993,
-                "Tag": 10,
-                "ActionTag": 1531844655,
-                "Size": {
-                  "X": 731.0,
-                  "Y": 788.0
-                },
-                "Name": "marix_bg_layer",
-                "ctype": "SpriteObjectData"
-              },
-              {
-                "FileData": {
-                  "Type": "Normal",
                   "Path": "HEIDI.png",
                   "Plist": ""
                 },
@@ -3332,6 +3287,51 @@
               {
                 "FileData": {
                   "Type": "Normal",
+                  "Path": "HEIDI2.png",
+                  "Plist": ""
+                },
+                "BlendFunc": {
+                  "Src": 1,
+                  "Dst": 771
+                },
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 374.9998,
+                  "Y": 591.9993
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.5,
+                  "Y": 0.4438
+                },
+                "PreSize": {
+                  "X": 0.9747,
+                  "Y": 0.5907
+                },
+                "LeftMargin": 9.4998,
+                "RightMargin": 9.5002,
+                "TopMargin": 348.0007,
+                "BottomMargin": 197.9993,
+                "Tag": 10,
+                "ActionTag": 1531844655,
+                "Size": {
+                  "X": 731.0,
+                  "Y": 788.0
+                },
+                "Name": "marix_bg_layer",
+                "ctype": "SpriteObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "Normal",
                   "Path": "HEIDI.png",
                   "Plist": ""
                 },
@@ -3605,6 +3605,103 @@
                 },
                 "VisibleForFrame": false,
                 "Name": "disk_delete_selecting",
+                "ctype": "ImageViewObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "Normal",
+                  "Path": "HEIDI.png",
+                  "Plist": ""
+                },
+                "Scale9OriginX": 247,
+                "Scale9OriginY": 50,
+                "Scale9Width": 256,
+                "Scale9Height": 54,
+                "TouchEnable": true,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 1.0,
+                  "Y": 0.1154
+                },
+                "TopMargin": 1180.0,
+                "Tag": 100,
+                "Children": [
+                  {
+                    "IsCustomSize": true,
+                    "FontSize": 35,
+                    "LabelText": "toast",
+                    "HorizontalAlignmentType": "HT_Center",
+                    "VerticalAlignmentType": "VT_Center",
+                    "OutlineColor": {
+                      "G": 0,
+                      "B": 0
+                    },
+                    "ShadowColor": {
+                      "R": 110,
+                      "G": 110,
+                      "B": 110
+                    },
+                    "ShadowOffsetX": 2.0,
+                    "ShadowOffsetY": -2.0,
+                    "AnchorPoint": {
+                      "ScaleX": 0.5,
+                      "ScaleY": 0.5
+                    },
+                    "Position": {
+                      "X": 375.0,
+                      "Y": 77.0
+                    },
+                    "Scale": {
+                      "ScaleX": 1.0,
+                      "ScaleY": 1.0
+                    },
+                    "CColor": {},
+                    "IconVisible": false,
+                    "PositionPercentXEnabled": true,
+                    "PositionPercentYEnabled": true,
+                    "PrePosition": {
+                      "X": 0.5,
+                      "Y": 0.5
+                    },
+                    "PreSize": {
+                      "X": 0.6667,
+                      "Y": 0.6494
+                    },
+                    "LeftMargin": 125.0,
+                    "RightMargin": 125.0,
+                    "TopMargin": 27.0,
+                    "BottomMargin": 27.0,
+                    "Tag": 103,
+                    "ActionTag": 1810513700,
+                    "Size": {
+                      "X": 500.0,
+                      "Y": 100.0
+                    },
+                    "Name": "tv",
+                    "ctype": "TextObjectData"
+                  }
+                ],
+                "ActionTag": -783182506,
+                "Size": {
+                  "X": 750.0,
+                  "Y": 154.0
+                },
+                "VisibleForFrame": false,
+                "Name": "toast",
                 "ctype": "ImageViewObjectData"
               }
             ],

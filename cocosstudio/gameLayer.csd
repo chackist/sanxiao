@@ -9,17 +9,6 @@
           <AbstractNodeData Name="bg" ActionTag="838866995" Tag="7" IconVisible="False" ctype="SpriteObjectData">
             <Size X="750.0000" Y="1334.0000" />
             <Children>
-              <AbstractNodeData Name="marix_bg_layer" ActionTag="1531844655" Tag="10" IconVisible="False" LeftMargin="9.4998" RightMargin="9.5002" TopMargin="348.0007" BottomMargin="197.9993" ctype="SpriteObjectData">
-                <Size X="731.0000" Y="788.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="374.9998" Y="591.9993" />
-                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5000" Y="0.4438" />
-                <PreSize X="0.9747" Y="0.5907" />
-                <FileData Type="Normal" Path="HEIDI2.png" Plist="" />
-                <BlendFunc Src="1" Dst="771" />
-              </AbstractNodeData>
               <AbstractNodeData Name="top_menu_layer" ActionTag="926424790" Tag="12" IconVisible="False" LeftMargin="-0.0988" RightMargin="0.0988" TopMargin="-1.2900" BottomMargin="1181.2900" ctype="SpriteObjectData">
                 <Size X="750.0000" Y="154.0000" />
                 <Children>
@@ -812,6 +801,17 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
+              <AbstractNodeData Name="marix_bg_layer" ActionTag="1531844655" Tag="10" IconVisible="False" LeftMargin="9.4998" RightMargin="9.5002" TopMargin="348.0007" BottomMargin="197.9993" ctype="SpriteObjectData">
+                <Size X="731.0000" Y="788.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="374.9998" Y="591.9993" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5000" Y="0.4438" />
+                <PreSize X="0.9747" Y="0.5907" />
+                <FileData Type="Normal" Path="HEIDI2.png" Plist="" />
+                <BlendFunc Src="1" Dst="771" />
+              </AbstractNodeData>
               <AbstractNodeData Name="dialog_cancel_ok" ActionTag="1086488970" VisibleForFrame="False" Tag="95" IconVisible="False" TopMargin="1180.0000" TouchEnable="True" LeftEage="247" RightEage="247" TopEage="50" BottomEage="50" Scale9OriginX="247" Scale9OriginY="50" Scale9Width="256" Scale9Height="54" ctype="ImageViewObjectData">
                 <Size X="750.0000" Y="154.0000" />
                 <Children>
@@ -877,6 +877,29 @@
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition />
                 <PreSize X="1.0000" Y="0.1424" />
+                <FileData Type="Normal" Path="HEIDI.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="toast" ActionTag="-783182506" VisibleForFrame="False" Tag="100" IconVisible="False" TopMargin="1180.0000" TouchEnable="True" LeftEage="247" RightEage="247" TopEage="50" BottomEage="50" Scale9OriginX="247" Scale9OriginY="50" Scale9Width="256" Scale9Height="54" ctype="ImageViewObjectData">
+                <Size X="750.0000" Y="154.0000" />
+                <Children>
+                  <AbstractNodeData Name="tv" ActionTag="1810513700" Tag="103" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="125.0000" RightMargin="125.0000" TopMargin="27.0000" BottomMargin="27.0000" IsCustomSize="True" FontSize="35" LabelText="toast" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="500.0000" Y="100.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="375.0000" Y="77.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="0.5000" />
+                    <PreSize X="0.6667" Y="0.6494" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint />
+                <Position />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition />
+                <PreSize X="1.0000" Y="0.1154" />
                 <FileData Type="Normal" Path="HEIDI.png" Plist="" />
               </AbstractNodeData>
             </Children>

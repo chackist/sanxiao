@@ -34,6 +34,7 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 	
 	ui.diskDeleteSelecting = layer.getChildByName("disk_delete_selecting");
 	ui.dialogOkCannel = layer.getChildByName("dialog_cancel_ok");
+	ui.toast = layer.getChildByName("toast");
 
 	if (this.type == 0) {
 		ui.guanQiaScoreTv = this.modelLayer.getChildByName("guanqia_score").getChildByName("tv");
@@ -221,6 +222,7 @@ GameLogic.prototype.judgeWin = function () {
 };
 
 GameLogic.prototype.nextGuanQia = function () {
+	this.marixLayer.resetMatrix();
 	this.guanQia++;
 	this.guanQiaWinScore = 0;
 	if (this.type == 0) {
@@ -282,7 +284,9 @@ GameLogic.prototype.getData = function () {
 
 GameLogic.prototype.doAddStep = function () {
 	var spend = config.PropPrice.AddStep;
-	if (this.getUserCoin() < spend) {return;}
+	if (this.getUserCoin() < spend) {
+		this.showToast("金币不足");
+		return;}
 	if (this.type != 1) {return;}
 	
 	this.showDialogOkCancel(function(){
@@ -296,7 +300,9 @@ GameLogic.prototype.doAddStep = function () {
 
 GameLogic.prototype.doDelete = function () {
 	var spend = config.PropPrice.Del;
-	if (this.getUserCoin() < spend) {return;}
+	if (this.getUserCoin() < spend) {
+		this.showToast("金币不足");
+		return;}
 
 	this.showDialogOkCancel(function(){
 		this.updateUserCoin(-spend);
@@ -311,7 +317,9 @@ GameLogic.prototype.doDeleteDone = function () {
 
 GameLogic.prototype.doShowHelp = function (step) {
 	var spend = config.PropPrice.Help;
-	if (this.getUserCoin() < spend) {return;}
+	if (this.getUserCoin() < spend) {
+		this.showToast("金币不足");
+		return;}
 	
 	this.showDialogOkCancel(function(){
 		this.updateUserCoin(-spend);
@@ -340,7 +348,17 @@ GameLogic.prototype.showDialogOkCancel = function(okCb, cancleCb){
 			}
 		}
 	}, cancleNode);
-}
+};
+
+GameLogic.prototype.showToast = function(msg){
+	var node = this.ui.toast.clone();
+	this.scene.addChild(node, 2);
+	node.getChildByName("tv").setString(msg + "");
+	node.visible = true;
+	node.runAction(cc.sequence(cc.moveBy(0.5, cc.p(0, 300)), cc.spawn(cc.fadeOut(0.5), cc.moveBy(0.5, cc.p(0, 300))), cc.callFunc(function(){
+		node.removeFromParent();
+	})));
+};
 
 GameLogic.prototype.setGamePlayData = function(type, data){
 	userDefault.setStringForKey(config.Key.GamePlay, JSON.stringify(data));

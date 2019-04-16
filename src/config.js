@@ -37,9 +37,9 @@ var config = {
 	},
 
 	PropPrice:{
-		Del:1,
-		AddStep:2,
-		Help:3,
+		Del:300,
+		AddStep:300,
+		Help:800,
 	},
 
     Items: [{
