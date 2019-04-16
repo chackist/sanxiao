@@ -25,7 +25,9 @@ main.MainScene = cc.Scene.extend({
         if(str && str.length > 0) {
             var data = JSON.parse(str);
             cc.log(data);
-            sceneMgr.switchToGame(data.type, data); 
+            if(data.type) {
+                sceneMgr.switchToGame(data.type, data); 
+            }
         }
         
     },

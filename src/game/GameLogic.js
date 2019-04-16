@@ -270,12 +270,12 @@ GameLogic.prototype.stopCountdown = function () {
 };
 
 GameLogic.prototype.getData = function () {
-	var fields = ["guanQia", "useTime", "useStep", "guanQiaWinScore", "allWinScore", "matrix",  "guanQiaWinScoreArr"];
+	var fields = ["guanQia", "useTime", "useStep", "guanQiaWinScore", "allWinScore", "matrix",  "guanQiaWinScoreArr", "type"];
 	var data = {};
 	for (var i = 0; i <= fields.length; i++) {
 		data[fields[i]] = this[fields[i]];
 	}
-	data.type = 0;
+	// data.type = 0;
 	return data;
 };
 
