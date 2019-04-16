@@ -6,18 +6,17 @@ MatrixLogic.prototype.init = function(rowCount, columnCount, typeCount, data){
     this.typeCount= typeCount;
     this.select = [];
     this.itemValueRange = [1, 3];
-    this.data = data;
-    if (!this.data) {
-        this.resetMatrix();
-    }
 };
 
-MatrixLogic.prototype.resetMatrix = function(){
-    this.data = [];
-    for (var i = 0; i < this.rowCount; i++) {
-        this.data.push([]);
-        for (var j = 0; j < this.columnCount; j++) {
-            this.data[i].push(this.newItem() );
+MatrixLogic.prototype.initMatrix = function(data){
+    this.data = data;
+    if (!this.data) {
+        this.data = [];
+        for (var i = 0; i < this.rowCount; i++) {
+            this.data.push([]);
+            for (var j = 0; j < this.columnCount; j++) {
+                this.data[i].push(this.newItem() );
+            }
         }
     }
 }
@@ -193,15 +192,15 @@ var MatrixLayer = cc.Layer.extend({
         this.helpLines = [];
         this.gameLogic = gameLogic;
         this.marixLogic = new MatrixLogic();
-        this.marixLogic.init(rowCount, columnCount, typeCount, gameLogic.matrix);
-        this.gameLogic.onMatrixChange(this.marixLogic.getData());
+        this.marixLogic.init(rowCount, columnCount, typeCount);
 
         this.setContentSize(size.width, size.height);
         this.itemSize = cc.size(size.width / columnCount, size.height / rowCount); 
         this.initTouchLayer();
-        this.initMatix();
         this.lastTouchTime = new Date().getTime();
         this.isDeleteSelecting = false; //删除选择中
+
+        this.initMatix(gameLogic.matrix);
         return true;
     },
 
@@ -243,7 +242,7 @@ var MatrixLayer = cc.Layer.extend({
         if (help.length > 2) {
         }else{
             //没有可以操作的  需要重置矩阵
-            this.resetMatrix();
+            this.initMatix();
         }
     },
 
@@ -503,7 +502,9 @@ var MatrixLayer = cc.Layer.extend({
         this.schedule(this.showHelpCb, 0.6);
     },
 
-    initMatix:function(){
+    initMatix:function(matrix){
+        this.marixLogic.initMatrix(matrix);
+
         for (var i = 0; i < this.matrixItems.length; i++) {
             for (var j = 0; j < this.matrixItems[i].length; j++) {
                 this.matrixItems[i][j].removeFromParent();
@@ -511,7 +512,6 @@ var MatrixLayer = cc.Layer.extend({
         }
 
         this.matrixItems = [];
-        
         for (var i = 0; i < this.marixLogic.getData().length; i++) {
             var row = this.marixLogic.getData()[i];
             var rowNodes = [];
@@ -529,17 +529,8 @@ var MatrixLayer = cc.Layer.extend({
             }
             this.matrixItems.push(rowNodes);
         }
+        this.gameLogic.onMatrixChange(this.marixLogic.getData());
         this.checkCanSelect();
-    },
-
-    resetMatrix:function(){
-        var alldel = [];
-        for (var i = 0; i < this.marixLogic.rowCount; i++) {
-            for (var j = 0; j < this.marixLogic.columnCount; j++) {
-                alldel.push({row:i,column:j});
-            }
-        }
-        var selectItems = this.deleteItems(alldel);
     },
 
     //删除
