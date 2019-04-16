@@ -31,6 +31,7 @@
         <Image Name="bgframecommon.png" />
         <Image Name="caidang.png" />
         <Image Name="CAILUN.png" />
+        <Image Name="cuowu.png" />
         <Image Name="D1.png" />
         <Image Name="dengpao.png" />
         <Project Name="endLayer.csd" Type="Layer" />
@@ -62,6 +63,7 @@
         <Image Name="wux.png" />
         <Image Name="XAI.png" />
         <Image Name="yuan.png" />
+        <Image Name="zhengq.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

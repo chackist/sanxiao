@@ -20,6 +20,7 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
     this.modelLayer = layer.getChildByName("model_" + this.type + "_layer");
     this.modelLayer.visible = true;
 
+
 	var ui = this.ui = {};
 
 	ui.coinTv = layer.getChildByName("bottom_menu_layer").getChildByName("coin_info").getChildByName("tv");
@@ -59,6 +60,11 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 	}
 
 	this.fullData();
+
+	this.marixBgLayer = layer.getChildByName("marix_bg_layer");
+    this.marixLayer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height) , this);
+    this.marixBgLayer.addChild(this.marixLayer);
+
 	this.updateUI();
 	if (this.type == 0) {
 		this.startCountdown();
@@ -67,9 +73,9 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 
 GameLogic.prototype.updateUI = function () {
 	var ui = this.ui;
+	this.updateCoin()
 	ui.scoreTv.setString(this.allWinScore + "");
 	ui.guanQiaTv.setString(this.guanQia + "");
-	ui.coinTv.setString(this.scene.getUserCoin() + "");
 
 	if (this.type == 0) {
 		var need = this.guanQiaNeedScore - this.guanQiaWinScore;
@@ -95,6 +101,10 @@ GameLogic.prototype.updateUI = function () {
 	}
 }
 
+GameLogic.prototype.updateCoin = function(coin){
+	this.ui.coinTv.setString(this.scene.getUserCoin() + "");
+}
+
 GameLogic.prototype.fullData = function () {
 	if (this.type == 0) {
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore + (this.guanQia - 1) * this.cfg.PreGuanQiaAddScore;
@@ -115,8 +125,6 @@ GameLogic.prototype.fullData = function () {
 };
 
 GameLogic.prototype.onAddScore = function (score) {
-	
-
 	//更新数据
 	this.guanQiaWinScore += score.score;
 	this.allWinScore += score.score;
@@ -159,9 +167,9 @@ GameLogic.prototype.onAddScore = function (score) {
 
 		this.nextGuanQia();
 	}else if (isLose) {
-		var winCoin = Math.floor(this.guanQiaWinScore / 50);
-		var coin = this.scene.updateUserCoin(winCoin);
-		ui.coinTv.setString(coin + "");
+		var winCoin = Math.floor(this.guanQiaWinScore / 50); 
+		this.scene.updateUserCoin(winCoin);
+		this.updateCoin();
 		return this.scene.setGamePlayData(this.type, "");
 	}
 
@@ -241,8 +249,8 @@ GameLogic.prototype.startCountdown = function () {
 		if (time <= 0) {
 			this.stopCountdown();
 			var winCoin = Math.floor(this.guanQiaWinScore / 50);
-			var coin = this.scene.updateUserCoin(winCoin);
-			this.ui.coinTv.setString(coin + "");
+			this.scene.updateUserCoin(winCoin);
+			this.updateCoin();
 			this.scene.setGamePlayData(this.type, "");
 			//失败事件处理
 		}
@@ -267,10 +275,66 @@ GameLogic.prototype.getData = function () {
 };
 
 
-GameLogic.prototype.addStep = function (step) {
+GameLogic.prototype.doAddStep = function (step) {
 	var ui = this.ui;
 	if (this.type == 1) {
 		this.allStep += step;
 		ui.stepTv.setString((this.allStep - this.useStep) + "");
 	}
+
+                	// var spend = config.PropPrice.AddStep;
+                	// if (this.getUserCoin() < spend) {
+                	// 	return;
+                	// }
+                	// this.updateUserCoin(-spend);
+                	// this.logic.updateCoin();
+                	// this.logic.addStep(2);
 }
+
+GameLogic.prototype.doDelete = function (step) {
+	var ui = this.ui;
+	if (this.type == 1) {
+		this.allStep += step;
+		ui.stepTv.setString((this.allStep - this.useStep) + "");
+	}
+	              //   	var spend = config.PropPrice.Del;
+              //   	if (this.getUserCoin() < spend) {
+              //   		return;
+              //   	}
+            		// this.updateUserCoin(-spend);
+              //   	this.logic.updateCoin();
+              //   	this.marixLayer.setDeleteSelecting(true);
+}
+
+GameLogic.prototype.doShowHelp = function (step) {
+	var ui = this.ui;
+	if (this.type == 1) {
+		this.allStep += step;
+		ui.stepTv.setString((this.allStep - this.useStep) + "");
+	}
+
+                	// var spend = config.PropPrice.Help;
+                	// if (this.getUserCoin() < spend) {
+                	// 	return;
+                	// }
+                	// this.updateUserCoin(-spend);
+                	// this.logic.updateCoin();
+                	// this.marixLayer.drawHelpLine();
+}
+
+GameLogic.prototype.setGamePlayData = function(type, data){
+	userDefault.setStringForKey(config.Key.GamePlay, JSON.stringify(data));
+};
+
+GameLogic.prototype.updateUserCoin = function(incValue){
+	var coin = this.getUserCoin();
+	coin += incValue;
+	userDefault.setIntegerForKey(config.Key.Coin, coin);
+
+	return coin;
+};
+
+GameLogic.prototype.getUserCoin = function(){
+	var coin = userDefault.getIntegerForKey(config.Key.Coin, 1000);
+	return coin;
+};

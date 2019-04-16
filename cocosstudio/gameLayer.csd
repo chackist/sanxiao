@@ -812,6 +812,62 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
+              <AbstractNodeData Name="dialog_cancel_ok" ActionTag="-818340489" VisibleForFrame="False" Tag="84" IconVisible="False" TopMargin="1180.0000" ctype="SpriteObjectData">
+                <Size X="750.0000" Y="154.0000" />
+                <Children>
+                  <AbstractNodeData Name="cancel" ActionTag="562955692" Tag="89" IconVisible="False" PositionPercentYEnabled="True" LeftMargin="29.0000" RightMargin="639.0000" TopMargin="36.0000" BottomMargin="36.0000" LeftEage="27" RightEage="27" TopEage="27" BottomEage="27" Scale9OriginX="27" Scale9OriginY="27" Scale9Width="28" Scale9Height="28" ctype="ImageViewObjectData">
+                    <Size X="82.0000" Y="82.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="70.0000" Y="77.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.0933" Y="0.5000" />
+                    <PreSize X="0.1093" Y="0.5325" />
+                    <FileData Type="Normal" Path="cuowu.png" Plist="" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="ok" ActionTag="-711762684" Tag="90" IconVisible="False" PositionPercentYEnabled="True" LeftMargin="626.4548" RightMargin="41.5452" TopMargin="36.0000" BottomMargin="36.0000" LeftEage="27" RightEage="27" TopEage="27" BottomEage="27" Scale9OriginX="27" Scale9OriginY="27" Scale9Width="28" Scale9Height="28" ctype="ImageViewObjectData">
+                    <Size X="82.0000" Y="82.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="667.4548" Y="77.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.8899" Y="0.5000" />
+                    <PreSize X="0.1093" Y="0.5325" />
+                    <FileData Type="Normal" Path="zhengq.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" />
+                <Position X="375.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5000" />
+                <PreSize X="1.0000" Y="0.1154" />
+                <FileData Type="Normal" Path="HEIDI.png" Plist="" />
+                <BlendFunc Src="1" Dst="771" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="disk_delete_selecting" ActionTag="1959130782" VisibleForFrame="False" Tag="91" IconVisible="False" TopMargin="1180.0000" ctype="SpriteObjectData">
+                <Size X="750.0000" Y="154.0000" />
+                <Children>
+                  <AbstractNodeData Name="Image_5" ActionTag="398730544" Tag="94" IconVisible="False" LeftMargin="-0.0004" RightMargin="0.0004" TopMargin="-1353.1520" BottomMargin="1007.1520" LeftEage="247" RightEage="247" TopEage="50" BottomEage="50" Scale9OriginX="247" Scale9OriginY="50" Scale9Width="256" Scale9Height="54" ctype="ImageViewObjectData">
+                    <Size X="750.0000" Y="500.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="374.9996" Y="1257.1520" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="8.1633" />
+                    <PreSize X="1.0000" Y="3.2468" />
+                    <FileData Type="Normal" Path="HEIDI.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" />
+                <Position X="375.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5000" />
+                <PreSize X="1.0000" Y="0.1154" />
+                <FileData Type="Normal" Path="HEIDI.png" Plist="" />
+                <BlendFunc Src="1" Dst="771" />
+              </AbstractNodeData>
             </Children>
             <AnchorPoint />
             <Position />

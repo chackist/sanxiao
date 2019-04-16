@@ -21,20 +21,9 @@ game.GameScene = cc.Scene.extend({
 
         this.topMenuLayer = layer.getChildByName("top_menu_layer");
         this.bottomMenuLayer = layer.getChildByName("bottom_menu_layer");
-        this.marixBgLayer = layer.getChildByName("marix_bg_layer");
-
+        
         this.logic = new GameLogic();
-        var data = userDefault.getStringForKey(config.Key.GamePlay + game.currentType, "");
-        if (data.length > 0) {
-        	data = JSON.parse(data);
-        }else{
-        	data = {};
-        }
         this.logic.init(this, layer, game.currentType, data);
-
-        this.marixLayer = new MatrixLayer(6, 6, 4, cc.size(this.marixBgLayer.width, this.marixBgLayer.height) , this.logic);
-        this.marixBgLayer.addChild(this.marixLayer);
-
         this._initUI();
 
         Sound.playMusic("game");
@@ -59,43 +48,26 @@ game.GameScene = cc.Scene.extend({
                     cc.director.getRunningScene().addChild(win);
                 	break;
                 case this.del_btn :
-                	//扣除金币
-                	this.marixLayer.setDeleteSelecting(true);
+                	this.logic.doDelete();
+
                 	break;
                 case this.help_btn :
-                	//扣除金币
-                	this.marixLayer.drawHelpLine();
+                	this.logic.doShowHelp();
+
                 	break;
                 case this.add_step_btn :
-                	//扣除金币
-                	this.logic.addStep(2);
+                	this.logic.doAddStep();
                 	break;
             }
         }
     	
     },
 
-    setGamePlayData(type, data){
-    	userDefault.setStringForKey(config.Key.GamePlay + type, JSON.stringify(data));
+    win:function(data){
+    	//{winScore:}
     },
 
-    updateUserCoin(incValue){
-    	var coin = this.getUserCoin();
-    	userDefault.setIntegerForKey(config.Key,coin, coin);
-    	return coin;
-    },
-
-    getUserCoin(){
-    	var coin = userDefault.getIntegerForKey(config.Key.Coin, 1000);
-    	return coin;
-    },
-
-    win(data){
-
-    },
-
-    lose(data){
-
+    lose:function(data){
     },
 });
 
