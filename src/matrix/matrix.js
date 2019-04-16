@@ -79,7 +79,7 @@ MatrixLogic.prototype.getSelectDataByIdx = function(idx){
 }
 
 MatrixLogic.prototype.getSelectScore = function(){
-    var isLianJi = false;
+    var lianJiNum = 0;
     var score = 0;
     var type = 0;
     for (var i = 0; i < this.select.length; i++) {
@@ -97,12 +97,12 @@ MatrixLogic.prototype.getSelectScore = function(){
         if (j - i >= 3) {
             score += 10 * scoreI  * (j - i);
             i = j - 1;
-            isLianJi = true;
+            lianJiNum++;
         }else{
             score += scoreI;
         }
     }
-    return {score:score,isLianJi:isLianJi, type:type};
+    return {score:score,lianJiNum:lianJiNum, type:type};
 }
 
 MatrixLogic.prototype.canAddSelect = function(selectItem){
@@ -291,8 +291,9 @@ var MatrixLayer = cc.Layer.extend({
                     copy.getChildByName("bg_iv").runAction(cc.sequence(cc.spawn(cc.scaleTo(0.2, 2), cc.fadeTo(0.2, 0)), cc.callFunc(function(){
                         copy.removeFromParent();
                     })));
-                    Sound.playEffect("dianji"); // or lianji
-                    this.gameLogic.onSelectScore(this.marixLogic.getSelectScore());
+                    var score = this.marixLogic.getSelectScore();
+                    Sound.playEffect(score.lianJiNum > 0 ? "lianji" : "dianji"); // or lianji
+                    this.gameLogic.onSelectScore(score);
                 }
 
                 this.resetSlectItemScore();

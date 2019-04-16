@@ -69,6 +69,8 @@ GameLogic.prototype.updateUI = function () {
 	var ui = this.ui;
 	ui.scoreTv.setString(this.allWinScore + "");
 	ui.guanQiaTv.setString(this.guanQia + "");
+	ui.coinTv.setString(this.scene.getUserCoin() + "");
+
 	if (this.type == 0) {
 		var need = this.guanQiaNeedScore - this.guanQiaWinScore;
 		need = need < 0 ? 0 : need;
@@ -113,16 +115,32 @@ GameLogic.prototype.fullData = function () {
 };
 
 GameLogic.prototype.onAddScore = function (score) {
-	var ui = this.ui;
+	
 
+	//更新数据
 	this.guanQiaWinScore += score.score;
 	this.allWinScore += score.score;
-	ui.scoreTv.setString(this.allWinScore + "");
-
 	if (this.type == 1) {
 		this.useStep++;
 		this.guanQiaWinScoreArr[score.type] += score.score;
+	}
 
+	var isWin = this.judgeWin();
+	var isLose = false;
+	if (!isWin && this.type == 1) {
+		isLose = this.useStep >= this.allStep;
+	}
+
+	if (isWin) {
+		this.guanQiaWinScore += this.cfg.WinScoreGuanQia;
+		this.allWinScore += this.cfg.WinScoreGuanQia;
+	}
+
+	//更新ui
+	var ui = this.ui;
+	ui.scoreTv.setString(this.allWinScore + "");
+
+	if (this.type == 1) {
 		ui.stepTv.setString((this.allStep - this.useStep) + "");
 		var max = this.guanQiaNeedScore[score.type];
 		var cur = this.guanQiaNeedScore[score.type] - this.guanQiaWinScoreArr[score.type];
@@ -136,21 +154,17 @@ GameLogic.prototype.onAddScore = function (score) {
 		ui.guanQiaScoreTv.setString(need + "");
 		ui.guanQiaScorePro.setPercent(need / this.guanQiaNeedScore * 100);
 	}
-	
-	if (this.judgeWin()) {
-		var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
-		//赢事件处理
+
+	if(isWin){
+
 		this.nextGuanQia();
-	}else{
-		if (this.type == 1) {
-			if (this.useStep >= this.allStep) {
-				var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
-				userDefault.setStringForKey(config.Key.GamePlay, "");
-				//失败事件处理
-				return;
-			}
-		}
+	}else if (isLose) {
+		var winCoin = Math.floor(this.guanQiaWinScore / 50);
+		var coin = this.scene.updateUserCoin(winCoin);
+		ui.coinTv.setString(coin + "");
+		return this.scene.setGamePlayData(this.type, "");
 	}
+
 	this.scene.setGamePlayData(this.type, this.getData());
 };
 
@@ -167,8 +181,8 @@ GameLogic.prototype.onSelectScore = function (score) {
 		ui.oneStepTv.setTextColor(color);
 		ui.oneStepTv.opacity = 255;
 		ui.oneStepTv.visible = true;
-		ui.oneStepTv.setString((score.isLianJi ? "连击  " : "") +  score.score);
-		ui.oneStepTv.scale = score.isLianJi ? 1.2 : 1;
+		ui.oneStepTv.setString((score.lianJiNum >  0 ? ((score.lianJiNum > 1 ? ("" + score.lianJiNum) : "") + "连击  ") : "") +  score.score);
+		ui.oneStepTv.scale = score.lianJiNum > 0 ? 1.2 : 1;
 	}else{
 		ui.oneStepTv.runAction(cc.sequence(cc.delayTime(0.8),cc.spawn(cc.fadeTo(0.5, 0)), cc.callFunc(function(){
             ui.oneStepTv.visible = false;
@@ -226,8 +240,10 @@ GameLogic.prototype.startCountdown = function () {
 
 		if (time <= 0) {
 			this.stopCountdown();
-			var winCoin = this.cfg.WinCoinBase + Math.floor(this.guanQiaWinScore / 20);
-			this.scene.setGamePlayData(this.type, this.getData());
+			var winCoin = Math.floor(this.guanQiaWinScore / 50);
+			var coin = this.scene.updateUserCoin(winCoin);
+			this.ui.coinTv.setString(coin + "");
+			this.scene.setGamePlayData(this.type, "");
 			//失败事件处理
 		}
 	}.bind(this);

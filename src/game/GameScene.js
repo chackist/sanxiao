@@ -79,6 +79,24 @@ game.GameScene = cc.Scene.extend({
     	userDefault.setStringForKey(config.Key.GamePlay + type, JSON.stringify(data));
     },
 
+    updateUserCoin(incValue){
+    	var coin = this.getUserCoin();
+    	userDefault.setIntegerForKey(config.Key,coin, coin);
+    	return coin;
+    },
+
+    getUserCoin(){
+    	var coin = userDefault.getIntegerForKey(config.Key.Coin, 1000);
+    	return coin;
+    },
+
+    win(data){
+
+    },
+
+    lose(data){
+
+    },
 });
 
 

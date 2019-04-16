@@ -71,6 +71,7 @@ shared.Event.prototype.detachAll = function () {
 /**
  * 触发事件
  *
+ * 
  */
 shared.Event.prototype.trigger = function (/*arguments*/) {
     for (var i = this._handlers.length - 1; i >= 0; --i) {
