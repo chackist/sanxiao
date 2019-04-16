@@ -36,6 +36,8 @@ game.GameScene = cc.Scene.extend({
         this.marixBgLayer.addChild(this.marixLayer);
 
         this._initUI();
+
+        Sound.playMusic("game");
     },
 
     _initUI : function() {

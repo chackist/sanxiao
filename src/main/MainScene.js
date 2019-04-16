@@ -11,6 +11,8 @@ main.MainScene = cc.Scene.extend({
         this.addChild(this.mainLayer);
 
         this._initUI();
+
+        Sound.playMusic("main");
     },
 
     _initUI : function () {
