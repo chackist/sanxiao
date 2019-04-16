@@ -3328,6 +3328,284 @@
                 "VisibleForFrame": false,
                 "Name": "model_2_layer",
                 "ctype": "PanelObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "Normal",
+                  "Path": "HEIDI.png",
+                  "Plist": ""
+                },
+                "Scale9OriginX": 247,
+                "Scale9OriginY": 50,
+                "Scale9Width": 256,
+                "Scale9Height": 54,
+                "TouchEnable": true,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 1.0,
+                  "Y": 0.1154
+                },
+                "TopMargin": 1180.0,
+                "Tag": 95,
+                "Children": [
+                  {
+                    "FileData": {
+                      "Type": "Normal",
+                      "Path": "cuowu.png",
+                      "Plist": ""
+                    },
+                    "Scale9OriginX": 27,
+                    "Scale9OriginY": 27,
+                    "Scale9Width": 28,
+                    "Scale9Height": 28,
+                    "TouchEnable": true,
+                    "AnchorPoint": {
+                      "ScaleX": 0.5,
+                      "ScaleY": 0.5
+                    },
+                    "Position": {
+                      "X": 250.0,
+                      "Y": 77.0
+                    },
+                    "Scale": {
+                      "ScaleX": 1.0,
+                      "ScaleY": 1.0
+                    },
+                    "CColor": {},
+                    "IconVisible": false,
+                    "PositionPercentYEnabled": true,
+                    "PrePosition": {
+                      "X": 0.3333,
+                      "Y": 0.5
+                    },
+                    "PreSize": {
+                      "X": 0.1093,
+                      "Y": 0.5325
+                    },
+                    "LeftMargin": 209.0,
+                    "RightMargin": 459.0,
+                    "TopMargin": 36.0,
+                    "BottomMargin": 36.0,
+                    "Tag": 89,
+                    "ActionTag": 562955692,
+                    "Size": {
+                      "X": 82.0,
+                      "Y": 82.0
+                    },
+                    "Name": "cancel",
+                    "ctype": "ImageViewObjectData"
+                  },
+                  {
+                    "FileData": {
+                      "Type": "Normal",
+                      "Path": "zhengq.png",
+                      "Plist": ""
+                    },
+                    "Scale9OriginX": 27,
+                    "Scale9OriginY": 27,
+                    "Scale9Width": 28,
+                    "Scale9Height": 28,
+                    "TouchEnable": true,
+                    "AnchorPoint": {
+                      "ScaleX": 0.5,
+                      "ScaleY": 0.5
+                    },
+                    "Position": {
+                      "X": 500.0,
+                      "Y": 77.0
+                    },
+                    "Scale": {
+                      "ScaleX": 1.0,
+                      "ScaleY": 1.0
+                    },
+                    "CColor": {},
+                    "IconVisible": false,
+                    "PositionPercentYEnabled": true,
+                    "PrePosition": {
+                      "X": 0.6667,
+                      "Y": 0.5
+                    },
+                    "PreSize": {
+                      "X": 0.1093,
+                      "Y": 0.5325
+                    },
+                    "LeftMargin": 459.0,
+                    "RightMargin": 209.0,
+                    "TopMargin": 36.0,
+                    "BottomMargin": 36.0,
+                    "Tag": 90,
+                    "ActionTag": -711762684,
+                    "Size": {
+                      "X": 82.0,
+                      "Y": 82.0
+                    },
+                    "Name": "ok",
+                    "ctype": "ImageViewObjectData"
+                  }
+                ],
+                "ActionTag": 1086488970,
+                "Size": {
+                  "X": 750.0,
+                  "Y": 154.0
+                },
+                "VisibleForFrame": false,
+                "Name": "dialog_cancel_ok",
+                "ctype": "ImageViewObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "Normal",
+                  "Path": "HEIDI.png",
+                  "Plist": ""
+                },
+                "Scale9OriginX": 247,
+                "Scale9OriginY": 50,
+                "Scale9Width": 256,
+                "Scale9Height": 54,
+                "TouchEnable": true,
+                "AnchorPoint": {},
+                "Position": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 1.0,
+                  "Y": 0.1424
+                },
+                "TopMargin": 1144.0,
+                "Tag": 96,
+                "Children": [
+                  {
+                    "FileData": {
+                      "Type": "Normal",
+                      "Path": "HEIDI.png",
+                      "Plist": ""
+                    },
+                    "Scale9OriginX": 247,
+                    "Scale9OriginY": 50,
+                    "Scale9Width": 256,
+                    "Scale9Height": 54,
+                    "AnchorPoint": {
+                      "ScaleX": 0.5,
+                      "ScaleY": 0.5
+                    },
+                    "Position": {
+                      "X": 374.9996,
+                      "Y": 1240.0
+                    },
+                    "Scale": {
+                      "ScaleX": 1.0,
+                      "ScaleY": 1.0
+                    },
+                    "CColor": {},
+                    "IconVisible": false,
+                    "PrePosition": {
+                      "X": 0.5,
+                      "Y": 6.5263
+                    },
+                    "PreSize": {
+                      "X": 1.0,
+                      "Y": 2.6316
+                    },
+                    "LeftMargin": -0.0004,
+                    "RightMargin": 0.0004,
+                    "TopMargin": -1300.0,
+                    "BottomMargin": 990.0,
+                    "Tag": 94,
+                    "Children": [
+                      {
+                        "FontSize": 35,
+                        "LabelText": "点击要去除的块",
+                        "OutlineColor": {
+                          "G": 0,
+                          "B": 0
+                        },
+                        "ShadowColor": {
+                          "R": 110,
+                          "G": 110,
+                          "B": 110
+                        },
+                        "ShadowOffsetX": 2.0,
+                        "ShadowOffsetY": -2.0,
+                        "AnchorPoint": {
+                          "ScaleX": 0.5,
+                          "ScaleY": 0.5
+                        },
+                        "Position": {
+                          "X": 375.0,
+                          "Y": 100.0
+                        },
+                        "Scale": {
+                          "ScaleX": 1.0,
+                          "ScaleY": 1.0
+                        },
+                        "CColor": {},
+                        "IconVisible": false,
+                        "PositionPercentXEnabled": true,
+                        "PositionPercentYEnabled": true,
+                        "PrePosition": {
+                          "X": 0.5,
+                          "Y": 0.2
+                        },
+                        "PreSize": {
+                          "X": 0.3267,
+                          "Y": 0.07
+                        },
+                        "LeftMargin": 252.5,
+                        "RightMargin": 252.5,
+                        "TopMargin": 382.5,
+                        "BottomMargin": 82.5,
+                        "Tag": 99,
+                        "ActionTag": 1544258326,
+                        "Size": {
+                          "X": 245.0,
+                          "Y": 35.0
+                        },
+                        "Name": "Text_1",
+                        "ctype": "TextObjectData"
+                      }
+                    ],
+                    "ActionTag": 398730544,
+                    "Size": {
+                      "X": 750.0,
+                      "Y": 500.0
+                    },
+                    "Name": "Image_5",
+                    "ctype": "ImageViewObjectData"
+                  }
+                ],
+                "ActionTag": 1843591359,
+                "Size": {
+                  "X": 750.0,
+                  "Y": 190.0
+                },
+                "VisibleForFrame": false,
+                "Name": "disk_delete_selecting",
+                "ctype": "ImageViewObjectData"
               }
             ],
             "ActionTag": 838866995,
@@ -3350,6 +3628,7 @@
         "bar.png",
         "barBg.png",
         "caidang.png",
+        "cuowu.png",
         "D1.png",
         "dengpao.png",
         "HEIDI.png",
@@ -3357,7 +3636,8 @@
         "jinb.png",
         "mainBg.png",
         "shanchu.png",
-        "yuan.png"
+        "yuan.png",
+        "zhengq.png"
       ],
       "ctype": "GameFileData"
     }

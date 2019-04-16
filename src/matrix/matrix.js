@@ -312,9 +312,24 @@ var MatrixLayer = cc.Layer.extend({
         if (this.isDeleteSelecting) {
             if (this.deleteSelectItem) {
                 this.isDeleteSelecting = false;
-                this.deleteItems([this.deleteSelectItem]);
+                var itemData = this.marixLogic.getData()[this.deleteSelectItem.row][this.deleteSelectItem.column];
+                var deleteItems = this.deleteItems([this.deleteSelectItem]);
                 this.deleteSelectItem = null;
                 this.checkCanSelect();
+                this.gameLogic.doDeleteDone();
+
+                //Boom
+                var itemEffect = new cc.ParticleSystem("res/sanxiao/itemEffect.plist");
+                var lastSelNode = deleteItems[deleteItems.length - 1].node;
+                itemEffect.setPosition(cc.p(lastSelNode.x, lastSelNode.y));
+                this.addChild(itemEffect, 3);
+                itemEffect.runAction(cc.sequence(cc.delayTime(0.5), cc.callFunc(function(){
+                    itemEffect.removeFromParent();
+                })));
+
+                var score = {score:itemData.score, lianJiNum:0, type:itemData.type};
+                this.gameLogic.onAddScore(score);
+                Sound.playEffect("bomb");
             }
             return;
         }
@@ -484,7 +499,7 @@ var MatrixLayer = cc.Layer.extend({
         //三秒钟没动 则作提示
         this.showHelpCb = this.showHelpCb || function(){
             var cur = new Date().getTime();
-            if (cur - this.lastTouchTime > 3 * 1000) {
+            if (cur - this.lastTouchTime > 5 * 1000) {
                 var help = this.marixLogic.getHelp();
                 var itemNode = this.matrixItems[help[0].row][help[0].column];
                 var copy = itemNode.clone();

@@ -2,9 +2,7 @@ var config = {
 	Key:{
 		GamePlay:"Key_GamePlay",
 		Coin:"Key_Coin",
-		GameBestRecord0:"Key_GameBestRecord0",
-		GameBestRecord1:"Key_GameBestRecord1",
-		GameBestRecord2:"Key_GameBestRecord2",
+		GameBestRecord:"Key_GameBestRecord",
 	},
 
 	Event:{
@@ -39,9 +37,9 @@ var config = {
 	},
 
 	PropPrice:{
-		Del:300,
-		AddStep:300,
-		Help:1000,
+		Del:1,
+		AddStep:2,
+		Help:3,
 	},
 
     Items: [{

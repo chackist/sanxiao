@@ -31,6 +31,10 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 	ui.scoreTv = this.modelLayer.getChildByName("score_info").getChildByName("tv");
 	ui.guanQiaTv = this.modelLayer.getChildByName("guanqia_info").getChildByName("tv");
 
+	
+	ui.diskDeleteSelecting = layer.getChildByName("disk_delete_selecting");
+	ui.dialogOkCannel = layer.getChildByName("dialog_cancel_ok");
+
 	if (this.type == 0) {
 		ui.guanQiaScoreTv = this.modelLayer.getChildByName("guanqia_score").getChildByName("tv");
 		ui.guanQiaScorePro = this.modelLayer.getChildByName("guanqia_score").getChildByName("pro");
@@ -73,7 +77,7 @@ GameLogic.prototype.init = function (scene, layer, type, data) {
 
 GameLogic.prototype.updateUI = function () {
 	var ui = this.ui;
-	this.updateCoin()
+	ui.coinTv.setString(this.getUserCoin() + "");
 	ui.scoreTv.setString(this.allWinScore + "");
 	ui.guanQiaTv.setString(this.guanQia + "");
 
@@ -97,12 +101,10 @@ GameLogic.prototype.updateUI = function () {
 			ui.scoreInfoArr[i].tv.setString(cur + "");
 		}
 	}else if (this.type == 2) {
-		ui.guanQiaScoreTv.setString(this.guanQiaWinScore + "");
+		var need = this.guanQiaNeedScore - this.guanQiaWinScore;
+		need = need < 0 ? 0 : need;
+		ui.guanQiaScoreTv.setString(need + "");
 	}
-}
-
-GameLogic.prototype.updateCoin = function(coin){
-	this.ui.coinTv.setString(this.scene.getUserCoin() + "");
 }
 
 GameLogic.prototype.fullData = function () {
@@ -164,21 +166,23 @@ GameLogic.prototype.onAddScore = function (score) {
 	}
 
 	if(isWin){
-
+		//失败事件处理
+		this.scene.win({guanQiaWinScore:this.guanQiaWinScore, guanQia:this.guanQia, type:this.type});
 		this.nextGuanQia();
 	}else if (isLose) {
 		var winCoin = Math.floor(this.guanQiaWinScore / 50); 
-		this.scene.updateUserCoin(winCoin);
-		this.updateCoin();
-		return this.scene.setGamePlayData(this.type, "");
+		this.updateUserCoin(winCoin);
+		//失败事件处理
+		this.scene.lose({winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia, type:this.type});
+		return this.setGamePlayData(this.type, "");
 	}
 
-	this.scene.setGamePlayData(this.type, this.getData());
+	this.setGamePlayData(this.type, this.getData());
 };
 
 GameLogic.prototype.onMatrixChange = function (matrix) {
 	this.matrix = matrix;
-	this.scene.setGamePlayData(this.type, this.getData());
+	this.setGamePlayData(this.type, this.getData());
 };
 
 GameLogic.prototype.onSelectScore = function (score) {
@@ -240,6 +244,7 @@ GameLogic.prototype.startCountdown = function () {
 	this.stopCountdown();
 	this.countdownCb = this.countdownCb || function(){
 		this.useTime++;
+		this.setGamePlayData(this.type, this.getData());
 
 		var time = this.allTime - this.useTime;
 		time = time < 0 ? 0 : time;
@@ -249,10 +254,10 @@ GameLogic.prototype.startCountdown = function () {
 		if (time <= 0) {
 			this.stopCountdown();
 			var winCoin = Math.floor(this.guanQiaWinScore / 50);
-			this.scene.updateUserCoin(winCoin);
-			this.updateCoin();
-			this.scene.setGamePlayData(this.type, "");
+			this.updateUserCoin(winCoin);
+			this.setGamePlayData(this.type, "");
 			//失败事件处理
+			this.scene.lose({winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia});
 		}
 	}.bind(this);
 	this.scene.schedule(this.countdownCb, 1);
@@ -275,51 +280,66 @@ GameLogic.prototype.getData = function () {
 };
 
 
-GameLogic.prototype.doAddStep = function (step) {
-	var ui = this.ui;
-	if (this.type == 1) {
-		this.allStep += step;
+GameLogic.prototype.doAddStep = function () {
+	var spend = config.PropPrice.AddStep;
+	if (this.getUserCoin() < spend) {return;}
+	if (this.type != 1) {return;}
+	
+	this.showDialogOkCancel(function(){
+		this.updateUserCoin(-spend);
+		this.allStep += 2;
+		this.setGamePlayData(this.type, this.getData());
+		var ui = this.ui;
 		ui.stepTv.setString((this.allStep - this.useStep) + "");
-	}
-
-                	// var spend = config.PropPrice.AddStep;
-                	// if (this.getUserCoin() < spend) {
-                	// 	return;
-                	// }
-                	// this.updateUserCoin(-spend);
-                	// this.logic.updateCoin();
-                	// this.logic.addStep(2);
+	}.bind(this));
 }
 
-GameLogic.prototype.doDelete = function (step) {
-	var ui = this.ui;
-	if (this.type == 1) {
-		this.allStep += step;
-		ui.stepTv.setString((this.allStep - this.useStep) + "");
-	}
-	              //   	var spend = config.PropPrice.Del;
-              //   	if (this.getUserCoin() < spend) {
-              //   		return;
-              //   	}
-            		// this.updateUserCoin(-spend);
-              //   	this.logic.updateCoin();
-              //   	this.marixLayer.setDeleteSelecting(true);
+GameLogic.prototype.doDelete = function () {
+	var spend = config.PropPrice.Del;
+	if (this.getUserCoin() < spend) {return;}
+
+	this.showDialogOkCancel(function(){
+		this.updateUserCoin(-spend);
+		this.ui.diskDeleteSelecting.visible = true;
+		this.marixLayer.setDeleteSelecting(true);
+	}.bind(this));
+}
+
+GameLogic.prototype.doDeleteDone = function () {
+	this.ui.diskDeleteSelecting.visible = false;
 }
 
 GameLogic.prototype.doShowHelp = function (step) {
-	var ui = this.ui;
-	if (this.type == 1) {
-		this.allStep += step;
-		ui.stepTv.setString((this.allStep - this.useStep) + "");
-	}
+	var spend = config.PropPrice.Help;
+	if (this.getUserCoin() < spend) {return;}
+	
+	this.showDialogOkCancel(function(){
+		this.updateUserCoin(-spend);
+		this.marixLayer.drawHelpLine();
+	}.bind(this));
+}
 
-                	// var spend = config.PropPrice.Help;
-                	// if (this.getUserCoin() < spend) {
-                	// 	return;
-                	// }
-                	// this.updateUserCoin(-spend);
-                	// this.logic.updateCoin();
-                	// this.marixLayer.drawHelpLine();
+GameLogic.prototype.showDialogOkCancel = function(okCb, cancleCb){
+	var dialog = this.ui.dialogOkCannel;
+	var okNode = dialog.getChildByName("ok");
+	var cancleNode = dialog.getChildByName("cancel");
+
+	dialog.visible = true;
+	okNode.addTouchEventListener(function(btn, et){
+		if (et == ccui.Widget.TOUCH_ENDED) {
+			dialog.visible = false;
+			okCb();
+		}
+	}, okNode);
+
+	cancleNode.addTouchEventListener(function(btn, et){
+		if (et == ccui.Widget.TOUCH_ENDED) {
+			dialog.visible = false;
+			if (cancelCb) {
+				cancelCb();
+			}
+		}
+	}, cancleNode);
 }
 
 GameLogic.prototype.setGamePlayData = function(type, data){
@@ -330,7 +350,7 @@ GameLogic.prototype.updateUserCoin = function(incValue){
 	var coin = this.getUserCoin();
 	coin += incValue;
 	userDefault.setIntegerForKey(config.Key.Coin, coin);
-
+	this.ui.coinTv.setString(coin + "");
 	return coin;
 };
 

@@ -33,11 +33,14 @@ game.GameScene = cc.Scene.extend({
     	this.caidang_btn = this.topMenuLayer.getChildByName("caidang_btn");
     	this.caidang_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
     	this.del_btn = this.bottomMenuLayer.getChildByName("del_btn");
-    	this.del_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
+    	this.del_btn.addTouchEventListener(this._handClick.bind(this), this.del_btn);
+    	this.del_btn.getChildByName("tv").setString(config.PropPrice.Del + "");
     	this.help_btn = this.bottomMenuLayer.getChildByName("help_btn");
-    	this.help_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
+    	this.help_btn.addTouchEventListener(this._handClick.bind(this), this.help_btn);
+    	this.help_btn.getChildByName("tv").setString(config.PropPrice.Help + "");
     	this.add_step_btn = this.layer.getChildByName("model_1_layer").getChildByName("add_step_btn");
-    	this.add_step_btn.addTouchEventListener(this._handClick.bind(this), this.caidang_btn);
+    	this.add_step_btn.getChildByName("tv").setString(config.PropPrice.AddStep + "");
+    	this.add_step_btn.addTouchEventListener(this._handClick.bind(this), this.add_step_btn);
     },
 
     _handClick : function(btn, et) {
@@ -63,11 +66,17 @@ game.GameScene = cc.Scene.extend({
     	
     },
 
+    //{guanQiaWinScore:this.guanQiaWinScore, guanQia:this.guanQia, type:this.type}
     win:function(data){
-    	//{winScore:}
+    	//显示弹窗
     },
 
+    //{winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia, type:this.type}
     lose:function(data){
+    	var bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + data.type, 0);
+    	var isNewBest = data.allWinScore > bestScore;
+    	userDefault.setIntegerForKey(config.Key.GameBestRecord + data.type, data.allWinScore);
+    	//显示弹窗
     },
 });
 
