@@ -78,6 +78,7 @@ MatrixLogic.prototype.getSelectScore = function(){
     var lianJiNum = 0;
     var score = 0;
     var type = 0;
+    var isLastLianJi = false;//最后一个数字是否属于连击
     for (var i = 0; i < this.select.length; i++) {
         var selectI = this.select[i];
         var scoreI = this.data[selectI.row][selectI.column].score;
@@ -94,11 +95,14 @@ MatrixLogic.prototype.getSelectScore = function(){
             score += 10 * scoreI  * (j - i);
             i = j - 1;
             lianJiNum++;
+            if (j == this.select.length) {
+                isLastLianJi = true;
+            }
         }else{
             score += scoreI;
         }
     }
-    return {score:score,lianJiNum:lianJiNum, type:type};
+    return {score:score,lianJiNum:lianJiNum, type:type, isLastLianJi:isLastLianJi};
 }
 
 MatrixLogic.prototype.canAddSelect = function(selectItem){
@@ -233,6 +237,11 @@ var MatrixLayer = cc.Layer.extend({
         this.cloneLineNode.removeFromParent();
         this.addChild(this.cloneLineNode);
 
+        this.fingerNode = csdNode.getChildByName("finger");
+        this.fingerNode.visible = false;
+        this.fingerNode.removeFromParent();
+        this.addChild(this.fingerNode, 4);
+
         this.showHelp2();
     },
 
@@ -280,7 +289,7 @@ var MatrixLayer = cc.Layer.extend({
                         copy.removeFromParent();
                     })));
                     var score = this.marixLogic.getSelectScore();
-                    Sound.playEffect(score.lianJiNum > 0 ? "lianji" : "dianji"); // or lianji
+                    Sound.playEffect(score.isLastLianJi ? "lianji" : "dianji"); // or lianji
                     this.gameLogic.onSelectScore(score);
                 }
 
@@ -455,10 +464,27 @@ var MatrixLayer = cc.Layer.extend({
         return line;
     },
 
-    drawHelpLine:function(){
+    clearHelpLine:function(touchPos){
+        this.fingerNode.visible = false;
+        for (var i = 0; i < this.helpLines.length; i++) {
+            this.helpLines[i].removeFromParent();
+        }
+        this.helpLines = [];
+    },
+
+    isHelpShowing:function(){
+        return this.helpLines.length > 0;
+    },
+
+    showHelp:function(){
+        var isNewUser = this.gameLogic.isNewUser();
         this.clearHelpLine();
+        
         var help = this.marixLogic.getHelp();
         var color = cc.color(255,255,255);
+
+        var fingerActionArr = [];
+
         for (var i = 0; i < help.length - 1; i++) {
             var beginNode = help[i];
             var posB = cc.p(this.width / this.marixLogic.rowCount * (beginNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - beginNode.row - 0.5));
@@ -466,27 +492,37 @@ var MatrixLayer = cc.Layer.extend({
             var posE = cc.p(this.width / this.marixLogic.rowCount * (endNode.column + 0.5), this.height / this.marixLogic.columnCount * (this.marixLogic.columnCount - endNode.row - 0.5));
             var line = this.drawOneLine(posB, posE, color);
             line.visible = false;
+
+            if (fingerActionArr.length == 0) {
+                this.fingerNode.x = posB.x;
+                this.fingerNode.y = posB.y;
+            }
+
+            fingerActionArr.push(cc.moveTo(0.1, posE));
+
             (function(line){
-                line.runAction(cc.sequence(cc.delayTime(0.1 * i), cc.callFunc(function(){
+                line.runAction(cc.sequence(cc.delayTime(0.1 * (i + 1)), cc.callFunc(function(){
                     line.visible = true;
                 })));
             })(line);
             this.helpLines.push(line);
         }
-    },
 
-    clearHelpLine:function(touchPos){
-        for (var i = 0; i < this.helpLines.length; i++) {
-            this.helpLines[i].removeFromParent();
-        }
-        this.helpLines = [];
+        this.fingerNode.visible = true;
+        var fingerAction = cc.sequence(fingerActionArr);
+        this.fingerNode.runAction(fingerAction);
     },
 
     //长时间未操作的提示
     showHelp2:function(){
-        //三秒钟没动 则作提示
+        //5秒钟没动 则作提示
         this.showHelpCb = this.showHelpCb || function(){
             var cur = new Date().getTime();
+            //如果是新手
+            if (this.gameLogic.isNewUser() && !this.isHelpShowing()) {
+                this.showHelp();
+            }
+            
             if (cur - this.lastTouchTime > 5 * 1000) {
                 var help = this.marixLogic.getHelp();
                 var itemNode = this.matrixItems[help[0].row][help[0].column];
