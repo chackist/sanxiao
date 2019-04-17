@@ -29,6 +29,8 @@ var res = {
 	yuan :  "res/sanxiao/yuan.png",
 	mainBg : "res/sanxiao/mainBg.png",
 	itemEffect: "res/sanxiao/itemEffect.plist",
+	scoreEffect: "res/sanxiao/scoreEffect.plist",
+	pointffect: "res/sanxiao/pointEffect.plist",
 	CAILUN :	"res/sanxiao/CAILUN.png",
 	LOGO :	"res/sanxiao/LOGO.png",
 	XAI :	"res/sanxiao/XAI.png",
