@@ -146,8 +146,8 @@ GameLogic.prototype.fullData = function () {
 };
 
 GameLogic.prototype.onAddScore = function (score, boomWBPos) {
-
-
+	var operaCount = userDefault.getIntegerForKey(config.Key.GameOperaCount, 0);
+	userDefault.setIntegerForKey(config.Key.GameOperaCount, operaCount + 1);
 	//更新数据
 	this.guanQiaWinScore += score.score;
 	this.allWinScore += score.score;
@@ -441,17 +441,7 @@ GameLogic.prototype.getUserCoin = function(){
 
 
 GameLogic.prototype.isNewUser = function(){
-	//最佳纪录没有达到100分就算新手
-	if (this.allWinScore >= 100) {
-		return false;}
-
-	var bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "0", 0);
-	if (bestScore < 100) {
-		bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "1", 0);
-	}
-	if (bestScore < 100) {
-		bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "2", 0);
-	}
-
-	return bestScore < 100;
+	//只操作过5次以下算新手
+	var operaCount = userDefault.getIntegerForKey(config.Key.GameOperaCount, 0);
+	return operaCount < 5;
 };

@@ -3,6 +3,7 @@ var config = {
 		GamePlay:"Key_GamePlay",
 		Coin:"Key_Coin",
 		GameBestRecord:"Key_GameBestRecord",
+		GameOperaCount:"Key_GameOperaCount",
 	},
 
 	Event:{
