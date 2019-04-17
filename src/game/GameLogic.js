@@ -188,7 +188,7 @@ GameLogic.prototype.onAddScore = function (score) {
 		this.scene.win({guanQiaWinScore:this.guanQiaWinScore, guanQia:this.guanQia, type:this.type});
 		this.nextGuanQia();
 	}else if (isLose) {
-		var winCoin = Math.floor(this.guanQiaWinScore / 50); 
+		var winCoin = Math.floor(this.allWinScore / 50); 
 		this.updateUserCoin(winCoin);
 		//失败事件处理
 		this.scene.lose({winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia, type:this.type});
@@ -272,7 +272,7 @@ GameLogic.prototype.startCountdown = function () {
 
 		if (time <= 0) {
 			this.stopCountdown();
-			var winCoin = Math.floor(this.guanQiaWinScore / 50);
+			var winCoin = Math.floor(this.allWinScore / 50);
 			this.updateUserCoin(winCoin);
 			this.setGamePlayData(this.type, "");
 			//失败事件处理
