@@ -188,7 +188,7 @@ GameLogic.prototype.onAddScore = function (score) {
 		this.scene.win({guanQiaWinScore:this.guanQiaWinScore, guanQia:this.guanQia, type:this.type});
 		this.nextGuanQia();
 	}else if (isLose) {
-		var winCoin = Math.floor(this.allWinScore / 50); 
+		var winCoin = Math.floor(this.allWinScore / 20); 
 		this.updateUserCoin(winCoin);
 		//失败事件处理
 		this.scene.lose({winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia, type:this.type});
@@ -272,7 +272,7 @@ GameLogic.prototype.startCountdown = function () {
 
 		if (time <= 0) {
 			this.stopCountdown();
-			var winCoin = Math.floor(this.allWinScore / 50);
+			var winCoin = Math.floor(this.allWinScore / 20);
 			this.updateUserCoin(winCoin);
 			this.setGamePlayData(this.type, "");
 			//失败事件处理
@@ -336,10 +336,14 @@ GameLogic.prototype.doShowHelp = function (step) {
 	if (this.getUserCoin() < spend) {
 		this.showToast("金币不足");
 		return;}
-	
+
+	if (this.marixLayer.isHelpShowing()) {
+		this.showToast("已有提示，请按提示操作哦");
+		return;
+	}
 	this.showDialogOkCancel(function(){
 		this.updateUserCoin(-spend);
-		this.marixLayer.drawHelpLine();
+		this.marixLayer.showHelp();
 	}.bind(this));
 }
 
@@ -393,4 +397,19 @@ GameLogic.prototype.getUserCoin = function(){
 	return coin;
 };
 
-console.log(JSON.stringify(""))
+
+GameLogic.prototype.isNewUser = function(){
+	//最佳纪录没有达到100分就算新手
+	if (this.allWinScore >= 100) {
+		return false;}
+
+	var bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "0", 0);
+	if (bestScore < 100) {
+		userDefault.getIntegerForKey(config.Key.GameBestRecord + "1", 0);
+	}
+	if (bestScore < 100) {
+		userDefault.getIntegerForKey(config.Key.GameBestRecord + "2", 0);
+	}
+
+	return bestScore < 100;
+};

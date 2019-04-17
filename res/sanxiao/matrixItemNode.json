@@ -202,6 +202,52 @@
             },
             "Name": "line",
             "ctype": "ImageViewObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "shou.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.25,
+              "ScaleY": 0.8
+            },
+            "Position": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 1.5,
+              "ScaleY": 1.5
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -16.0,
+            "RightMargin": -48.0,
+            "TopMargin": -15.6,
+            "BottomMargin": -62.4,
+            "Tag": 97,
+            "ActionTag": -1338847688,
+            "Size": {
+              "X": 64.0,
+              "Y": 78.0
+            },
+            "Alpha": 153,
+            "Name": "finger",
+            "ctype": "SpriteObjectData"
           }
         ],
         "Size": {
@@ -213,6 +259,7 @@
       },
       "UsedResources": [
         "H.png",
+        "shou.png",
         "shuzi.png",
         "white.png"
       ],

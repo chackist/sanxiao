@@ -51,6 +51,17 @@
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="white.png" Plist="" />
           </AbstractNodeData>
+          <AbstractNodeData Name="finger" ActionTag="-1338847688" Alpha="153" Tag="97" IconVisible="False" LeftMargin="-16.0000" RightMargin="-48.0000" TopMargin="-15.6000" BottomMargin="-62.4000" ctype="SpriteObjectData">
+            <Size X="64.0000" Y="78.0000" />
+            <AnchorPoint ScaleX="0.2500" ScaleY="0.8000" />
+            <Position />
+            <Scale ScaleX="1.5000" ScaleY="1.5000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="shou.png" Plist="" />
+            <BlendFunc Src="1" Dst="771" />
+          </AbstractNodeData>
         </Children>
       </ObjectData>
     </Content>
