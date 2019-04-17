@@ -393,3 +393,4 @@ GameLogic.prototype.getUserCoin = function(){
 	return coin;
 };
 
+console.log(JSON.stringify(""))

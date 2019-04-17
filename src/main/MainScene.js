@@ -24,10 +24,12 @@ main.MainScene = cc.Scene.extend({
         //userDefault.setIntegerForKey(config.Key.Coin, 200000);
         var str = userDefault.getStringForKey(config.Key.GamePlay);
         if(str && str.length > 0) {
-            var data = JSON.parse(str);
-            cc.log(data);
-            if(data.type) {
-                sceneMgr.switchToGame(data.type, data); 
+            try{
+                var data = JSON.parse(str);
+                if(data.type != undefined) {
+                    sceneMgr.switchToGame(data.type, data); 
+                }
+            }catch(err){
             }
         }
         
