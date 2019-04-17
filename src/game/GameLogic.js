@@ -136,7 +136,7 @@ GameLogic.prototype.fullData = function () {
 		var guanQia = this.guanQia - 1;
 		var addIdx = 0;
 		while(guanQia > 0){
-			this.guanQiaNeedScore[addIdx % 3] += this.cfg.PreGuanQiaAddScore;
+			this.guanQiaNeedScore[addIdx % 4] += this.cfg.PreGuanQiaAddScore;
 			guanQia--;
 			addIdx++;
 		}
