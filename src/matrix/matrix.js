@@ -477,7 +477,6 @@ var MatrixLayer = cc.Layer.extend({
     },
 
     showHelp:function(){
-        var isNewUser = this.gameLogic.isNewUser();
         this.clearHelpLine();
         
         var help = this.marixLogic.getHelp();
@@ -522,7 +521,7 @@ var MatrixLayer = cc.Layer.extend({
             if (this.gameLogic.isNewUser() && !this.isHelpShowing()) {
                 this.showHelp();
             }
-            
+
             if (cur - this.lastTouchTime > 5 * 1000) {
                 var help = this.marixLogic.getHelp();
                 var itemNode = this.matrixItems[help[0].row][help[0].column];

@@ -131,7 +131,7 @@ GameLogic.prototype.fullData = function () {
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore + (this.guanQia - 1) * this.cfg.PreGuanQiaAddScore;
 		this.allTime = this.cfg.GuanQiaTime;
 	}else if (this.type == 1) {
-		this.allStep = this.allStep || 20;
+		this.allStep = this.allStep || this.cfg.AllStep;
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore.slice();
 		var guanQia = this.guanQia - 1;
 		var addIdx = 0;
@@ -405,10 +405,10 @@ GameLogic.prototype.isNewUser = function(){
 
 	var bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "0", 0);
 	if (bestScore < 100) {
-		userDefault.getIntegerForKey(config.Key.GameBestRecord + "1", 0);
+		bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "1", 0);
 	}
 	if (bestScore < 100) {
-		userDefault.getIntegerForKey(config.Key.GameBestRecord + "2", 0);
+		bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "2", 0);
 	}
 
 	return bestScore < 100;
