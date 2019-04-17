@@ -37,7 +37,9 @@ var res = {
 	putong :	"res/sanxiao/putong.png",
 	shandg :	"res/sanxiao/shandg.png",
 	shj :	"res/sanxiao/shj.png",
-	wux :	"res/sanxiao/wux.png"
+	wux :	"res/sanxiao/wux.png",
+	pointEffect :	"res/sanxiao/pointEffect.plist",
+	scoreEffect : "res/sanxiao/scoreEffect.plist"
 
 };
 

@@ -131,12 +131,12 @@ GameLogic.prototype.fullData = function () {
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore + (this.guanQia - 1) * this.cfg.PreGuanQiaAddScore;
 		this.allTime = this.cfg.GuanQiaTime;
 	}else if (this.type == 1) {
-		this.allStep = this.allStep || 20;
+		this.allStep = this.allStep || this.cfg.AllStep;
 		this.guanQiaNeedScore = this.cfg.BaseGuanQiaNeedScore.slice();
 		var guanQia = this.guanQia - 1;
 		var addIdx = 0;
 		while(guanQia > 0){
-			this.guanQiaNeedScore[addIdx % 3] += this.cfg.PreGuanQiaAddScore;
+			this.guanQiaNeedScore[addIdx % 4] += this.cfg.PreGuanQiaAddScore;
 			guanQia--;
 			addIdx++;
 		}
@@ -145,7 +145,9 @@ GameLogic.prototype.fullData = function () {
 	}
 };
 
-GameLogic.prototype.onAddScore = function (score) {
+GameLogic.prototype.onAddScore = function (score, boomWBPos) {
+
+
 	//更新数据
 	this.guanQiaWinScore += score.score;
 	this.allWinScore += score.score;
@@ -169,6 +171,8 @@ GameLogic.prototype.onAddScore = function (score) {
 	var ui = this.ui;
 	setStringAction(ui.scoreTv, this.allWinScore);
 
+	var jumpBeginPos = this.layer.convertToNodeSpace(boomWBPos);
+
 	if (this.type == 1) {
 		setStringAction(ui.stepTv, this.allStep - this.useStep);
 		var max = this.guanQiaNeedScore[score.type];
@@ -176,11 +180,16 @@ GameLogic.prototype.onAddScore = function (score) {
 		cur = cur < 0 ? 0 : cur;
 		setProAction(ui.scoreInfoArr[score.type].pro, cur / max * 100);
 		setStringAction(ui.scoreInfoArr[score.type].tv, cur);
+		var endNode = ui.scoreInfoArr[score.type].tv;
+		var jumpEndPos = this.layer.convertToNodeSpace(endNode.convertToWorldSpace(cc.p(endNode.width * 0.5, endNode.height * 0.5)));
 	}else{
 		var need = this.guanQiaNeedScore - this.guanQiaWinScore;
 		need = need < 0 ? 0 : need;
 		setStringAction(ui.guanQiaScoreTv, need);
 		ui.guanQiaScorePro.setPercent(need / this.guanQiaNeedScore * 100);
+
+		var endNode = ui.guanQiaScoreTv;
+		var jumpEndPos = this.layer.convertToNodeSpace(endNode.convertToWorldSpace(cc.p(endNode.width * 0.5, endNode.height * 0.5)));
 	}
 
 	if(isWin){
@@ -194,6 +203,39 @@ GameLogic.prototype.onAddScore = function (score) {
 		this.scene.lose({winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia, type:this.type});
 		return this.setGamePlayData(this.type, "");
 	}
+
+	//jump
+    var pointEffect = new cc.ParticleSystem("res/sanxiao/pointEffect.plist");
+    pointEffect.endColor = pointEffect.startColor = config.Items[score.type].LineColor;
+    pointEffect.endColorVar = pointEffect.startColorVar = cc.color(0,0,0);
+   // pointEffect.speed = pointEffect.speedVar = cc.p(0,0);
+
+    pointEffect.gravity = cc.p(0,0);
+    pointEffect.life = 0.1;
+    pointEffect.lifeVar = 0;
+    pointEffect.posVar = cc.p(0, 0);
+    pointEffect.totalParticles = 1000;
+    pointEffect.duration = 0.5;
+
+    pointEffect.setPosition(jumpBeginPos);
+    pointEffect.scale = 1;
+    this.layer.addChild(pointEffect, 5);
+    pointEffect.runAction(cc.sequence(cc.moveTo(0.3, jumpEndPos), cc.delayTime(0.2), cc.callFunc(function(){
+        pointEffect.removeFromParent();
+        var scoreEffect = new cc.ParticleSystem("res/sanxiao/scoreEffect.plist");
+        scoreEffect.endColor = scoreEffect.startColor = config.Items[score.type].LineColor;
+   		scoreEffect.endColorVar = scoreEffect.startColorVar = cc.color(0,0,0);
+        scoreEffect.duration = 0.5;
+        scoreEffect.scale = 0.4;
+        scoreEffect.gravity = cc.p(0,0);
+        scoreEffect.life = 0.3;
+    	scoreEffect.lifeVar = 0;
+	    scoreEffect.runAction(cc.delayTime(scoreEffect.duration), cc.callFunc(function(){
+	        scoreEffect.removeFromParent();
+	    }));
+	    scoreEffect.setPosition(jumpEndPos);
+	    this.layer.addChild(scoreEffect, 5);
+    }.bind(this))));
 
 	this.setGamePlayData(this.type, this.getData());
 };
@@ -310,7 +352,7 @@ GameLogic.prototype.doAddStep = function () {
 		this.updateUserCoin(-spend);
 		this.allStep += 2;
 		this.setGamePlayData(this.type, this.getData());
-		setStringAction(this.ui.stepTv, this.allStep - this.useSte);
+		setStringAction(this.ui.stepTv, this.allStep - this.useStep);
 	}.bind(this));
 }
 
@@ -405,10 +447,10 @@ GameLogic.prototype.isNewUser = function(){
 
 	var bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "0", 0);
 	if (bestScore < 100) {
-		userDefault.getIntegerForKey(config.Key.GameBestRecord + "1", 0);
+		bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "1", 0);
 	}
 	if (bestScore < 100) {
-		userDefault.getIntegerForKey(config.Key.GameBestRecord + "2", 0);
+		bestScore = userDefault.getIntegerForKey(config.Key.GameBestRecord + "2", 0);
 	}
 
 	return bestScore < 100;

@@ -325,7 +325,7 @@ var MatrixLayer = cc.Layer.extend({
                 })));
 
                 var score = {score:itemData.score, lianJiNum:0, type:itemData.type};
-                this.gameLogic.onAddScore(score);
+                this.gameLogic.onAddScore(score, this.convertToWorldSpace(cc.p(lastSelNode.x, lastSelNode.y)));
                 Sound.playEffect("bomb");
             }
             return;
@@ -348,11 +348,12 @@ var MatrixLayer = cc.Layer.extend({
             var lastSelNode = selectItems[selectItems.length - 1].node;
             itemEffect.setPosition(cc.p(lastSelNode.x, lastSelNode.y));
             this.addChild(itemEffect, 3);
-            itemEffect.runAction(cc.sequence(cc.delayTime(0.5), cc.callFunc(function(){
+            itemEffect.duration = 0.5;
+            itemEffect.runAction(cc.sequence(cc.delayTime(0.6), cc.callFunc(function(){
                 itemEffect.removeFromParent();
             })));
 
-            this.gameLogic.onAddScore(score);
+            this.gameLogic.onAddScore(score, this.convertToWorldSpace(cc.p(lastSelNode.x, lastSelNode.y)));
             Sound.playEffect("bomb");
         }else{
             this.resetSlectItemScore(true);
@@ -477,7 +478,6 @@ var MatrixLayer = cc.Layer.extend({
     },
 
     showHelp:function(){
-        var isNewUser = this.gameLogic.isNewUser();
         this.clearHelpLine();
         
         var help = this.marixLogic.getHelp();
@@ -522,7 +522,7 @@ var MatrixLayer = cc.Layer.extend({
             if (this.gameLogic.isNewUser() && !this.isHelpShowing()) {
                 this.showHelp();
             }
-            
+
             if (cur - this.lastTouchTime > 5 * 1000) {
                 var help = this.marixLogic.getHelp();
                 var itemNode = this.matrixItems[help[0].row][help[0].column];

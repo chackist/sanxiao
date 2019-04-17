@@ -21,7 +21,7 @@ var config = {
 
 		Type1:{
 			BaseGuanQiaNeedScore:[50,60,80,100],
-			PreGuanQiaAddScore:5,
+			PreGuanQiaAddScore:10,
 			AllStep:20,
 			WinScoreGuanQia:500,//每关通过获得的额外加分
 			WinScoreExchangeCoin:20 / 1,//赢的分兑换金币
