@@ -253,7 +253,7 @@ GameLogic.prototype.nextGuanQia = function () {
 
 	if (this.type == 0) {
 		this.stopCountdown();
-		this.scene.runAction(cc.sequence(cc.delayTime(1), cc.callFunc(function(){
+		this.scene.runAction(cc.sequence(cc.delayTime(2), cc.callFunc(function(){
             this.startCountdown();
         }.bind(this))));
 	}
