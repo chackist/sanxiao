@@ -310,7 +310,7 @@ GameLogic.prototype.doAddStep = function () {
 		this.updateUserCoin(-spend);
 		this.allStep += 2;
 		this.setGamePlayData(this.type, this.getData());
-		setStringAction(this.ui.stepTv, this.allStep - this.useSte);
+		setStringAction(this.ui.stepTv, this.allStep - this.useStep);
 	}.bind(this));
 }
 
