@@ -145,7 +145,9 @@ GameLogic.prototype.fullData = function () {
 	}
 };
 
-GameLogic.prototype.onAddScore = function (score) {
+GameLogic.prototype.onAddScore = function (score, boomWBPos) {
+
+
 	//更新数据
 	this.guanQiaWinScore += score.score;
 	this.allWinScore += score.score;
@@ -169,6 +171,8 @@ GameLogic.prototype.onAddScore = function (score) {
 	var ui = this.ui;
 	setStringAction(ui.scoreTv, this.allWinScore);
 
+	var jumpBeginPos = this.layer.convertToNodeSpace(boomWBPos);
+
 	if (this.type == 1) {
 		setStringAction(ui.stepTv, this.allStep - this.useStep);
 		var max = this.guanQiaNeedScore[score.type];
@@ -176,11 +180,16 @@ GameLogic.prototype.onAddScore = function (score) {
 		cur = cur < 0 ? 0 : cur;
 		setProAction(ui.scoreInfoArr[score.type].pro, cur / max * 100);
 		setStringAction(ui.scoreInfoArr[score.type].tv, cur);
+		var endNode = ui.scoreInfoArr[score.type].tv;
+		var jumpEndPos = this.layer.convertToNodeSpace(endNode.convertToWorldSpace(cc.p(endNode.width * 0.5, endNode.height * 0.5)));
 	}else{
 		var need = this.guanQiaNeedScore - this.guanQiaWinScore;
 		need = need < 0 ? 0 : need;
 		setStringAction(ui.guanQiaScoreTv, need);
 		ui.guanQiaScorePro.setPercent(need / this.guanQiaNeedScore * 100);
+
+		var endNode = ui.guanQiaScoreTv;
+		var jumpEndPos = this.layer.convertToNodeSpace(endNode.convertToWorldSpace(cc.p(endNode.width * 0.5, endNode.height * 0.5)));
 	}
 
 	if(isWin){
@@ -194,6 +203,15 @@ GameLogic.prototype.onAddScore = function (score) {
 		this.scene.lose({winCoin:winCoin, allWinScore:this.allWinScore, guanQia:this.guanQia, type:this.type});
 		return this.setGamePlayData(this.type, "");
 	}
+
+	//jump
+    var itemEffect = new cc.ParticleSystem("res/sanxiao/pointEffect.plist");
+    itemEffect.setPosition(jumpBeginPos);
+    itemEffect.scale = 1;
+    this.layer.addChild(itemEffect, 5);
+    itemEffect.runAction(cc.sequence(cc.moveTo(0.3, jumpEndPos), cc.delayTime(0.5), cc.callFunc(function(){
+        itemEffect.removeFromParent();
+    })));
 
 	this.setGamePlayData(this.type, this.getData());
 };
