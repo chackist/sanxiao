@@ -205,24 +205,37 @@ GameLogic.prototype.onAddScore = function (score, boomWBPos) {
 	}
 
 	//jump
-    var itemEffect = new cc.ParticleSystem("res/sanxiao/pointEffect.plist");
-    itemEffect.endColor = itemEffect.startColor = config.Items[score.type].LineColor;
-    itemEffect.endColorVar = itemEffect.startColorVar = cc.color(0,0,0);
+    var pointEffect = new cc.ParticleSystem("res/sanxiao/pointEffect.plist");
+    pointEffect.endColor = pointEffect.startColor = config.Items[score.type].LineColor;
+    pointEffect.endColorVar = pointEffect.startColorVar = cc.color(0,0,0);
+   // pointEffect.speed = pointEffect.speedVar = cc.p(0,0);
 
+    pointEffect.gravity = cc.p(0,0);
+    pointEffect.life = 0.1;
+    pointEffect.lifeVar = 0;
+    pointEffect.posVar = cc.p(0, 0);
+    pointEffect.totalParticles = 1000;
+    pointEffect.duration = 0.5;
 
-    itemEffect.gravity = cc.p(0,0);
-    itemEffect.life = 0.1;
-    itemEffect.lifeVar = 0;
-    itemEffect.posVar = cc.p(0, 0);
-    itemEffect.totalParticles = 1000;
-    itemEffect.duration = 0.5;
-
-    itemEffect.setPosition(jumpBeginPos);
-    itemEffect.scale = 1;
-    this.layer.addChild(itemEffect, 5);
-    itemEffect.runAction(cc.sequence(cc.moveTo(0.3, jumpEndPos), cc.delayTime(0.2), cc.callFunc(function(){
-        itemEffect.removeFromParent();
-    })));
+    pointEffect.setPosition(jumpBeginPos);
+    pointEffect.scale = 1;
+    this.layer.addChild(pointEffect, 5);
+    pointEffect.runAction(cc.sequence(cc.moveTo(0.3, jumpEndPos), cc.delayTime(0.2), cc.callFunc(function(){
+        pointEffect.removeFromParent();
+        var scoreEffect = new cc.ParticleSystem("res/sanxiao/scoreEffect.plist");
+        scoreEffect.endColor = scoreEffect.startColor = config.Items[score.type].LineColor;
+   		scoreEffect.endColorVar = scoreEffect.startColorVar = cc.color(0,0,0);
+        scoreEffect.duration = 0.5;
+        scoreEffect.scale = 0.4;
+        scoreEffect.gravity = cc.p(0,0);
+        scoreEffect.life = 0.3;
+    	scoreEffect.lifeVar = 0;
+	    scoreEffect.runAction(cc.delayTime(scoreEffect.duration), cc.callFunc(function(){
+	        scoreEffect.removeFromParent();
+	    }));
+	    scoreEffect.setPosition(jumpEndPos);
+	    this.layer.addChild(scoreEffect, 5);
+    }.bind(this))));
 
 	this.setGamePlayData(this.type, this.getData());
 };

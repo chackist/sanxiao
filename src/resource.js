@@ -36,7 +36,8 @@ var res = {
 	shandg :	"res/sanxiao/shandg.png",
 	shj :	"res/sanxiao/shj.png",
 	wux :	"res/sanxiao/wux.png",
-	pointEffect :	"res/sanxiao/pointEffect.plist"
+	pointEffect :	"res/sanxiao/pointEffect.plist",
+	scoreEffect : "res/sanxiao/scoreEffect.plist"
 
 };
 
