@@ -348,7 +348,8 @@ var MatrixLayer = cc.Layer.extend({
             var lastSelNode = selectItems[selectItems.length - 1].node;
             itemEffect.setPosition(cc.p(lastSelNode.x, lastSelNode.y));
             this.addChild(itemEffect, 3);
-            itemEffect.runAction(cc.sequence(cc.delayTime(0.5), cc.callFunc(function(){
+            itemEffect.duration = 0.5;
+            itemEffect.runAction(cc.sequence(cc.delayTime(0.6), cc.callFunc(function(){
                 itemEffect.removeFromParent();
             })));
 

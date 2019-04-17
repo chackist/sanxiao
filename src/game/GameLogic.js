@@ -206,10 +206,21 @@ GameLogic.prototype.onAddScore = function (score, boomWBPos) {
 
 	//jump
     var itemEffect = new cc.ParticleSystem("res/sanxiao/pointEffect.plist");
+    itemEffect.endColor = itemEffect.startColor = config.Items[score.type].LineColor;
+    itemEffect.endColorVar = itemEffect.startColorVar = cc.color(0,0,0);
+
+
+    itemEffect.gravity = cc.p(0,0);
+    itemEffect.life = 0.1;
+    itemEffect.lifeVar = 0;
+    itemEffect.posVar = cc.p(0, 0);
+    itemEffect.totalParticles = 1000;
+    itemEffect.duration = 0.5;
+
     itemEffect.setPosition(jumpBeginPos);
     itemEffect.scale = 1;
     this.layer.addChild(itemEffect, 5);
-    itemEffect.runAction(cc.sequence(cc.moveTo(0.3, jumpEndPos), cc.delayTime(0.5), cc.callFunc(function(){
+    itemEffect.runAction(cc.sequence(cc.moveTo(0.3, jumpEndPos), cc.delayTime(0.2), cc.callFunc(function(){
         itemEffect.removeFromParent();
     })));
 
