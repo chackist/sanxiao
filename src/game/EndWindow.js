@@ -27,7 +27,7 @@
         this.img_zuiJia = this.layer.getChildByName("img_zuiJia");
         this.img_zuiJia.visible = data.isNewBest;
 
-        this.txt_guaqia = this.layer.getChildByName("txt_guaqia");
+        this.txt_guaqia = this.layer.getChildByName("txt_guanqia");
         this.txt_guaqia.setString(data.guanQia);
         this.txt_fenshu = this.layer.getChildByName("txt_fenshu");
         this.txt_fenshu.setString(data.allWinScore);

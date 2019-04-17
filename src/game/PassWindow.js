@@ -17,8 +17,8 @@ var game = game || {};
         this.txt_fenshu = this.layer.getChildByName("txt_fenshu");
         this.txt_fenshu.setString(data.guanQiaWinScore);
 
-        var dt = cc.delayTime(2);
-        var ac = cc.moveTo(1, this.x, cc.winSize.height);
+        var dt = cc.delayTime(1);
+        var ac = cc.moveTo(0.3, this.x, cc.winSize.height);
         var cb = cc.callFunc(function(){
         	this.removeFromParent(true);
         }.bind(this));

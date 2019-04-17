@@ -37,7 +37,7 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="txt_guaqia" ActionTag="555675730" Tag="73" IconVisible="False" LeftMargin="266.9641" RightMargin="283.0359" TopMargin="334.7061" BottomMargin="899.2939" IsCustomSize="True" FontSize="100" LabelText="1" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+          <AbstractNodeData Name="txt_guanqia" ActionTag="555675730" Tag="73" IconVisible="False" LeftMargin="266.9641" RightMargin="283.0359" TopMargin="334.7061" BottomMargin="899.2939" IsCustomSize="True" FontSize="100" LabelText="1" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
             <Size X="200.0000" Y="100.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="366.9641" Y="949.2939" />
